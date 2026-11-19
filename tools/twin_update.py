@@ -20,7 +20,7 @@ import twin_plugins
 from twin import BLANK_FILES, BLANK_SKIP, ROOT
 
 # 发布的仓库，写成“用户名/仓库名”；两个都填就先问 Gitee（国内快），问不到再问 GitHub。都空着就不检查。
-REPOS = {"gitee": "", "github": ""}
+REPOS = {"gitee": "", "github": "clifton-don/TWIN"}
 API = {"gitee": "https://gitee.com/api/v5/repos/{}/releases/latest", "github": "https://api.github.com/repos/{}/releases/latest"}
 CACHE = Path(__file__).resolve().parent / ".cache" / "update.json"
 MAX_ZIP = 50 * 1024 * 1024
