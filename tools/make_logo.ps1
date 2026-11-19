@@ -1,7 +1,7 @@
 ﻿# 生成 TWIN 的 logo 图片（开发用，改了 logo 才需要跑一次）：
 #   powershell -ExecutionPolicy Bypass -File tools\make_logo.ps1
 # 用 WPF 按和 docs\logo.svg 一样的路径画，输出 tools\web\logo-{尺寸}.png，再由 tools\make_ico.py 拼成 logo.ico。
-# 24 像素以下用简化版：去掉细横线、加粗笔画，托盘里才看得清。
+# 24 像素以下 T 用加粗版，托盘里才看得清。
 Add-Type -AssemblyName PresentationFramework, PresentationCore, WindowsBase
 $out = Join-Path $PSScriptRoot 'web'
 
@@ -12,17 +12,16 @@ function Render($size, $small) {
     $dc = $dv.RenderOpen()
     $k = $size / 64.0
     $dc.PushTransform((New-Object System.Windows.Media.ScaleTransform $k, $k))
-    $r = if ($small) { 12 } else { 14 }
-    $dc.DrawRoundedRectangle((Brush '#26215C'), $null, (New-Object System.Windows.Rect 0, 0, 64, 64), $r, $r)
-    if ($small) {
-        # 简化版：T 和倒影都加粗，中间留一条缝代替水面线
-        $dc.DrawGeometry((Brush '#FFFFFF'), $null, [System.Windows.Media.Geometry]::Parse('M12 8h40v9H37v11h-10V17H12z'))
-        $dc.DrawGeometry((Brush '#55C2B8'), $null, [System.Windows.Media.Geometry]::Parse('M12 56h40v-9H37V36h-10v11H12z'))
-    } else {
-        $dc.DrawGeometry((Brush '#FFFFFF'), $null, [System.Windows.Media.Geometry]::Parse('M16 10h32v6H35v15h-6V16H16z'))
-        $dc.DrawRoundedRectangle((Brush '#7F6FE0'), $null, (New-Object System.Windows.Rect 12, 33, 40, 2), 1, 1)
-        $dc.DrawGeometry((Brush '#55C2B8'), $null, [System.Windows.Media.Geometry]::Parse('M16 54h32v-6H35V37h-6v11H16z'))
-    }
+    # 原件与副本：后面青色的卡是副本，前面紫色的卡是你，叠在一起的地方颜色更深，中间一个 T
+    $back = New-Object System.Windows.Media.RectangleGeometry (New-Object System.Windows.Rect 18, 8, 36, 42), 9, 9
+    $front = New-Object System.Windows.Media.RectangleGeometry (New-Object System.Windows.Rect 10, 16, 36, 42), 9, 9
+    $overlap = New-Object System.Windows.Media.CombinedGeometry ([System.Windows.Media.GeometryCombineMode]::Intersect), $back, $front
+    $dc.DrawGeometry((Brush '#55C2B8'), $null, $back)
+    $dc.DrawGeometry((Brush '#7F6FE0'), $null, $front)
+    $dc.DrawGeometry((Brush '#5B4CC4'), $null, $overlap)
+    # 24 像素以下 T 加粗，托盘里才看得清
+    $t = if ($small) { 'M16 25h24v8h-8v17h-8V33h-8z' } else { 'M18 26h20v6h-7v18h-6V32h-7z' }
+    $dc.DrawGeometry((Brush '#FFFFFF'), $null, [System.Windows.Media.Geometry]::Parse($t))
     $dc.Pop(); $dc.Close()
     $bmp = New-Object System.Windows.Media.Imaging.RenderTargetBitmap $size, $size, 96, 96, ([System.Windows.Media.PixelFormats]::Pbgra32)
     $bmp.Render($dv)

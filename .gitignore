@@ -33,6 +33,8 @@ tools/rename_v3.py
 tools/.cache/
 # 盘上自带的 Python、KeePassXC（Open_Web.bat 第一次运行时下载）
 tools/runtime/
+# 第一次运行时在本机编译的启动器
+/TWIN.exe
 __pycache__/
 # 系统垃圾文件（exFAT 在 macOS 上会产生 ._ 文件）
 .DS_Store

@@ -18,6 +18,14 @@ def test_bat_ascii_crlf():
     assert b"\r\n" in raw and b"\n" not in raw.replace(b"\r\n", b"")
     text = raw.decode()
     assert "launch.ps1" in text and "-WindowStyle Hidden" in text  # 不留黑色窗口
+    assert "TWIN.exe" in text  # 有 TWIN.exe 时转给它，不闪窗口
+
+
+def test_launcher_source_ascii_winexe():
+    src = (TOOLS / "launcher" / "TWIN.cs").read_bytes()
+    assert src.isascii(), "TWIN.cs 只能放英文：csc 没有 BOM 时按系统编码读"
+    assert b"CreateNoWindow = true" in src
+    assert "/TWIN.exe" in (ROOT / ".gitignore").read_text(encoding="utf-8")
 
 
 def test_gitattributes_keeps_bat_crlf():
@@ -31,7 +39,7 @@ def test_ps1_bom_and_no_curly_quotes():
     assert {f.name for f in files} >= {"launch.ps1", "launch_ui.ps1", "make_logo.ps1"}
     for f in files:
         raw = f.read_bytes()
-        assert raw.startswith(BOM), f.name
+        assert raw.startswith(BOM) and not raw.startswith(BOM * 2), f.name  # 两个 BOM 时第一行会被当成命令报错
         assert not any(c in raw.decode("utf-8-sig") for c in CURLY), f.name
 
 

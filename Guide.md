@@ -6,12 +6,13 @@ privacy: internal
 # TWIN 使用步骤
 
 ## 第一次
-0. Windows 不用先装 Python：第一次双击 `Open_Web.bat` 会弹窗问两件事，都点 **是**：
-   - 把 Python（官方免安装版，约 12 MB）放进这块盘：以后插到别的 Windows 电脑也能直接打开，那台电脑上不用装也不留东西。
-   - 把 KeePassXC 便携版（约 70 MB，管密码用）放进这块盘。电脑上已经装了 KeePassXC 时，平时还是用电脑上那份（装在系统目录里，更不容易被人换掉），盘里这份只在去别的电脑时应急用；别在网吧、公用电脑上输入主密码。
-   都从官方地址下载、核对校验值后才用，放在 `tools\runtime\`（不进 Git，升级不动）。点“否”就不再问；想重新问，删掉 `tools\runtime` 里对应的 `.no-python` / `.no-keepassxc`。极少数电脑打不开 KeePassXC 时，运行一次 `tools\runtime\KeePassXC\vc_redist.x64.exe`。
+0. Windows 不用先装 Python，也不用回答任何问题：第一次双击 `Open_Web.bat` 就行。
+   - 它会顺手生成一个 `TWIN.exe`（图标就是 TWIN 的 logo），**以后双击 `TWIN.exe` 打开**，不会闪任何窗口。`TWIN.exe` 是用 Windows 自带的工具在你电脑上现编出来的（源码在 `tools\launcher\TWIN.cs`），不是从网上下的。
+   - 电脑上装了 Python 就先用它启动，同时在后台把官方免安装版 Python（约 12 MB）放进这块盘；以后插到别的 Windows 电脑也能直接打开，那台电脑上不用装也不留东西。电脑上一个 Python 都没有时，才会出一个下载进度条。
+   - 同样在后台往盘里放一份 KeePassXC 便携版（约 70 MB，管密码用）。电脑上已经装了 KeePassXC 时，平时还是用电脑上那份（装在系统目录里，更不容易被人换掉），盘里这份只在去别的电脑时应急用；别在网吧、公用电脑上输入主密码。
+   - 下好了右下角会弹一条通知。都从官方地址下载、核对校验值后才用，放在 `toolsuntime\`（不进 Git，升级不动）；下载失败写在 `toolsuntime\setup.log`，下次打开再试。不想要哪个：在 `toolsuntime` 里建一个空文件 `.no-python` 或 `.no-keepassxc`。极少数电脑打不开 KeePassXC 时，运行一次 `toolsuntime\KeePassXCc_redist.x64.exe`。
    - **Mac**：双击 `Open_Web.command`（第一次提示“无法验证开发者”就右键 → 打开）。需要 `python3`：没有的话系统会弹出“安装命令行开发者工具”，点安装即可；KeePassXC 在 Mac 上要自己装一次（https://keepassxc.org/download/#macos）。
-1. 双击 TWIN 文件夹里的 `Open_Web.bat`，浏览器会打开 TWIN，输入密码登录。不会再留一个黑色窗口：TWIN 在后台运行，右下角托盘里有个 TWIN 图标（T 和它的倒影），双击它打开 TWIN；右键弹出菜单：打开 TWIN、打开 KeePassXC、运行记录（手机访问地址、报错都在里面）、打开 TWIN 文件夹、退出 TWIN。第一次的提问和出错提示是 TWIN 自己的弹窗，跟着 Windows 的深色 / 浅色模式，回车是确定、Esc 是取消，下载时有进度条。已经开着时再双击 `Open_Web.bat`，只会打开网页，不会再开一个。KeePassXC 没开着的话会顺手打开，解锁后首页点网站图标就能自动填密码。
+1. 双击 TWIN 文件夹里的 `TWIN.exe`（第一次用 `Open_Web.bat`），浏览器会打开 TWIN，输入密码登录。TWIN 在后台运行，右下角托盘里有个 TWIN 图标（两张叠放的卡片和一个 T），双击它打开 TWIN；右键弹出菜单：打开 TWIN、打开 KeePassXC、运行记录（手机访问地址、报错都在里面）、打开 TWIN 文件夹、退出 TWIN。平时不会弹任何窗口，只有出错时才弹一个 TWIN 自己的提示（跟着 Windows 的深色 / 浅色模式）。已经开着时再双击，只会打开网页，不会再开一个。KeePassXC 没开着的话会顺手打开，解锁后首页点网站图标就能自动填密码。
    - 全新的一份 TWIN 第一次打开会先设密码，再弹一个向导：先填个人画像（你是谁、你会什么、你要去哪、你怎么过、想让 AI 怎么帮你），再选城市（查天气用）、作息模板、接 AI。除了称呼都能空着，以后在 **设置 → 个人画像和设置 → 补充或修改** 里慢慢补。有新版本时会提示一次，到 **设置 → 版本** 点升级，资料不会动，重开 TWIN 生效。画像存在 `00_Crown/Profile.md`（会作为摘要给 AI，别写身份证号、电话、住址、金额），称呼也在 `_RULES/Profile.md`，地点和作息在 `_RULES/Weather_Rhythm.md`。
 2. 到 **设置** 接一家 AI，点“测试”确认能连通。
 3. 默认 30 分钟没有操作（点、打字、滚动、移动鼠标）就自动锁定，在用就不会锁。锁之前 1 分钟页面顶上会倒数，动一下就取消；锁上了重新输密码就行。时间在“设置 → 隐私和安全 → 自动锁定”里改（5、15、30 分钟或 1 小时）。用完在右下角托盘图标上右键“退出 TWIN”，服务就停了。

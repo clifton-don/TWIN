@@ -14,7 +14,10 @@ privacy: internal
 
 ## 未发布
 
-- 新 logo：T 和它的倒影（记录与回看）。网页图标、侧栏 TWIN 旁边、右下角托盘、启动弹窗都换成它；原图在 `docs/logo.svg`，`tools/make_logo.ps1` + `tools/make_ico.py` 生成各尺寸。
+- 打开不再闪窗口：第一次运行会在本机编出一个 `TWIN.exe`（Windows 自带的 C# 编译器，源码 `tools/launcher/TWIN.cs`，图标是 logo），以后双击它打开，PowerShell 和命令行窗口都不会出现。`Open_Web.bat` 留作后备，有 `TWIN.exe` 时也是转给它。
+- 第一次运行不再弹窗提问：电脑上有 Python 就直接启动，同时在后台把 Python、KeePassXC 便携版放进盘里，下好了托盘弹一条通知；只有电脑上一个 Python 都没有时才显示下载进度。之后只有出错才会弹窗。
+- 修复：启动脚本开头多了一个看不见的字符（重复的 BOM），每次启动都会报一个 `'#' 不是命令` 的错，在闪出来的窗口里能看到。
+- 新 logo：原件与副本，两张错开叠放的卡片（你和你的数字副本），中间一个 T。网页图标、侧栏 TWIN 旁边、右下角托盘、TWIN.exe、启动弹窗都换成它；原图在 `docs/logo.svg`，`tools/make_logo.ps1` + `tools/make_ico.py` 生成各尺寸。
 - 启动弹窗和托盘菜单重做：不再用 Windows 系统对话框，改成 TWIN 自己的圆角卡片，跟着 Windows 深色 / 浅色模式；下载时有进度条（已下多少、百分比）；托盘右键是带图标的菜单：打开 TWIN、打开 KeePassXC、运行记录、打开 TWIN 文件夹、退出。
 - 使用步骤里补了 KeePassXC 的入门：怎么换成中文界面、建库、接浏览器、加密码（中英文菜单名都写了）。
 - 不再有黑色窗口：双击 `Open_Web.bat` 后 TWIN 在后台运行，右下角托盘有图标，双击打开 TWIN，右键是菜单。第一次的提问、出错提示都改成弹窗。已经开着时再双击只打开网页，不会再开一个。运行记录在 `tools\runtime\twin.log`。

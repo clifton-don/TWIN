@@ -771,10 +771,13 @@ STATIC = {**{f"{n}.js": "application/javascript; charset=utf-8" for n in ("i18n"
 MANIFEST = {"name": "TWIN", "short_name": "TWIN", "start_url": "/", "display": "standalone",
             "background_color": "#ffffff", "theme_color": "#ffffff",
             "icons": [{"src": "/icon.svg", "sizes": "any", "type": "image/svg+xml"}]}
-# logo：T 和它的倒影（和 docs/logo.svg 一样；托盘用的 tools/web/logo.ico 由 make_logo.ps1 + make_ico.py 生成）
-ICON = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#26215c"/>'
-        '<path d="M16 10h32v6H35v15h-6V16H16z" fill="#ffffff"/><rect x="12" y="33" width="40" height="2" rx="1" fill="#7f6fe0"/>'
-        '<path d="M16 54h32v-6H35V37h-6v11H16z" fill="#55c2b8"/></svg>')
+# logo：原件与副本，两张错开叠放的卡片，中间一个 T（和 docs/logo.svg 一样；托盘和 TWIN.exe 用的 tools/web/logo.ico
+# 由 make_logo.ps1 + make_ico.py 生成）
+ICON = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><clipPath id="f">'
+        '<rect x="10" y="16" width="36" height="42" rx="9"/></clipPath></defs>'
+        '<rect x="18" y="8" width="36" height="42" rx="9" fill="#55c2b8"/><rect x="10" y="16" width="36" height="42" rx="9" fill="#7f6fe0"/>'
+        '<rect x="18" y="8" width="36" height="42" rx="9" fill="#5b4cc4" clip-path="url(#f)"/>'
+        '<path d="M18 26h20v6h-7v18h-6V32h-7z" fill="#ffffff"/></svg>')
 
 
 # ---------- 版本：每次改动加一条 CHANGELOG.md；正式版之前都带 beta ----------
