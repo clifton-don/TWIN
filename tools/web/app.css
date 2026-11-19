@@ -878,6 +878,7 @@ body[data-v=""] #tipbox,body[data-v="home"] #tipbox{background:rgba(24,24,32,.82
   @media (hover:none){.duebtn.ghost .due{visibility:visible;color:var(--ink-3)}}}
 /* 版本号 */
 .brand{display:flex;align-items:baseline;gap:8px}
+.brand .logo{width:20px;height:20px;border-radius:5px;align-self:center;flex:none}
 .brand .ver{font-size:10.5px;letter-spacing:.04em;color:var(--bark-dim);text-decoration:none;border:1px solid var(--bark-line);border-radius:6px;padding:1px 5px}
 .brand .ver:hover{color:var(--bark-ink)}
 /* 今日建议 */

@@ -103,7 +103,7 @@ function Side() {
   const fold = () => { setShow(!showSub); setPref('shelfOpen', showSub ? '' : '1'); };
   const item = (href, key, label, icon, extra) => html`<a href=${href} class=${sec === key ? 'on' : ''}>${I(icon)}<span>${label}</span>${extra}</a>`;
   return html`
-    <div class="brand"><b>TWIN</b>${ver ? html`<a class="ver" href=${'#lib/' + encodeURIComponent('CHANGELOG.md')} title=${'版本 ' + ver + '，点开看修改日志'}>${ver.replace(/-beta$/, '')} beta</a>` : ''}<button type="button" class="sidex" title="收起侧栏，页面铺满" aria-label="收起侧栏" onClick=${() => window.toggleSide?.()}><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="m16 15-3-3 3-3"/></svg></button></div>
+    <div class="brand"><img class="logo" src="/icon.svg" alt="" width="20" height="20"/><b>TWIN</b>${ver ? html`<a class="ver" href=${'#lib/' + encodeURIComponent('CHANGELOG.md')} title=${'版本 ' + ver + '，点开看修改日志'}>${ver.replace(/-beta$/, '')} beta</a>` : ''}<button type="button" class="sidex" title="收起侧栏，页面铺满" aria-label="收起侧栏" onClick=${() => window.toggleSide?.()}><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="m16 15-3-3 3-3"/></svg></button></div>
     <button type="button" class="kbtn" onClick=${() => bus.dispatchEvent(new Event('palette'))}>${I(IC.search)}<span>搜索</span><kbd>Ctrl K</kbd></button>
     <nav class="nav nav2">
       ${item('#home', 'home', '首页', IC.home)}

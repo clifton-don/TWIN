@@ -8,6 +8,8 @@ import twin
 import twin_update
 
 ROOT = TOOLS.parent
+BOM = b"\xef\xbb\xbf"
+CURLY = "“”‘’"
 
 
 def test_bat_ascii_crlf():
@@ -23,14 +25,26 @@ def test_gitattributes_keeps_bat_crlf():
     assert re.search(r"^\*\.bat\s+.*eol=crlf", text, re.M)
 
 
-def test_ps1_has_bom_and_pinned_hashes():
-    raw = (TOOLS / "launch.ps1").read_bytes()
-    assert raw.startswith(b"\xef\xbb\xbf")
-    text = raw.decode("utf-8-sig")
+def test_ps1_bom_and_no_curly_quotes():
+    # PowerShell 5.1 没有 BOM 时按系统编码读中文，注释会吞掉下一行；中文弯引号会被当成字符串的引号
+    files = sorted(TOOLS.glob("*.ps1"))
+    assert {f.name for f in files} >= {"launch.ps1", "launch_ui.ps1", "make_logo.ps1"}
+    for f in files:
+        raw = f.read_bytes()
+        assert raw.startswith(BOM), f.name
+        assert not any(c in raw.decode("utf-8-sig") for c in CURLY), f.name
+
+
+def test_pinned_hashes():
+    text = (TOOLS / "launch.ps1").read_text(encoding="utf-8-sig")
     hashes = re.findall(r"Sha = '([0-9a-f]+)'", text)
     assert len(hashes) == 4 and all(len(h) == 64 for h in hashes)
-    # PowerShell 把中文弯引号也当成字符串的引号，写进提示里会把字符串截断
-    assert not any(c in text for c in "“”‘’")
+
+
+def test_logo_assets():
+    ico = (TOOLS / "web" / "logo.ico").read_bytes()
+    assert ico[:4] == b"\x00\x00\x01\x00" and int.from_bytes(ico[4:6], "little") >= 4
+    assert (TOOLS / "web" / "logo-64.png").read_bytes()[:8] == b"\x89PNG\r\n\x1a\n"
 
 
 def test_runtime_not_shipped_or_overwritten():
@@ -38,6 +52,7 @@ def test_runtime_not_shipped_or_overwritten():
     assert not twin_update._keep("tools/runtime/python/python.exe")
     assert not twin_update._keep("tools/runtime/KeePassXC/KeePassXC.exe")
     assert twin_update._keep("tools/launch.ps1")
+    assert twin_update._keep("tools/launch_ui.ps1")
 
 
 def test_mac_launcher_shipped():
