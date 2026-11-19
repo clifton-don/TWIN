@@ -14,7 +14,7 @@ privacy: internal
 
 ## 未发布
 
-- 打开不再闪窗口：第一次运行会在本机编出一个 `TWIN.exe`（Windows 自带的 C# 编译器，源码 `tools/launcher/TWIN.cs`，图标是 logo），以后双击它打开，PowerShell 和命令行窗口都不会出现。`Open_Web.bat` 留作后备，有 `TWIN.exe` 时也是转给它。
+- 打开不再闪窗口：第一次双击 `Open_Web.bat` 时，bat 自己在本机编出一个 `TWIN.exe` 再交给它打开（不经过 PowerShell 窗口）（Windows 自带的 C# 编译器，源码 `tools/launcher/TWIN.cs`，图标是 logo），以后双击它打开，PowerShell 和命令行窗口都不会出现。`Open_Web.bat` 留作后备，有 `TWIN.exe` 时也是转给它。
 - 第一次运行不再弹窗提问：电脑上有 Python 就直接启动，同时在后台把 Python、KeePassXC 便携版放进盘里，下好了托盘弹一条通知；只有电脑上一个 Python 都没有时才显示下载进度。之后只有出错才会弹窗。
 - 修复：启动脚本开头多了一个看不见的字符（重复的 BOM），每次启动都会报一个 `'#' 不是命令` 的错，在闪出来的窗口里能看到。
 - 新 logo：原件与副本，两张错开叠放的卡片（你和你的数字副本），中间一个 T。网页图标、侧栏 TWIN 旁边、右下角托盘、TWIN.exe、启动弹窗都换成它；原图在 `docs/logo.svg`，`tools/make_logo.ps1` + `tools/make_ico.py` 生成各尺寸。

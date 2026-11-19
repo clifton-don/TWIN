@@ -18,7 +18,7 @@ def test_bat_ascii_crlf():
     assert b"\r\n" in raw and b"\n" not in raw.replace(b"\r\n", b"")
     text = raw.decode()
     assert "launch.ps1" in text and "-WindowStyle Hidden" in text  # 不留黑色窗口
-    assert "TWIN.exe" in text  # 有 TWIN.exe 时转给它，不闪窗口
+    assert "TWIN.exe" in text and "csc.exe" in text  # bat 自己编 TWIN.exe 再交给它，不经过 PowerShell 窗口
 
 
 def test_launcher_source_ascii_winexe():
