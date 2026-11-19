@@ -304,7 +304,9 @@ function inline(s) {
   s = s.replace(/[☐☑]/g, c => `<span class="chk${c === '☑' ? ' on' : ''}" role="checkbox" aria-checked="${c === '☑'}" tabindex="0" data-i="${chkIdx++}"></span>`);
   return s;
 }
-function cell(c, tag) { c = c.trim(); if (tag === 'td' && /^P[0-3]$/.test(c)) return `<td><span class="pill ${c}">${c}</span></td>`; return `<${tag}>${inline(c)}</${tag}>`; }
+// 表格一格只能写一行，任务表里的子任务用 <br> 分行：这里换成真的换行（代码片段里的不动）
+const cellBr = h => h.split(/(<code>.*?<\/code>)/).map((p, i) => i % 2 ? p : p.replace(/&lt;br\s*\/?&gt;/gi, '<br>')).join('');
+function cell(c, tag) { c = c.trim(); if (tag === 'td' && /^P[0-3]$/.test(c)) return `<td><span class="pill ${c}">${c}</span></td>`; return `<${tag}>${cellBr(inline(c))}</${tag}>`; }
 function render(text, nested) {
   if (!nested) chkIdx = pbIdx = 0; let html = '', meta = ''; text = String(text).replace(/\r\n?/g, '\n'); // Windows 换行
   const fm = text.match(/^---\n([\s\S]*?)\n---\n?/);
