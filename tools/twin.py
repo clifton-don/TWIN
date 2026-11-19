@@ -252,10 +252,10 @@ def pack():
 
 # 空白版：程序、说明、通用规则和模板，加上空的树枝文件夹；资料、对话、密码、缓存一概不带。
 # 别人解压后双击 Open_Web.bat，第一次打开会设密码、走设置向导，规则文件按默认值自动生成
-BLANK_FILES = ["README.md", "LICENSE", "Guide.md", "CHANGELOG.md", "CLAUDE.md", "AGENTS.md", "Open_Web.bat", ".gitignore", ".gitattributes",
+BLANK_FILES = ["README.md", "LICENSE", "Guide.md", "CHANGELOG.md", "CLAUDE.md", "AGENTS.md", "Open_Web.bat", "Open_Web.command", ".gitignore", ".gitattributes",
                "_RULES/AI_ACCESS_RULES.md", "_RULES/FIELD_SPEC.md"]
 BLANK_TREES = ["tools", "_TEMPLATES"]  # docs/ 里是 GitHub 首页的图，空白版不带，省体积
-BLANK_SKIP = {"__pycache__", ".cache", ".auth.json", "health_ignore.json", "rename_v3.py"}
+BLANK_SKIP = {"__pycache__", ".cache", ".auth.json", "health_ignore.json", "rename_v3.py", "runtime"}  # runtime：盘上自带的 Python、KeePassXC
 BLANK_DIRS = ["_INBOX", "00_Crown"]
 # 空白版每个树干放一份 _SUMMARY.md：这里存什么、怎么存、建议的分支。(说明, 模板, 默认密级, [(分支, 范围)])
 BLANK_GUIDE = {

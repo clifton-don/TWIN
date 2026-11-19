@@ -15,6 +15,7 @@
 !/CLAUDE.md
 !/AGENTS.md
 !/Open_Web.bat
+!/Open_Web.command
 !/.gitignore
 !/.gitattributes
 # 开发用：测试、lint 配置、Claude Code 的项目权限（只进 settings.json，本机的 settings.local.json 不进）
@@ -30,6 +31,8 @@ tools/.auth.json
 tools/health_ignore.json
 tools/rename_v3.py
 tools/.cache/
+# 盘上自带的 Python、KeePassXC（Open_Web.bat 第一次运行时下载）
+tools/runtime/
 __pycache__/
 # 系统垃圾文件（exFAT 在 macOS 上会产生 ._ 文件）
 .DS_Store

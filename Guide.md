@@ -6,8 +6,12 @@ privacy: internal
 # TWIN 使用步骤
 
 ## 第一次
-0. 先装 Python（装过就跳过）：打开 https://www.python.org/downloads/ ，点最上面黄色的 **Download Python** 按钮，下最新版就行，不用管下面那一长串旧版本。运行安装包，**第一页先勾上最下面的“Add python.exe to PATH”**，再点 Install Now。没装的话双击 `Open_Web.bat` 也会提示并打开下载页。Mac 也一样点那个黄色按钮下安装包。
-1. 双击 TWIN 文件夹里的 `Open_Web.bat`，浏览器会打开 TWIN，输入密码登录。
+0. Windows 不用先装 Python：第一次双击 `Open_Web.bat` 会问两件事，都按 **Y**：
+   - 把 Python（官方免安装版，约 12 MB）放进这块盘：以后插到别的 Windows 电脑也能直接打开，那台电脑上不用装也不留东西。
+   - 把 KeePassXC 便携版（约 70 MB，管密码用）放进这块盘：电脑上已经装了 KeePassXC 就不会问。
+   都从官方地址下载、核对校验值后才用，放在 `tools\runtime\`（不进 Git，升级不动）。按 N 就不再问；想重新问，删掉 `tools\runtime` 里对应的 `.no-python` / `.no-keepassxc`。极少数电脑打不开 KeePassXC 时，运行一次 `tools\runtime\KeePassXC\vc_redist.x64.exe`。
+   - **Mac**：双击 `Open_Web.command`（第一次提示“无法验证开发者”就右键 → 打开）。需要 `python3`：没有的话系统会弹出“安装命令行开发者工具”，点安装即可；KeePassXC 在 Mac 上要自己装一次（https://keepassxc.org/download/#macos）。
+1. 双击 TWIN 文件夹里的 `Open_Web.bat`，浏览器会打开 TWIN，输入密码登录。KeePassXC 没开着的话会顺手打开，解锁后首页点网站图标就能自动填密码。
    - 全新的一份 TWIN 第一次打开会先设密码，再弹一个向导：先填个人画像（你是谁、你会什么、你要去哪、你怎么过、想让 AI 怎么帮你），再选城市（查天气用）、作息模板、接 AI。除了称呼都能空着，以后在 **设置 → 个人画像和设置 → 补充或修改** 里慢慢补。有新版本时会提示一次，到 **设置 → 版本** 点升级，资料不会动，重开 TWIN 生效。画像存在 `00_Crown/Profile.md`（会作为摘要给 AI，别写身份证号、电话、住址、金额），称呼也在 `_RULES/Profile.md`，地点和作息在 `_RULES/Weather_Rhythm.md`。
 2. 到 **设置** 接一家 AI，点“测试”确认能连通。
 3. 默认 30 分钟没有操作（点、打字、滚动、移动鼠标）就自动锁定，在用就不会锁。锁之前 1 分钟页面顶上会倒数，动一下就取消；锁上了重新输密码就行。时间在“设置 → 隐私和安全 → 自动锁定”里改（5、15、30 分钟或 1 小时）。用完关掉那个黑色窗口，服务就停了。

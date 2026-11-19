@@ -14,6 +14,10 @@ privacy: internal
 
 ## 未发布
 
+- 盘上自带 Python 和 KeePassXC：第一次双击 `Open_Web.bat` 会问要不要把官方免安装版 Python（约 12 MB）和 KeePassXC 便携版（约 70 MB，电脑上装了就不问）放进这块盘，核对校验值后放在 `tools\runtime\`。之后插到别的 Windows 电脑直接双击就能用，不用另装。KeePassXC 没开着会顺手打开。按 N 不再问。
+- 新增 Mac 启动文件 `Open_Web.command`：检查 python3，没装 KeePassXC 时提示一次下载地址。
+- 修复：`Open_Web.bat` 改成只放英文、固定 CRLF 换行，中文提示挪到 `tools/launch.ps1`。之前从 GitHub 拉下来的 bat 是 LF 换行，带中文时 cmd 可能读错行。
+
 - 密码交给 KeePassXC：资产卡片多了“KeePassXC 条目”和“登录与找回”两格，只记去哪个条目找、怎么登录、丢了怎么找回，不存密码。使用步骤里加了“密码：放在 KeePassXC，不放 TWIN”一节（建库、接 Edge 自动填、备份）。
 - “设置 → 版本”的检查更新指向 GitHub 仓库 `clifton-don/TWIN`（仓库公开、发了 Release 后才查得到；查不到会安静跳过）。
 - 修复：在“资料”里打开项目的 `board.md`，子任务那一格显示成“☐ a<br>☐ b”这样的字面 `<br>`。现在表格里的 `<br>` 当换行显示，每个子任务一行，勾选照常能用；代码片段里写的 `<br>` 原样显示。

@@ -1,3 +1,6 @@
 # 跨 Windows / macOS 统一换行符
 * text=auto eol=lf
 *.kdbx binary
+# Windows 的 cmd 读 LF 换行的 bat 会出错（标签、goto 错位），bat 固定用 CRLF
+*.bat text eol=crlf
+*.command text eol=lf
