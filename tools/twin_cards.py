@@ -41,6 +41,9 @@ KINDS = {
             {"key": "value_range", "label": "价格 / 租金区间", "type": "text", "hint": "只写区间，比如 3k-5k；精确金额放保险箱"},
             {"key": "location", "label": "放在哪 / 托管在哪", "type": "text"},
             {"key": "serial", "label": "序列号 / 账号", "type": "readonly", "hint": "真实值在保险箱"},
+            # 账号类：密码只在 KeePassXC 里，这里只记“去哪找、怎么登、丢了怎么找回”，不写任何密码和提示
+            {"key": "kp_entry", "label": "KeePassXC 条目", "type": "text", "hint": "条目的组和名字，比如 网站/GitHub；不写密码"},
+            {"key": "login_how", "label": "登录与找回", "type": "text", "hint": "比如 邮箱+两步验证 App，恢复码在 KeePassXC 附件里；不写密码和密码提示"},
         ],
         "sub": ["model", "location"], "meta": ["acquired", "expires", "value_range", "qty"],
         "template": "_TEMPLATES/asset.md",
