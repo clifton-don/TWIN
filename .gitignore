@@ -1,0 +1,38 @@
+# Git 只记程序和说明，你的资料一律不进（资料改坏了用 TWIN 自己的“改动历史”找回）
+# 先全部忽略，再把程序、说明、通用规则和模板放回来
+/*
+!/tools/
+!/_TEMPLATES/
+!/_RULES/
+/_RULES/*
+!/_RULES/AI_ACCESS_RULES.md
+!/_RULES/FIELD_SPEC.md
+!/README.md
+!/LICENSE
+!/docs/
+!/Guide.md
+!/CHANGELOG.md
+!/CLAUDE.md
+!/AGENTS.md
+!/Open_Web.bat
+!/.gitignore
+!/.gitattributes
+# 开发用：测试、lint 配置、Claude Code 的项目权限（只进 settings.json，本机的 settings.local.json 不进）
+!/tests/
+!/pyproject.toml
+!/.claude/
+/.claude/*
+!/.claude/settings.json
+.pytest_cache/
+.ruff_cache/
+# tools 里也有不该进的：密码哈希、体检忽略项、下载缓存、Python 缓存
+tools/.auth.json
+tools/health_ignore.json
+tools/rename_v3.py
+tools/.cache/
+__pycache__/
+# 系统垃圾文件（exFAT 在 macOS 上会产生 ._ 文件）
+.DS_Store
+._*
+Thumbs.db
+desktop.ini

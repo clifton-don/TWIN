@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(/05_Network/**)",
+      "Edit(/05_Network/**)",
+      "Read(/06_Assets/**)",
+      "Edit(/06_Assets/**)",
+      "Read(/.chats/**)",
+      "Edit(/.chats/**)",
+      "Read(/.history/**)",
+      "Edit(/.history/**)",
+      "Read(/_export/**)",
+      "Edit(/_export/**)",
+      "Read(/.git/**)",
+      "Edit(/.git/**)",
+      "Read(/tools/.auth.json)",
+      "Edit(/tools/.auth.json)",
+      "Edit(/_RULES/AI_ACCESS_RULES.md)",
+      "Read(//G:/VAULT/**)",
+      "Edit(//G:/VAULT/**)",
+      "Read(//g/VAULT/**)",
+      "Edit(//g/VAULT/**)"
+    ]
+  }
+}

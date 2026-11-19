@@ -1,0 +1,3490 @@
+[
+{
+"id": "s01",
+"topic": "城市养蜂",
+"title": "The Rise of Urban Beekeeping",
+"text": "A  Over the past two decades, beekeeping has migrated from the countryside into cities. London is now estimated to contain more than 7,000 hives, roughly twice the figure recorded in 2008. The rooftops of hotels, offices and even museums host colonies, and a growing number of companies advertise their own honey as proof of their environmental credentials.\n\nB  Supporters argue that urban areas offer bees some unexpected advantages. Private gardens, parks and street trees produce flowers over a long season, and towns are generally treated with far fewer agricultural chemicals than farmland. A 2016 survey in France reported that hives in Paris yielded, on average, a larger harvest of honey than those in the surrounding rural districts.\n\nC  Some ecologists, however, believe the fashion may be doing more harm than good. The honeybee is only one of around 270 bee species found in Britain, and the great majority of wild bees are solitary, nesting in the ground or in hollow stems rather than living in large colonies. Where hives are densely concentrated, honeybees can strip an area of the nectar and pollen on which these wild species depend. Researchers in Zurich have suggested that several city centres have already exceeded a sustainable number of hives.\n\nD  For this reason, a number of conservation organisations now urge the public to grow flowers rather than keep bees. They point out that a single window box of lavender or thyme can feed many different kinds of pollinator, whereas each new hive introduces tens of thousands of additional competitors.",
+"vocab": [
+[
+"credentials",
+"资历；（这里指）环保形象"
+],
+[
+"yield",
+"产出"
+],
+[
+"solitary",
+"独居的"
+],
+[
+"concentrated",
+"密集的"
+],
+[
+"pollinator",
+"传粉者"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "London has about twice as many hives as it did in 2008.",
+"answer": "TRUE",
+"explain": "A 段：more than 7,000 hives, roughly twice the figure recorded in 2008。题干的 about twice as many 就是 roughly twice 的同义改写。技巧：判断题先找题干里的数字、年份，在原文里定位最快。"
+},
+{
+"type": "tfng",
+"q": "Honey produced in Paris has a better flavour than honey from the countryside.",
+"answer": "NOT GIVEN",
+"explain": "B 段只说巴黎的蜂箱产量更大（a larger harvest），完全没提味道。原文说了“多”，题干问“好吃”，比较的对象换了，这是 NOT GIVEN 最典型的设题方式。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph B.",
+"options": [
+"i Why companies sell their own honey",
+"ii Reasons cities can suit bees",
+"iii A shortage of beekeepers",
+"iv The decline of rural farming",
+"v How to build a rooftop hive"
+],
+"answer": "ii",
+"explain": "B 段开头一句就是段落主旨：urban areas offer bees some unexpected advantages，后面举的花期长、农药少、产量高都是理由。i 只是 A 段末尾的细节。技巧：标题配对先读段首句，别被段里的某个细节带跑。"
+},
+{
+"type": "mc",
+"q": "Which paragraph mentions where most wild bees build their nests?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "C",
+"explain": "C 段：nesting in the ground or in hollow stems。题干的 build their nests 对应原文的 nesting。信息配对题的考点往往是段里的一个小细节，不是段落大意。"
+},
+{
+"type": "mc",
+"q": "According to the writer, what worries some ecologists?",
+"options": [
+"A Honeybees may spread disease to people.",
+"B City honey is often of poor quality.",
+"C Large numbers of honeybees may leave too little food for wild bees.",
+"D Wild bees are attacking honeybee hives."
+],
+"answer": "C",
+"explain": "C 段：honeybees can strip an area of the nectar and pollen on which these wild species depend。strip 是“掠光”的意思，等于 C 选项的 leave too little food。A、B、D 原文都没提到。"
+},
+{
+"type": "fill",
+"q": "Conservation groups recommend that people grow ____ instead of keeping bees.",
+"answer": "flowers",
+"explain": "D 段：urge the public to grow flowers rather than keep bees。rather than 和题干的 instead of 是同义替换。填空题的答案一定是原文原词，注意单复数。"
+}
+]
+},
+{
+"id": "s02",
+"topic": "遗忘曲线和睡眠",
+"title": "Why We Forget",
+"text": "A  In 1885 the German psychologist Hermann Ebbinghaus carried out one of the first scientific studies of memory, using himself as the only subject. He memorised long lists of nonsense syllables such as 'ZOF' and 'DAX', then tested how many he could still recall after different periods of time. He found that a large proportion of the material was lost within the first twenty-four hours, after which the rate of forgetting gradually slowed. The graph of his results became known as the 'forgetting curve'.\n\nB  Later researchers discovered that the curve could be made much less steep. When learners review material at gradually increasing intervals - a technique called spaced repetition - they retain it for far longer than if they spend the same total time studying in a single session. Many language-learning applications are now built around this principle.\n\nC  Sleep also appears to play a significant part. During deep sleep, the brain seems to replay information acquired during the day, transferring it from the hippocampus, which stores memories temporarily, to the cortex, where they can be kept for years. In one experiment, students who slept after learning pairs of words recalled about 20 percent more of them the following day than students who had remained awake for the same length of time.\n\nD  A third effective strategy is self-testing, known as retrieval practice. Numerous studies have shown that the effort of trying to bring information back to mind strengthens memory more than simply re-reading notes - even when the attempt to remember is unsuccessful.",
+"vocab": [
+[
+"subject",
+"（实验）对象"
+],
+[
+"proportion",
+"比例"
+],
+[
+"retain",
+"记住；保留"
+],
+[
+"acquire",
+"获得；学到"
+],
+[
+"retrieval",
+"提取；回想"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Ebbinghaus tested his memory using real words.",
+"answer": "FALSE",
+"explain": "A 段：nonsense syllables such as 'ZOF' and 'DAX'，是没有意义的音节，和题干的 real words 正好相反，所以是 FALSE。FALSE 和 NOT GIVEN 的区别：原文明确说了相反的情况就是 FALSE。"
+},
+{
+"type": "tfng",
+"q": "Ebbinghaus found that people forget fastest shortly after learning something.",
+"answer": "TRUE",
+"explain": "A 段：a large proportion ... lost within the first twenty-four hours, after which the rate of forgetting gradually slowed。刚学完的一天忘得最多，之后才变慢。"
+},
+{
+"type": "tfng",
+"q": "Spaced repetition was invented by the makers of language-learning apps.",
+"answer": "NOT GIVEN",
+"explain": "B 段只说很多应用 are now built around this principle（基于这个原理），没说是谁发明的。原文提到了 apps，但“谁发明”这一点没说，所以是 NOT GIVEN。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i The role of rest in fixing memories",
+"ii Why students should study at night",
+"iii How the hippocampus is damaged",
+"iv The dangers of too little sleep",
+"v Testing yourself after a lesson"
+],
+"answer": "i",
+"explain": "C 段讲深度睡眠时大脑把记忆从海马体转到皮层，也就是睡眠帮着巩固记忆。rest 对应 sleep，fixing memories 对应把记忆长期保存下来。iv 的“缺觉的危害”原文没讲。"
+},
+{
+"type": "mc",
+"q": "What happened in the experiment described in paragraph C?",
+"options": [
+"A Students who stayed awake learned more words.",
+"B Students who slept remembered around a fifth more words.",
+"C Students who slept needed less time to learn.",
+"D All students forgot the words within a day."
+],
+"answer": "B",
+"explain": "C 段：recalled about 20 percent more。20 percent 就是 a fifth（五分之一），真题经常把百分数改写成分数，这是常见的同义替换。"
+},
+{
+"type": "fill",
+"q": "Trying to recall information, rather than reading it again, is called ____ practice.",
+"answer": "retrieval",
+"explain": "D 段：self-testing, known as retrieval practice。题干的 trying to recall information 对应原文的 the effort of trying to bring information back to mind。"
+}
+]
+},
+{
+"id": "s03",
+"topic": "垂直农场",
+"title": "Farming Upwards",
+"text": "A  A vertical farm grows crops in stacked layers inside a building, usually under LED lighting and without any soil. The roots of the plants hang in water containing dissolved nutrients, a method called hydroponics, or are sprayed with a fine nutrient mist. Singapore, which imports more than 90 percent of its food, has given financial support to several such farms as part of a plan to produce 30 percent of its nutritional needs locally by 2030.\n\nB  The benefits are considerable. Because water is collected and recycled, vertical farms can use up to 95 percent less of it than conventional fields. Insects are kept out of the sealed growing rooms, so chemical pesticides are unnecessary, and crops can be harvested throughout the year whatever the weather outside.\n\nC  The principal obstacle is energy. Artificial lighting and climate control consume enormous amounts of electricity, and when energy prices rose sharply in 2022 and 2023, several well-funded companies in the United States and Europe went out of business. So far, the only consistently profitable crops have been leafy greens and herbs, which grow rapidly and sell for high prices. Staple foods such as wheat and rice remain far too expensive to produce indoors.\n\nD  Most specialists believe the future of the industry depends on cheaper renewable power and more efficient lighting. Some newer farms have been built beside solar parks, while others make use of surplus heat from neighbouring factories.",
+"vocab": [
+[
+"stacked",
+"层层叠放的"
+],
+[
+"conventional",
+"传统的"
+],
+[
+"principal",
+"主要的"
+],
+[
+"staple",
+"主食的；基本的"
+],
+[
+"surplus",
+"多余的"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Vertical farms grow plants without soil.",
+"answer": "TRUE",
+"explain": "A 段：without any soil。简单的定位题，题干的 grow plants 对应原文的 grows crops。"
+},
+{
+"type": "tfng",
+"q": "Singapore currently produces most of the food it consumes.",
+"answer": "FALSE",
+"explain": "A 段：imports more than 90 percent of its food，进口超过九成，说明自己产的很少，和 most 相反，所以是 FALSE。"
+},
+{
+"type": "mc",
+"q": "Which paragraph mentions businesses that failed?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "C",
+"explain": "C 段：several well-funded companies ... went out of business。go out of business 就是“倒闭”，对应题干的 failed。"
+},
+{
+"type": "mc",
+"q": "Which of the following is NOT given as an advantage of vertical farming?",
+"options": [
+"A It saves water.",
+"B It avoids the need for pesticides.",
+"C It requires fewer workers.",
+"D It allows harvests in every season."
+],
+"answer": "C",
+"explain": "B 段列了三个好处：省水、不用农药、全年收获。用工少（fewer workers）原文没提。做 NOT 题要逐个排除：原文提到的划掉，剩下的就是答案。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph D.",
+"options": [
+"i The end of indoor farming",
+"ii Growing wheat in cities",
+"iii Possible solutions to a key problem",
+"iv The cost of LED lights",
+"v Government support in Asia"
+],
+"answer": "iii",
+"explain": "C 段说最大的问题是能源，D 段讲靠便宜的可再生能源、更高效的照明和利用工厂余热来解决。iii 的 a key problem 指的就是能源问题。"
+},
+{
+"type": "fill",
+"q": "Apart from herbs, the crops that make a regular profit are leafy ____.",
+"answer": "greens",
+"explain": "C 段：the only consistently profitable crops have been leafy greens and herbs。consistently profitable 对应题干的 make a regular profit。"
+}
+]
+},
+{
+"id": "s04",
+"topic": "章鱼的智力",
+"title": "The Octopus Mind",
+"text": "A  The common octopus possesses around 500 million neurons, a number similar to that of a dog. Unusually, however, about two-thirds of these nerve cells are located not in its brain but in its eight arms. Each arm can taste and touch the objects it encounters and can respond to them partly on its own, without waiting for instructions from the brain.\n\nB  Laboratory staff have long reported octopuses behaving in ways that suggest problem-solving ability. Captive animals have been seen unscrewing the lids of jars to reach food inside, and in a widely reported case in 2016, an octopus named Inky escaped from an aquarium in New Zealand by squeezing through a narrow drainpipe that led to the sea.\n\nC  This intelligence presents scientists with a puzzle. Most clever animals, such as apes, dolphins and crows, live long lives in social groups, where they learn by watching others. Most octopuses, in contrast, survive for only one or two years and spend nearly all of that time alone. One theory is that their intelligence evolved after their ancestors lost the protective shells that their relatives, such as snails, still carry; without armour, they needed to become skilled hunters and quick at escaping danger.\n\nD  There is also growing evidence that octopuses can experience pain. Partly as a result, in 2021 the British government formally recognised octopuses, together with crabs and lobsters, as sentient beings in its animal welfare legislation.",
+"vocab": [
+[
+"possess",
+"拥有"
+],
+[
+"encounter",
+"碰到"
+],
+[
+"captive",
+"被圈养的"
+],
+[
+"ancestor",
+"祖先"
+],
+[
+"sentient",
+"有感知能力的"
+]
+],
+"questions": [
+{
+"type": "mc",
+"q": "Where are most of an octopus's nerve cells found?",
+"options": [
+"A In its brain",
+"B In its arms",
+"C In its skin",
+"D In its eyes"
+],
+"answer": "B",
+"explain": "A 段：about two-thirds of these nerve cells are located not in its brain but in its eight arms。two-thirds 就是 most，题干的 nerve cells 对应 neurons。"
+},
+{
+"type": "tfng",
+"q": "Inky escaped from an aquarium in Australia.",
+"answer": "FALSE",
+"explain": "B 段：an aquarium in New Zealand。原文明确是新西兰，和题干矛盾，所以是 FALSE。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i Why octopuses prefer to live in groups",
+"ii An unexpected kind of intelligence",
+"iii The life of snails",
+"iv How octopuses learn from their parents",
+"v Octopus escapes from laboratories"
+],
+"answer": "ii",
+"explain": "C 段第一句：This intelligence presents scientists with a puzzle，后面解释为什么出乎意料：寿命短、独居。i 和 iv 跟原文正好相反，属于标题题常见的陷阱。"
+},
+{
+"type": "tfng",
+"q": "Octopuses usually live for several years.",
+"answer": "FALSE",
+"explain": "C 段：survive for only one or two years。several years 和 one or two years 不符，所以是 FALSE。"
+},
+{
+"type": "fill",
+"q": "Octopus intelligence may have developed after their ancestors lost their protective ____.",
+"answer": "shells",
+"explain": "C 段：after their ancestors lost the protective shells。注意填复数 shells，单复数写错在考试里算错。"
+},
+{
+"type": "tfng",
+"q": "British law now gives octopuses exactly the same protection as pet dogs.",
+"answer": "NOT GIVEN",
+"explain": "D 段只说英国把章鱼认定为 sentient beings（有感知的生物），没和狗做比较。原文说到了法律，但“和狗一样”这一点没说，所以是 NOT GIVEN。"
+}
+]
+},
+{
+"id": "s05",
+"topic": "茶的传播",
+"title": "How Tea Conquered the World",
+"text": "A  Tea originated in south-western China, where the leaves of the Camellia sinensis plant have been infused in hot water for thousands of years. During the Tang dynasty (618-907), drinking tea spread through every level of society, and the scholar Lu Yu wrote The Classic of Tea, the earliest known book devoted entirely to the subject.\n\nB  Buddhist monks carried tea to Japan in the ninth century, where it later became the centre of an elaborate ceremony. Europeans encountered it much later: Dutch merchants brought the first shipments to Europe at the beginning of the seventeenth century. In Britain, tea became fashionable in the 1660s, largely because Catherine of Braganza, the Portuguese wife of King Charles II, made it popular at court.\n\nC  British demand grew so rapidly that the country's trade with China became seriously unbalanced, since China supplied all of the tea and wanted little in return. In the nineteenth century, the British East India Company therefore began to establish plantations in India, notably in Assam and Darjeeling. By 1900, India had replaced China as Britain's principal source of tea.\n\nD  Today, tea is the most widely consumed beverage in the world after water. Perhaps surprisingly, the nation that drinks the most per person is neither China nor Britain but Turkey.",
+"vocab": [
+[
+"originate",
+"起源"
+],
+[
+"infuse",
+"泡；浸"
+],
+[
+"elaborate",
+"精心的；复杂的"
+],
+[
+"plantation",
+"种植园"
+],
+[
+"beverage",
+"饮料"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Lu Yu's book is the oldest known work written only about tea.",
+"answer": "TRUE",
+"explain": "A 段：the earliest known book devoted entirely to the subject。earliest = oldest，devoted entirely to = written only about，两处都是同义替换。"
+},
+{
+"type": "mc",
+"q": "Who first brought tea to Japan?",
+"options": [
+"A Dutch merchants",
+"B Buddhist monks",
+"C A Portuguese queen",
+"D The East India Company"
+],
+"answer": "B",
+"explain": "B 段：Buddhist monks carried tea to Japan in the ninth century。其他三个选项原文都提到了，但说的是别的事，这是选择题常用的干扰方式。"
+},
+{
+"type": "tfng",
+"q": "Tea reached Europe earlier than it reached Japan.",
+"answer": "FALSE",
+"explain": "日本是九世纪（B 段），欧洲是十七世纪初，欧洲晚得多，所以是 FALSE。比较时间的题要找到两个时间点再比较。"
+},
+{
+"type": "mc",
+"q": "Which paragraph explains why Britain started growing tea in India?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "C",
+"explain": "C 段：中英贸易严重失衡（trade ... seriously unbalanced），therefore 东印度公司去印度开种植园。therefore 前面就是原因。"
+},
+{
+"type": "tfng",
+"q": "Indian tea was cheaper than Chinese tea in 1900.",
+"answer": "NOT GIVEN",
+"explain": "C 段只说 1900 年印度取代中国成为主要来源，没提价格。不要自己脑补“取代肯定是因为便宜”，原文没写就是 NOT GIVEN。"
+},
+{
+"type": "fill",
+"q": "The country with the highest tea consumption per person is ____.",
+"answer": "Turkey",
+"explain": "D 段：the nation that drinks the most per person is ... Turkey。the highest consumption = drinks the most。"
+}
+]
+},
+{
+"id": "s06",
+"topic": "噪音污染",
+"title": "The Hidden Cost of Noise",
+"text": "A  The World Health Organization regards noise as the second most serious environmental threat to health in Europe, exceeded only by air pollution. Long-term exposure to road traffic noise above 53 decibels has been associated with higher blood pressure and an increased risk of heart disease.\n\nB  Much of the damage happens at night. Even when people do not wake up, noise can raise their heart rate and interrupt the deep stages of sleep. As a result, many residents near busy roads or airports suffer from daytime tiredness without ever recognising its cause.\n\nC  Children appear to be particularly vulnerable. When Munich's old airport closed in 1992 and a new one opened elsewhere, researchers compared children living near both sites. The reading and long-term memory scores of children near the old airport improved after the flights stopped, while those of children near the new airport declined.\n\nD  Cities are experimenting with a range of responses, including quieter road surfaces, lower speed limits and barriers along motorways. Paris has also trialled so-called 'noise radars', which automatically photograph vehicles that exceed a permitted sound level, in the same way that speed cameras catch speeding drivers.",
+"vocab": [
+[
+"exposure",
+"暴露；接触"
+],
+[
+"be associated with",
+"与……有关"
+],
+[
+"vulnerable",
+"易受伤害的"
+],
+[
+"decline",
+"下降"
+],
+[
+"trial",
+"试用"
+]
+],
+"questions": [
+{
+"type": "mc",
+"q": "According to the WHO, which environmental factor causes the most health problems in Europe?",
+"options": [
+"A Noise",
+"B Air pollution",
+"C Water pollution",
+"D Extreme heat"
+],
+"answer": "B",
+"explain": "A 段：noise as the second most serious ... exceeded only by air pollution。噪音排第二，排第一的是空气污染。题干问 the most，别被文章的主角噪音带跑。"
+},
+{
+"type": "tfng",
+"q": "Noise may disturb sleep even if it does not wake the sleeper.",
+"answer": "TRUE",
+"explain": "B 段：Even when people do not wake up, noise can ... interrupt the deep stages of sleep。interrupt = disturb。"
+},
+{
+"type": "tfng",
+"q": "Most people living near airports understand why they feel tired during the day.",
+"answer": "FALSE",
+"explain": "B 段：without ever recognising its cause，他们根本不知道原因，和题干的 understand why 相反，所以是 FALSE。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i Planning a new airport",
+"ii Evidence of the effect on young people",
+"iii Why airports are moving",
+"iv Improving memory with music",
+"v Noise inside schools"
+],
+"answer": "ii",
+"explain": "C 段第一句：Children appear to be particularly vulnerable，后面拿慕尼黑机场的研究做证据。young people 对应 children，evidence 对应 the study。"
+},
+{
+"type": "fill",
+"q": "Paris has tested noise ____ that take pictures of loud vehicles.",
+"answer": "radars",
+"explain": "D 段：'noise radars', which automatically photograph vehicles。题干的 take pictures 对应 photograph。"
+},
+{
+"type": "tfng",
+"q": "Barriers beside roads are the most effective way to cut traffic noise.",
+"answer": "NOT GIVEN",
+"explain": "D 段只是把隔音屏障和其他办法并列提了一下，没比较哪个最有效。看到题干里有 most effective 这类最高级，就要回原文找有没有比较；没有就是 NOT GIVEN。"
+}
+]
+},
+{
+"id": "s07",
+"topic": "竹子建筑",
+"title": "Building with Bamboo",
+"text": "A  Although it can grow as tall as a tree, bamboo is in fact a type of grass. Some species can grow by as much as 90 centimetres in a single day, and stems are ready for harvesting after only three to five years, whereas trees used for timber normally take several decades to mature.\n\nB  Relative to its weight, bamboo has a tensile strength comparable to that of steel. It has been used for centuries in Asia and South America to construct houses, bridges and scaffolding, and in Hong Kong bamboo scaffolding is still erected around new skyscrapers today.\n\nC  The material does have weaknesses. If it is not treated, bamboo is readily attacked by insects and fungi and may last only a few years. In addition, because its hollow stems vary considerably in diameter and wall thickness, it has been difficult to write the standard building regulations that engineers rely on for materials such as concrete and steel.\n\nD  To overcome these problems, engineers have developed 'engineered bamboo', in which strips of bamboo are glued and pressed together to form boards and beams of uniform size and strength. Meanwhile, buildings such as the Green School in Bali, which opened in 2008 and is constructed almost entirely from bamboo, have demonstrated the material's architectural potential.",
+"vocab": [
+[
+"harvest",
+"收割"
+],
+[
+"mature",
+"成熟"
+],
+[
+"comparable to",
+"比得上"
+],
+[
+"readily",
+"容易地"
+],
+[
+"uniform",
+"统一的"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Bamboo belongs to the grass family.",
+"answer": "TRUE",
+"explain": "A 段：bamboo is in fact a type of grass。belongs to the grass family = a type of grass。"
+},
+{
+"type": "fill",
+"q": "Bamboo can be cut after three to five years, while trees for timber usually need several ____.",
+"answer": "decades",
+"explain": "A 段：take several decades to mature。注意题干把 harvesting 换成了 cut。"
+},
+{
+"type": "mc",
+"q": "Which paragraph refers to bamboo still being used on modern construction sites?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "B",
+"explain": "B 段：in Hong Kong bamboo scaffolding is still erected around new skyscrapers today。modern construction sites 对应 new skyscrapers。"
+},
+{
+"type": "mc",
+"q": "What is one problem with bamboo that has not been treated?",
+"options": [
+"A It is too heavy for tall buildings.",
+"B It can be damaged by insects and fungi.",
+"C It is expensive to grow.",
+"D It cannot be cut to size."
+],
+"answer": "B",
+"explain": "C 段：If it is not treated, bamboo is readily attacked by insects and fungi。attacked = damaged。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph D.",
+"options": [
+"i A fast-growing plant",
+"ii Strength similar to metal",
+"iii Making bamboo more reliable",
+"iv The history of Bali",
+"v Why concrete is better"
+],
+"answer": "iii",
+"explain": "D 段讲用胶压成尺寸、强度统一的板材，解决 C 段说的问题，也就是让竹子更可靠。i 对应 A 段，ii 对应 B 段。标题题可以先给容易的段配好，剩下的选项就少了。"
+},
+{
+"type": "tfng",
+"q": "The Green School in Bali was designed by an internationally famous architect.",
+"answer": "NOT GIVEN",
+"explain": "D 段只说了开放时间和几乎全用竹子建，没说设计者是谁。"
+}
+]
+},
+{
+"id": "s08",
+"topic": "远程办公",
+"title": "Working from Home",
+"text": "A  Before 2020, only about five percent of full working days in the United States were spent at home. During the pandemic the figure climbed above 60 percent, and by 2023 it had settled at around 28 percent, according to economists at Stanford University who have tracked the trend since the beginning.\n\nB  Remote work offers clear benefits. By avoiding the commute, the average employee saves close to an hour a day, and many report a better balance between their work and private lives. Employers, meanwhile, can recruit from a much wider geographical area and reduce what they spend on office space.\n\nC  There are disadvantages too. Junior staff may miss out on the informal learning that happens when they sit near more experienced colleagues, and some research suggests that teams that never meet in person find it harder to come up with genuinely new ideas. Loneliness is another commonly reported problem.\n\nD  The hybrid model, in which employees spend two or three days a week in the office, has become the most widespread compromise. In a 2022 experiment at a large Chinese travel company, hybrid workers proved just as productive as their office-based colleagues and were a third less likely to resign.",
+"vocab": [
+[
+"commute",
+"通勤"
+],
+[
+"recruit",
+"招聘"
+],
+[
+"junior",
+"资历浅的"
+],
+[
+"compromise",
+"折中办法"
+],
+[
+"resign",
+"辞职"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Prior to 2020, roughly one in twenty full working days in the US took place at home.",
+"answer": "TRUE",
+"explain": "A 段：only about five percent。five percent 就是 one in twenty（二十分之一）。数字换算是真题很常见的同义替换。"
+},
+{
+"type": "mc",
+"q": "What proportion of US working days were spent at home in 2023?",
+"options": [
+"A About 5%",
+"B About 28%",
+"C About 50%",
+"D Over 60%"
+],
+"answer": "B",
+"explain": "A 段：by 2023 it had settled at around 28 percent。超过 60% 是疫情期间的数字，题目问的是 2023 年，看清时间点。"
+},
+{
+"type": "tfng",
+"q": "People who work fully remotely are more productive than office workers.",
+"answer": "NOT GIVEN",
+"explain": "D 段的实验比的是混合办公和在办公室办公，结论是一样高效，没有说完全远程的人效率怎么样。比较对象不同，就是 NOT GIVEN。"
+},
+{
+"type": "mc",
+"q": "According to paragraph C, who may lose out on informal learning?",
+"options": [
+"A Managers",
+"B Less experienced employees",
+"C Part-time staff",
+"D Recruiters"
+],
+"answer": "B",
+"explain": "C 段：Junior staff may miss out on the informal learning。junior staff = less experienced employees。"
+},
+{
+"type": "fill",
+"q": "Spending two or three days a week in the office is known as the ____ model.",
+"answer": "hybrid",
+"explain": "D 段：The hybrid model, in which employees spend two or three days a week in the office。"
+},
+{
+"type": "tfng",
+"q": "In the Chinese experiment, hybrid workers were less likely to leave their jobs.",
+"answer": "TRUE",
+"explain": "D 段：a third less likely to resign。resign = leave their jobs。"
+}
+]
+},
+{
+"id": "s09",
+"topic": "珊瑚白化",
+"title": "Reefs in Hot Water",
+"text": "A  Coral reefs occupy less than one percent of the ocean floor, yet they provide a home for roughly a quarter of all marine species. They are built by tiny animals called polyps, which live in partnership with microscopic algae inside their tissues. The algae produce food through photosynthesis and also give the corals their bright colours.\n\nB  When the water temperature remains just one degree Celsius above the normal summer maximum for several weeks, corals expel these algae and turn white, a process known as bleaching. Bleached corals are not yet dead, but unless conditions improve they will eventually starve.\n\nC  Australia's Great Barrier Reef suffered mass bleaching in 2016, 2017, 2020, 2022 and 2024. Before 1998, events on this scale had been almost unknown, and scientists warn that reefs need around ten years to recover fully from a severe episode.\n\nD  Researchers are trying several ways to help. Some grow fragments of coral in underwater nurseries and replant them on damaged reefs; others are breeding corals that can tolerate higher temperatures. However, they emphasise that none of these methods can replace large cuts in greenhouse gas emissions.",
+"vocab": [
+[
+"occupy",
+"占据"
+],
+[
+"in partnership with",
+"与……共生合作"
+],
+[
+"expel",
+"排出"
+],
+[
+"starve",
+"饿死"
+],
+[
+"tolerate",
+"耐受"
+]
+],
+"questions": [
+{
+"type": "fill",
+"q": "Coral reefs make up less than ____ of the sea bed.",
+"answer": "one percent / 1 percent / 1%",
+"explain": "A 段：less than one percent of the ocean floor。sea bed = ocean floor。数字答案写 1% 或 one percent 都算对。"
+},
+{
+"type": "mc",
+"q": "What do the algae provide for the corals?",
+"options": [
+"A Protection from fish",
+"B Food and colour",
+"C A hard skeleton",
+"D Cooler water"
+],
+"answer": "B",
+"explain": "A 段：The algae produce food ... and also give the corals their bright colours。"
+},
+{
+"type": "tfng",
+"q": "Corals that have bleached are already dead.",
+"answer": "FALSE",
+"explain": "B 段：Bleached corals are not yet dead。原文直接否定，所以是 FALSE。"
+},
+{
+"type": "mc",
+"q": "Which paragraph mentions how long reefs take to recover?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "C",
+"explain": "C 段：reefs need around ten years to recover fully。"
+},
+{
+"type": "tfng",
+"q": "Large-scale bleaching was common on the Great Barrier Reef before 1998.",
+"answer": "FALSE",
+"explain": "C 段：Before 1998, events on this scale had been almost unknown，几乎没出现过，和 common 相反。"
+},
+{
+"type": "mc",
+"q": "What point do the researchers in paragraph D stress?",
+"options": [
+"A Coral nurseries are the best solution.",
+"B Heat-tolerant corals will save the reefs.",
+"C Reducing emissions cannot be replaced by other methods.",
+"D Fishing near reefs should be banned."
+],
+"answer": "C",
+"explain": "D 段：none of these methods can replace large cuts in greenhouse gas emissions。emphasise = stress。A、B 正是原文说“不能代替减排”的那些方法。"
+}
+]
+},
+{
+"id": "s10",
+"topic": "双语大脑",
+"title": "Two Languages, One Brain",
+"text": "A  More than half of the world's population uses two or more languages in daily life. For much of the twentieth century, however, it was widely believed that growing up with two languages confused children and held back their development. This view was challenged in the 1960s by researchers in Canada, who found that bilingual children outperformed monolingual children on a number of intelligence tests.\n\nB  One explanation is that bilingual people must constantly manage two competing languages, selecting one and suppressing the other. This may exercise what psychologists call executive function - the ability to concentrate, switch between tasks and ignore distractions. In several experiments, bilingual children were quicker at sorting tasks when the rules were suddenly changed.\n\nC  The evidence, however, is far from consistent. A number of large studies conducted since 2015 have found no clear advantage, and some researchers now argue that earlier, smaller studies exaggerated the effect, partly because surprising results are more likely to be published.\n\nD  The strongest evidence concerns old age. Several studies have reported that bilingual people develop the symptoms of dementia four to five years later, on average, than monolingual people, although speaking two languages does not prevent the disease altogether.",
+"vocab": [
+[
+"outperform",
+"表现优于"
+],
+[
+"monolingual",
+"只说一种语言的"
+],
+[
+"suppress",
+"压制"
+],
+[
+"exaggerate",
+"夸大"
+],
+[
+"symptom",
+"症状"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "The majority of people in the world speak only one language every day.",
+"answer": "FALSE",
+"explain": "A 段：More than half of the world's population uses two or more languages，一半以上的人用两种或更多语言，和题干相反。"
+},
+{
+"type": "fill",
+"q": "In the 1960s, researchers in ____ questioned the belief that bilingualism harmed children.",
+"answer": "Canada",
+"explain": "A 段：This view was challenged in the 1960s by researchers in Canada。challenged = questioned。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph B.",
+"options": [
+"i A possible reason for a mental advantage",
+"ii Why children find two languages confusing",
+"iii Teaching languages in schools",
+"iv The problem with small studies",
+"v Language and old age"
+],
+"answer": "i",
+"explain": "B 段开头 One explanation is that...，给出双语可能锻炼执行功能的解释。iv 对应 C 段，v 对应 D 段。"
+},
+{
+"type": "mc",
+"q": "What is meant by 'executive function'?",
+"options": [
+"A The ability to learn grammar quickly",
+"B The ability to focus, change tasks and ignore distractions",
+"C The ability to remember many words",
+"D The ability to speak without an accent"
+],
+"answer": "B",
+"explain": "B 段破折号后面就是定义：the ability to concentrate, switch between tasks and ignore distractions。破折号、冒号后面常常是解释，是出题的好地方。"
+},
+{
+"type": "tfng",
+"q": "Recent large studies have confirmed that bilingual people have a clear advantage.",
+"answer": "FALSE",
+"explain": "C 段：large studies conducted since 2015 have found no clear advantage。没发现，和 confirmed 相反。"
+},
+{
+"type": "tfng",
+"q": "Learning a second language after the age of 60 can delay dementia.",
+"answer": "NOT GIVEN",
+"explain": "D 段说的是双语者痴呆症状晚出现，没说 60 岁以后才学第二语言有没有用。题干加了“60 岁以后才学”这个条件，原文没讲。"
+}
+]
+},
+{
+"id": "s11",
+"topic": "海水淡化",
+"title": "Turning Seawater into Drinking Water",
+"text": "A  About 97 percent of the water on Earth is salty and cannot be drunk or used for most farming. Desalination, the process of removing salt from seawater, now takes place in more than 20,000 plants around the world. In some dry countries it has become essential: Israel, for instance, now obtains the majority of its household water in this way.\n\nB  The most common modern method is reverse osmosis. Seawater is forced at high pressure through membranes containing pores so small that water molecules can pass through but salt cannot. This requires far less energy than the older technique of boiling seawater and collecting the steam.\n\nC  Nevertheless, desalination still consumes a great deal of energy, and it produces a very salty waste liquid called brine. For every litre of fresh water, roughly one and a half litres of brine are created. When it is pumped back into the sea, it sinks to the bottom and can harm marine life close to the outlet pipes.\n\nD  Researchers are now working on plants powered by solar energy and on ways of turning brine into a resource, for example by extracting valuable minerals such as lithium, which is used in batteries.",
+"vocab": [
+[
+"essential",
+"必不可少的"
+],
+[
+"obtain",
+"获得"
+],
+[
+"membrane",
+"膜"
+],
+[
+"consume",
+"消耗"
+],
+[
+"extract",
+"提取"
+]
+],
+"questions": [
+{
+"type": "fill",
+"q": "Roughly ____ percent of the Earth's water contains salt.",
+"answer": "97",
+"explain": "A 段第一句：About 97 percent of the water on Earth is salty。"
+},
+{
+"type": "tfng",
+"q": "Israel gets most of the water used in homes from desalination.",
+"answer": "TRUE",
+"explain": "A 段：Israel ... obtains the majority of its household water in this way。majority = most，household = used in homes。"
+},
+{
+"type": "mc",
+"q": "How does reverse osmosis remove salt?",
+"options": [
+"A By boiling seawater and collecting steam",
+"B By pushing seawater through very fine membranes",
+"C By freezing the water",
+"D By adding chemicals"
+],
+"answer": "B",
+"explain": "B 段：forced at high pressure through membranes containing pores so small...。A 是老办法，原文拿它做对比，是干扰项。"
+},
+{
+"type": "tfng",
+"q": "Reverse osmosis needs more energy than the boiling method.",
+"answer": "FALSE",
+"explain": "B 段：requires far less energy than the older technique of boiling，用的能量少得多，题干说多，所以是 FALSE。"
+},
+{
+"type": "mc",
+"q": "Which paragraph describes the environmental effect of desalination waste?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "C",
+"explain": "C 段：brine ... can harm marine life close to the outlet pipes。harm marine life 就是对环境的影响。"
+},
+{
+"type": "fill",
+"q": "Scientists hope to obtain minerals such as ____ from brine.",
+"answer": "lithium",
+"explain": "D 段：extracting valuable minerals such as lithium。"
+}
+]
+},
+{
+"id": "s12",
+"topic": "丝绸之路",
+"title": "Along the Silk Road",
+"text": "A  The term 'Silk Road' was invented in 1877 by the German geographer Ferdinand von Richthofen. It refers not to a single road but to a network of overland routes that, from about the second century BC, linked China with Central Asia, the Middle East and the Mediterranean.\n\nB  Silk was the most famous product carried along these routes, but traders also transported spices, paper, glass and horses. Very few merchants made the entire journey. Instead, goods passed from one trader to the next in a long chain, and their price increased at every stage.\n\nC  The routes carried far more than goods. Buddhism spread from India into China along them, and the technique of papermaking reached the Middle East in the eighth century. Disease travelled as well: many historians believe that the plague which devastated Europe in the fourteenth century followed the same trade routes westwards.\n\nD  The overland routes declined after the fifteenth century, as ships began to offer a cheaper and safer way of moving goods between Asia and Europe. In 2013, China announced the Belt and Road Initiative, a vast programme of investment in infrastructure that is often described as a 'new Silk Road'.",
+"vocab": [
+[
+"network",
+"网络"
+],
+[
+"overland",
+"陆上的"
+],
+[
+"merchant",
+"商人"
+],
+[
+"devastate",
+"摧毁；重创"
+],
+[
+"infrastructure",
+"基础设施"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Merchants in ancient times referred to their route as the 'Silk Road'.",
+"answer": "FALSE",
+"explain": "A 段：这个名字是 1877 年李希霍芬起的，古代商人不可能这么叫，和题干矛盾。"
+},
+{
+"type": "tfng",
+"q": "Most traders travelled the whole distance between China and the Mediterranean.",
+"answer": "FALSE",
+"explain": "B 段：Very few merchants made the entire journey。very few 和 most 相反。"
+},
+{
+"type": "mc",
+"q": "Why did prices rise as goods moved along the route?",
+"options": [
+"A Rulers charged heavy taxes.",
+"B The goods changed hands many times.",
+"C Silk was becoming rarer.",
+"D Journeys were slowed by bad weather."
+],
+"answer": "B",
+"explain": "B 段：goods passed from one trader to the next in a long chain, and their price increased at every stage。changed hands = passed from one trader to the next。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i The invention of paper",
+"ii An exchange of beliefs, skills and illness",
+"iii The most valuable goods",
+"iv How the plague ended",
+"v Religion in India"
+],
+"answer": "ii",
+"explain": "C 段第一句 The routes carried far more than goods，后面讲佛教（beliefs）、造纸术（skills）、瘟疫（illness）。i、v 只是段里的一个细节。"
+},
+{
+"type": "fill",
+"q": "The skill of making paper arrived in the Middle East in the ____ century.",
+"answer": "eighth / 8th",
+"explain": "C 段：papermaking reached the Middle East in the eighth century。"
+},
+{
+"type": "tfng",
+"q": "The Belt and Road Initiative follows exactly the same routes as the ancient Silk Road.",
+"answer": "NOT GIVEN",
+"explain": "D 段只说它常被称为“新丝绸之路”，没说路线是否完全一样。被称为什么和事实是否如此是两回事，原文没讲就是 NOT GIVEN。"
+}
+]
+},
+{
+"id": "s13",
+"topic": "冰川消融",
+"title": "Rivers of Ice in Retreat",
+"text": "A  Glaciers form where more snow falls in winter than melts in summer. Over many years the snow is compressed into dense ice, which slowly flows downhill under its own weight. Mountain glaciers currently store about 70 percent of the world's fresh water, mostly in Antarctica and Greenland but also in ranges such as the Himalayas and the Alps.\n\nB  Almost everywhere, these glaciers are shrinking. A study published in 2021, which used satellite images from 2000 to 2019, concluded that the world's glaciers were losing around 267 billion tonnes of ice each year, and that the rate of loss had increased over the period. In the Alps, some smaller glaciers have disappeared entirely within living memory.\n\nC  The consequences extend far beyond the mountains. Hundreds of millions of people in South Asia depend on rivers fed partly by Himalayan meltwater for drinking, farming and electricity. In the short term, faster melting can actually increase the flow of these rivers, but once a glacier has shrunk beyond a certain point, the summer supply of water begins to fall.\n\nD  Melting ice also creates sudden dangers. Water can collect in lakes held back by loose rock left behind by a retreating glacier. If this natural wall collapses, a flood can rush down the valley with little warning. Authorities in countries such as Nepal and Peru now monitor the most hazardous lakes, and in some cases engineers have lowered water levels artificially to reduce the risk.",
+"vocab": [
+[
+"compress",
+"压缩"
+],
+[
+"shrink",
+"缩小"
+],
+[
+"consequence",
+"后果"
+],
+[
+"retreat",
+"后退；（冰川）消退"
+],
+[
+"hazardous",
+"危险的"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Glacier ice moves down slopes because of its own heaviness.",
+"answer": "TRUE",
+"explain": "A 段：slowly flows downhill under its own weight。moves down slopes = flows downhill，heaviness = weight。"
+},
+{
+"type": "tfng",
+"q": "The 2021 study found that glaciers were melting at a steady, unchanging rate.",
+"answer": "FALSE",
+"explain": "B 段：the rate of loss had increased over the period，速度在加快，不是不变，所以是 FALSE。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i Why glaciers form in winter",
+"ii Effects on people living far away",
+"iii New lakes for tourism",
+"iv Measuring ice from space",
+"v The disappearance of Alpine glaciers"
+],
+"answer": "ii",
+"explain": "C 段第一句：The consequences extend far beyond the mountains，后面讲南亚几亿人依赖冰川融水的河流。iv 和 v 是 B 段的细节。"
+},
+{
+"type": "mc",
+"q": "Which paragraph describes action taken to make a danger smaller?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "D",
+"explain": "D 段末：engineers have lowered water levels artificially to reduce the risk。reduce the risk = make a danger smaller。"
+},
+{
+"type": "mc",
+"q": "What happens to rivers when glaciers first start melting faster?",
+"options": [
+"A They dry up immediately.",
+"B They may carry more water for a while.",
+"C They become too polluted to drink.",
+"D They change direction."
+],
+"answer": "B",
+"explain": "C 段：In the short term, faster melting can actually increase the flow。in the short term = for a while。这里的 actually 提示和直觉相反，常是出题点。"
+},
+{
+"type": "tfng",
+"q": "Floods from glacial lakes have caused more deaths in Peru than in Nepal.",
+"answer": "NOT GIVEN",
+"explain": "D 段只说两国都在监测危险的湖，没比较死亡人数。题干出现比较，原文没比较，就是 NOT GIVEN。"
+}
+]
+},
+{
+"id": "s14",
+"topic": "电动汽车电池",
+"title": "The Battery Behind the Electric Car",
+"text": "A  The lithium-ion battery, first sold commercially by Sony in 1991, was originally designed for small devices such as video cameras and mobile phones. Its great advantage is energy density: it can store a large amount of energy relative to its weight. This property has made it the dominant technology in electric vehicles, whose batteries typically account for between a quarter and a third of the car's total price.\n\nB  Costs have fallen dramatically. According to industry surveys, the average price of a lithium-ion battery pack dropped by roughly 90 percent between 2010 and 2023. Larger factories, improved chemistry and intense competition among manufacturers, particularly in China, have all contributed to the decline.\n\nC  Nevertheless, the batteries raise environmental and ethical concerns. They require metals such as lithium, nickel and cobalt, and the mining of these materials can pollute water supplies and damage landscapes. Much of the world's cobalt comes from the Democratic Republic of the Congo, where reports of child labour in small, informal mines have led carmakers to search for alternatives.\n\nD  One response is recycling. Modern processes can recover more than 90 percent of some metals from used batteries, although the industry is still small because relatively few electric cars have yet reached the end of their lives. Another is new chemistry: batteries based on lithium iron phosphate, which contain no cobalt or nickel, are cheaper and longer-lasting, though they store somewhat less energy for their weight.",
+"vocab": [
+[
+"commercially",
+"商业上"
+],
+[
+"density",
+"密度"
+],
+[
+"dominant",
+"占主导地位的"
+],
+[
+"ethical",
+"道德的"
+],
+[
+"recover",
+"回收"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Lithium-ion batteries were first intended for use in cars.",
+"answer": "FALSE",
+"explain": "A 段：originally designed for small devices such as video cameras and mobile phones。最初是给小设备用的，不是汽车。"
+},
+{
+"type": "fill",
+"q": "The main benefit of lithium-ion batteries is their high energy ____.",
+"answer": "density",
+"explain": "A 段：Its great advantage is energy density。great advantage = main benefit。"
+},
+{
+"type": "mc",
+"q": "Which is NOT given as a reason why battery prices fell?",
+"options": [
+"A Bigger factories",
+"B Better chemistry",
+"C Government subsidies",
+"D Strong competition"
+],
+"answer": "C",
+"explain": "B 段列了三个原因：Larger factories、improved chemistry、intense competition。政府补贴（subsidies）原文没提。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i The falling price of electric cars",
+"ii Problems linked to raw materials",
+"iii How lithium is recycled",
+"iv The history of Sony",
+"v A battery without metal"
+],
+"answer": "ii",
+"explain": "C 段讲开采锂、镍、钴带来的污染和童工问题。raw materials 对应 metals such as lithium, nickel and cobalt。"
+},
+{
+"type": "tfng",
+"q": "Battery recycling is not yet a large industry.",
+"answer": "TRUE",
+"explain": "D 段：the industry is still small because relatively few electric cars have yet reached the end of their lives。still small = not yet a large industry。"
+},
+{
+"type": "tfng",
+"q": "Lithium iron phosphate batteries are now used in most new electric cars.",
+"answer": "NOT GIVEN",
+"explain": "D 段只说这种电池更便宜、更耐用、能量略低，没说现在大多数新车都在用。"
+}
+]
+},
+{
+"id": "s15",
+"topic": "古代航海",
+"title": "Navigators of the Pacific",
+"text": "A  Between roughly 3,000 and 800 years ago, people from the islands of South-East Asia and the western Pacific settled almost every habitable island across an area of ocean larger than Asia. Their descendants, the Polynesians, reached Hawaii, Easter Island and New Zealand - the last major land mass on Earth to be settled by humans - in large double-hulled sailing canoes.\n\nB  For a long time, many European scholars doubted that these voyages could have been deliberate. Some argued that the islands must have been reached by accident, when canoes were blown off course by storms. This theory was seriously challenged in 1976, when a reconstructed canoe called Hokule'a sailed the 4,000 kilometres from Hawaii to Tahiti using only traditional navigation methods.\n\nC  Polynesian navigators did not use maps or instruments. Instead, they memorised the points on the horizon where particular stars rose and set, and used these as a compass. They also read the shape and direction of ocean swells, observed the colour of clouds, which can reflect the green of a lagoon below, and followed seabirds that fly out to sea to feed and return to land at dusk.\n\nD  This knowledge was passed down orally from master to apprentice. By the mid-twentieth century it had almost disappeared, but the success of Hokule'a inspired a revival, and today traditional navigation is taught again in schools across the Pacific.",
+"vocab": [
+[
+"habitable",
+"适合居住的"
+],
+[
+"descendant",
+"后代"
+],
+[
+"deliberate",
+"有意的"
+],
+[
+"reconstruct",
+"复原；重建"
+],
+[
+"apprentice",
+"学徒"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "New Zealand was one of the first large areas of land to be settled by people.",
+"answer": "FALSE",
+"explain": "A 段：the last major land mass on Earth to be settled by humans。是最后一个，不是最早的。"
+},
+{
+"type": "mc",
+"q": "Which paragraph mentions an earlier explanation that turned out to be doubtful?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "B",
+"explain": "B 段：有学者认为岛屿是被风暴意外吹到的，1976 年 Hokule'a 号成功航行后这个理论被质疑。turned out to be doubtful 对应 seriously challenged。"
+},
+{
+"type": "fill",
+"q": "In 1976, a rebuilt canoe sailed from Hawaii to ____ without modern instruments.",
+"answer": "Tahiti",
+"explain": "B 段：a reconstructed canoe called Hokule'a sailed ... from Hawaii to Tahiti。rebuilt = reconstructed。"
+},
+{
+"type": "mc",
+"q": "How could clouds help navigators?",
+"options": [
+"A They showed the direction of the wind.",
+"B Their colour could show a lagoon underneath.",
+"C They warned of storms.",
+"D They hid the stars at night."
+],
+"answer": "B",
+"explain": "C 段：the colour of clouds, which can reflect the green of a lagoon below。云会映出下面泻湖的绿色。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph D.",
+"options": [
+"i A skill lost and found again",
+"ii Building a double-hulled canoe",
+"iii Reading the stars",
+"iv Why Europeans arrived late",
+"v Teaching science in Pacific schools"
+],
+"answer": "i",
+"explain": "D 段：这门知识到二十世纪中期几乎失传，后来又复兴，重新在学校里教。lost and found again 概括了失传和复兴。"
+},
+{
+"type": "tfng",
+"q": "Hokule'a's voyage to Tahiti took less than a month.",
+"answer": "NOT GIVEN",
+"explain": "B 段只说 Hokule'a 号航行了 4000 公里、只用传统导航，没说用了多长时间。题干加了一个原文没有的细节，就是 NOT GIVEN。"
+}
+]
+},
+{
+"id": "s16",
+"topic": "咖啡与气候",
+"title": "Coffee in a Warming World",
+"text": "A  Coffee is one of the most widely traded agricultural products in the world, grown in more than 50 countries and providing an income for an estimated 25 million farming families, most of them working on small plots of land. Two species dominate the market: arabica, prized for its flavour, and robusta, which is hardier and contains more caffeine.\n\nB  Arabica is particularly sensitive to temperature. It grows best between about 18 and 21 degrees Celsius, and prolonged heat can reduce yields and damage the quality of the beans. Several studies have predicted that, by 2050, the area of land suitable for growing arabica could shrink by around half if current warming trends continue.\n\nC  Climate change also affects the pests and diseases that attack coffee plants. Coffee leaf rust, a fungus that causes leaves to fall, spread through Central America between 2012 and 2014, wiping out large parts of the harvest and forcing many workers to leave the land in search of other employment.\n\nD  Scientists are looking for solutions in the wild. There are more than 120 known species of coffee, most of which have never been grown commercially. In 2021, researchers reported that one forgotten West African species, Coffea stenophylla, tolerates temperatures several degrees higher than arabica while producing a taste that experts compared favourably with it. Farmers, meanwhile, are planting shade trees among their coffee to keep the plants cool.",
+"vocab": [
+[
+"prized",
+"珍贵的；被看重的"
+],
+[
+"hardy",
+"耐寒的；坚韧的"
+],
+[
+"prolonged",
+"长期的"
+],
+[
+"wipe out",
+"彻底摧毁"
+],
+[
+"favourably",
+"有利地；好评地"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Most coffee is produced by small-scale farmers.",
+"answer": "TRUE",
+"explain": "A 段：25 million farming families, most of them working on small plots of land。small plots = small-scale。"
+},
+{
+"type": "mc",
+"q": "How is robusta different from arabica?",
+"options": [
+"A It has a better flavour.",
+"B It is tougher and has more caffeine.",
+"C It grows only in Africa.",
+"D It is more sensitive to heat."
+],
+"answer": "B",
+"explain": "A 段：robusta, which is hardier and contains more caffeine。hardier = tougher。A 和 D 说的都是 arabica 的特点，是典型的张冠李戴干扰项。"
+},
+{
+"type": "fill",
+"q": "Arabica grows best at temperatures between about 18 and ____ degrees Celsius.",
+"answer": "21",
+"explain": "B 段：It grows best between about 18 and 21 degrees Celsius。"
+},
+{
+"type": "mc",
+"q": "Which paragraph mentions people losing their jobs?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "C",
+"explain": "C 段：forcing many workers to leave the land in search of other employment。离开土地另找工作，就是丢了原来的活。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph D.",
+"options": [
+"i The end of coffee farming",
+"ii Hope from forgotten plants",
+"iii The spread of a fungus",
+"iv Coffee prices around the world",
+"v Why arabica tastes better"
+],
+"answer": "ii",
+"explain": "D 段讲在野生咖啡品种里找办法，被遗忘的 stenophylla 耐热、味道好。forgotten plants 对应 forgotten West African species。"
+},
+{
+"type": "tfng",
+"q": "Coffea stenophylla is now widely sold in supermarkets.",
+"answer": "NOT GIVEN",
+"explain": "D 段只说研究者 2021 年报告了这个品种耐热、味道好，没提超市有没有卖。"
+}
+]
+},
+{
+"id": "s17",
+"topic": "大熊猫保护",
+"title": "Saving the Giant Panda",
+"text": "A  The giant panda is one of the world's most recognisable animals, yet for much of the twentieth century it was in serious decline. Pandas live only in the mountain forests of central China, chiefly in Sichuan, Shaanxi and Gansu provinces, and they depend almost entirely on bamboo, of which an adult must eat between 12 and 38 kilograms a day.\n\nB  The principal threat was the loss of habitat. As farms and roads spread into the mountains, the remaining forests became divided into small, isolated patches, making it difficult for pandas to find mates or move to new feeding areas when bamboo plants flowered and died, which happens across large areas at intervals of several decades.\n\nC  In response, the Chinese government established a network of nature reserves, banned logging in many forests from 1998, and later began creating 'green corridors' to reconnect isolated populations. National surveys recorded around 1,100 wild pandas in the 1980s and 1,864 in 2014, and in 2016 the International Union for Conservation of Nature changed the species' status from 'endangered' to 'vulnerable'.\n\nD  Some conservationists, however, argue that the focus on a single, appealing species has drawbacks. They point out that the money spent on pandas, including on breeding them in captivity, might protect more species if it were spread more widely. Others reply that because pandas need large areas of forest, protecting them also safeguards the many less famous plants and animals that share their habitat.",
+"vocab": [
+[
+"recognisable",
+"容易认出的"
+],
+[
+"habitat",
+"栖息地"
+],
+[
+"isolated",
+"孤立的"
+],
+[
+"corridor",
+"走廊；通道"
+],
+[
+"appealing",
+"讨人喜欢的"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Wild pandas can be found in several Asian countries.",
+"answer": "FALSE",
+"explain": "A 段：Pandas live only in the mountain forests of central China。只生活在中国，所以是 FALSE。"
+},
+{
+"type": "fill",
+"q": "An adult panda needs to eat between 12 and 38 ____ of bamboo every day.",
+"answer": "kilograms / kg",
+"explain": "A 段：between 12 and 38 kilograms a day。填空要把单位也看清楚。"
+},
+{
+"type": "mc",
+"q": "Why was the division of forests a problem for pandas?",
+"options": [
+"A It made bamboo grow more slowly.",
+"B It made it hard for them to find partners and food.",
+"C It brought pandas into contact with farm animals.",
+"D It increased the number of hunters."
+],
+"answer": "B",
+"explain": "B 段：making it difficult for pandas to find mates or move to new feeding areas。mates = partners。"
+},
+{
+"type": "mc",
+"q": "Which paragraph includes figures showing a rise in the panda population?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "C",
+"explain": "C 段：around 1,100 wild pandas in the 1980s and 1,864 in 2014。信息配对题遇到 figures 就去找数字最多的段。"
+},
+{
+"type": "tfng",
+"q": "The giant panda is no longer listed as endangered.",
+"answer": "TRUE",
+"explain": "C 段：2016 年状态从 endangered 改成了 vulnerable，所以不再是 endangered。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph D.",
+"options": [
+"i The cost of keeping pandas in zoos",
+"ii A debate about conservation priorities",
+"iii Why pandas eat bamboo",
+"iv New threats to pandas",
+"v The success of green corridors"
+],
+"answer": "ii",
+"explain": "D 段一方认为钱只花在熊猫身上不划算，另一方认为保护熊猫也保护了其他物种，是关于保护重点的争论。i 只是段里的一个细节（captivity）。"
+}
+]
+},
+{
+"id": "s18",
+"topic": "音乐与学习",
+"title": "Does Music Make Children Smarter?",
+"text": "A  In 1993 a short paper in the journal Nature reported that university students who had listened to ten minutes of a Mozart sonata performed slightly better on a spatial reasoning task than students who had sat in silence. The finding, quickly labelled 'the Mozart effect', was widely misreported as proof that classical music increases intelligence, and in 1998 the governor of the US state of Georgia proposed giving every newborn baby a classical music CD.\n\nB  Later research gave a more modest picture. The original improvement lasted only around fifteen minutes, and other studies found that any music or story that put listeners in a good mood produced a similar effect. Simply listening to music, it seems, does not make anyone cleverer in the long term.\n\nC  Learning to play an instrument is a different matter. Practising music requires concentration, memory, fine control of movement and the ability to process sound quickly, and brain-imaging studies have found differences in the brains of experienced musicians. Children who take music lessons also tend to achieve higher grades at school.\n\nD  Yet it is difficult to prove that the lessons are the cause. Families who pay for music lessons are often wealthier and more involved in their children's education, both of which predict success at school. When researchers have randomly assigned children to music lessons or to other activities, the academic benefits have generally been small. Many educators argue that music deserves a place in schools for its own sake, regardless of any effect on other subjects.",
+"vocab": [
+[
+"spatial",
+"空间的"
+],
+[
+"misreport",
+"错误报道"
+],
+[
+"modest",
+"适度的；不大的"
+],
+[
+"assign",
+"分配"
+],
+[
+"for its own sake",
+"为了它本身"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "The students in the 1993 study who heard Mozart performed much better than the others.",
+"answer": "FALSE",
+"explain": "A 段：performed slightly better，只是略好一点，题干的 much better 夸大了程度，所以是 FALSE。程度词（slightly / much）是常见陷阱。"
+},
+{
+"type": "mc",
+"q": "What did the governor of Georgia suggest?",
+"options": [
+"A Paying for music lessons in schools",
+"B Giving each new baby a recording of classical music",
+"C Testing children's intelligence",
+"D Banning popular music"
+],
+"answer": "B",
+"explain": "A 段：proposed giving every newborn baby a classical music CD。newborn baby = new baby，CD = recording。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph B.",
+"options": [
+"i A smaller effect than first thought",
+"ii Why Mozart was a genius",
+"iii Music and mood in the workplace",
+"iv The benefits of playing an instrument",
+"v A government music plan"
+],
+"answer": "i",
+"explain": "B 段开头：Later research gave a more modest picture。modest 就是“没那么大”，对应 smaller effect than first thought。iv 是 C 段的内容。"
+},
+{
+"type": "fill",
+"q": "The original improvement found in 1993 lasted for only about fifteen ____.",
+"answer": "minutes",
+"explain": "B 段：lasted only around fifteen minutes。"
+},
+{
+"type": "mc",
+"q": "Which paragraph explains why the link between music lessons and grades may be misleading?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "D",
+"explain": "D 段：学音乐的家庭往往更富裕、更关心教育，所以很难证明是课程本身的作用。misleading 对应 difficult to prove that the lessons are the cause。"
+},
+{
+"type": "tfng",
+"q": "Children who learn the piano gain more benefits than those who learn the violin.",
+"answer": "NOT GIVEN",
+"explain": "全文只说学乐器（an instrument），没有比较钢琴和小提琴。"
+}
+]
+},
+{
+"id": "s19",
+"topic": "火山监测",
+"title": "Listening to Volcanoes",
+"text": "A  Around 800 million people live within 100 kilometres of an active volcano. Although scientists cannot yet predict the exact day of an eruption, they have become increasingly skilled at recognising the warning signs that magma, or molten rock, is moving towards the surface.\n\nB  The most important of these signs are small earthquakes. As magma forces its way upwards, it breaks the surrounding rock, producing swarms of tremors that are recorded by networks of seismometers. A sudden increase in the number of such earthquakes is often the first indication that a volcano is reawakening.\n\nC  Volcanoes also change shape. Rising magma can cause the ground to swell by several centimetres or even metres, and this movement can be measured using GPS stations and satellites. At the same time, instruments placed near the crater measure the gases released, since an increase in sulphur dioxide often means that fresh magma is close to the surface.\n\nD  Monitoring has saved many lives. In 1991, scientists observing Mount Pinatubo in the Philippines detected rising earthquake activity and ground swelling and persuaded the authorities to evacuate tens of thousands of people shortly before one of the largest eruptions of the twentieth century. However, many volcanoes, particularly in developing countries, have no instruments at all, and some eruptions occur with very little warning.",
+"vocab": [
+[
+"eruption",
+"喷发"
+],
+[
+"molten",
+"熔化的"
+],
+[
+"tremor",
+"轻微地震"
+],
+[
+"swell",
+"膨胀"
+],
+[
+"evacuate",
+"疏散"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Scientists can now predict the precise date of a volcanic eruption.",
+"answer": "FALSE",
+"explain": "A 段：scientists cannot yet predict the exact day of an eruption。precise date = exact day，原文说还做不到。"
+},
+{
+"type": "mc",
+"q": "According to paragraph B, what is often the first sign that a volcano is becoming active?",
+"options": [
+"A A change in the colour of the crater",
+"B A sudden rise in the number of small earthquakes",
+"C Steam rising from the ground",
+"D Animals leaving the area"
+],
+"answer": "B",
+"explain": "B 段：A sudden increase in the number of such earthquakes is often the first indication。first indication = first sign。"
+},
+{
+"type": "fill",
+"q": "An increase in the gas sulphur ____ can suggest that new magma is near the surface.",
+"answer": "dioxide",
+"explain": "C 段：an increase in sulphur dioxide often means that fresh magma is close to the surface。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i Measuring movement and gas",
+"ii How earthquakes are recorded",
+"iii A famous success",
+"iv Living near volcanoes",
+"v The danger of volcanic gas to humans"
+],
+"answer": "i",
+"explain": "C 段讲两种方法：用 GPS 和卫星测地面膨胀（movement），在火山口测气体（gas）。v 的“气体对人的危害”原文没讲。"
+},
+{
+"type": "mc",
+"q": "Which paragraph gives an example of people being moved away before an eruption?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "D",
+"explain": "D 段：persuaded the authorities to evacuate tens of thousands of people。evacuate = 疏散，对应 moved away。"
+},
+{
+"type": "tfng",
+"q": "Pinatubo was the largest eruption of the twentieth century.",
+"answer": "NOT GIVEN",
+"explain": "D 段说的是 one of the largest（最大的之一），没说是不是最大的那一次。one of 和 the 的区别要看仔细。"
+}
+]
+},
+{
+"id": "s20",
+"topic": "抗生素耐药性",
+"title": "The Rise of Superbugs",
+"text": "A  When Alexander Fleming noticed in 1928 that a mould had killed the bacteria growing on one of his laboratory dishes, he made one of the most important discoveries in medical history. Penicillin, developed into a usable drug in the early 1940s, was followed by dozens of other antibiotics, and infections that had once been fatal became easy to cure.\n\nB  Fleming himself warned, however, that bacteria could become resistant. Whenever an antibiotic is used, the few bacteria that happen to survive pass on their resistance as they multiply. The more often antibiotics are taken, the faster this process occurs, and resistant strains can spread from person to person and between countries.\n\nC  Several kinds of misuse have accelerated the problem. Antibiotics are often prescribed for colds and other viral infections, against which they have no effect, and patients frequently stop taking their medicine as soon as they feel better. In many countries, large quantities are also given to healthy farm animals to make them grow faster.\n\nD  A major study published in 2022 estimated that bacterial infections resistant to antibiotics directly caused around 1.27 million deaths in 2019. Meanwhile, very few new antibiotics are being developed, partly because they earn pharmaceutical companies far less than drugs for long-term conditions, which patients take for years. Some governments are now considering paying companies a fixed sum for each new antibiotic, regardless of how much of it is sold.",
+"vocab": [
+[
+"fatal",
+"致命的"
+],
+[
+"resistant",
+"有抵抗力的；耐药的"
+],
+[
+"multiply",
+"繁殖"
+],
+[
+"accelerate",
+"加速"
+],
+[
+"prescribe",
+"开（药）"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Penicillin became available as a medicine soon after Fleming's discovery in 1928.",
+"answer": "FALSE",
+"explain": "A 段：developed into a usable drug in the early 1940s，过了十几年才成药，不算 soon after。"
+},
+{
+"type": "tfng",
+"q": "Fleming predicted that bacteria might stop responding to antibiotics.",
+"answer": "TRUE",
+"explain": "B 段：Fleming himself warned ... that bacteria could become resistant。warned = predicted，become resistant = stop responding。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i How resistance develops in bacteria",
+"ii Ways antibiotics are used wrongly",
+"iii The cost of new medicines",
+"iv Treating colds effectively",
+"v Fleming's famous experiment"
+],
+"answer": "ii",
+"explain": "C 段第一句：Several kinds of misuse have accelerated the problem，后面列了三种滥用。misuse = used wrongly。i 是 B 段的内容。"
+},
+{
+"type": "mc",
+"q": "Which of the following is mentioned as a misuse of antibiotics?",
+"options": [
+"A Giving them to healthy animals to increase growth",
+"B Taking them for longer than prescribed",
+"C Using them to treat bacterial infections",
+"D Mixing them with other drugs"
+],
+"answer": "A",
+"explain": "C 段：given to healthy farm animals to make them grow faster。B 正好相反，原文说的是病人一觉得好就停药。"
+},
+{
+"type": "fill",
+"q": "Drug companies earn less from antibiotics than from medicines for long-term ____.",
+"answer": "conditions",
+"explain": "D 段：they earn pharmaceutical companies far less than drugs for long-term conditions。"
+},
+{
+"type": "tfng",
+"q": "Several governments have already started paying a fixed amount for new antibiotics.",
+"answer": "NOT GIVEN",
+"explain": "D 段：Some governments are now considering ...，只是在考虑，没说已经开始。considering 和 already started 不是一回事，原文也没说一定没开始，所以是 NOT GIVEN。"
+}
+]
+},
+{
+"id": "s21",
+"topic": "沙漠化",
+"title": "A Green Wall Across Africa",
+"text": "A  The Sahel is a belt of dry grassland that stretches across Africa south of the Sahara Desert. Its population depends heavily on farming and herding, but decades of drought, overgrazing and the clearing of trees for fuel have left much of the land degraded, with soil that is easily blown away and can no longer hold water.\n\nB  In 2007, the African Union launched the Great Green Wall, an ambitious plan to plant a continuous band of trees around 8,000 kilometres long, from Senegal in the west to Djibouti in the east. The aim was to stop the desert from advancing southwards and to restore 100 million hectares of land by 2030.\n\nC  Progress has been slower than hoped. By 2020, according to a report commissioned by the project, only around 4 million hectares had been restored within the original zone. Planting trees in such dry conditions is difficult: in some areas, the majority of seedlings died within a few years because they were not watered or protected from animals.\n\nD  The project has since changed its approach. Rather than a single line of trees, it now supports a mosaic of local schemes chosen by communities themselves, including vegetable gardens, water-harvesting techniques and the protection of tree stumps that regrow naturally. In Niger, farmers who encouraged trees to regrow on their fields, a practice known as farmer-managed natural regeneration, have helped restore an estimated 5 million hectares.",
+"vocab": [
+[
+"degraded",
+"退化的"
+],
+[
+"ambitious",
+"雄心勃勃的"
+],
+[
+"restore",
+"恢复"
+],
+[
+"commission",
+"委托（做）"
+],
+[
+"regeneration",
+"再生"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Land in the Sahel has been damaged partly because trees were cut down for fuel.",
+"answer": "TRUE",
+"explain": "A 段：the clearing of trees for fuel have left much of the land degraded。cut down = clearing，damaged = degraded。"
+},
+{
+"type": "fill",
+"q": "The Great Green Wall was planned to run from Senegal to ____.",
+"answer": "Djibouti",
+"explain": "B 段：from Senegal in the west to Djibouti in the east。"
+},
+{
+"type": "mc",
+"q": "Which paragraph mentions the failure of many young trees?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "C",
+"explain": "C 段：the majority of seedlings died within a few years。seedlings 就是 young trees（树苗）。"
+},
+{
+"type": "tfng",
+"q": "The project had restored 100 million hectares by 2020.",
+"answer": "FALSE",
+"explain": "C 段：到 2020 年只恢复了约 400 万公顷。1 亿公顷是 B 段说的 2030 年目标，不要把目标当成结果。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph D.",
+"options": [
+"i Why the desert is spreading",
+"ii A change of strategy",
+"iii The cost of planting trees",
+"iv Vegetables replace trees",
+"v The original plan"
+],
+"answer": "ii",
+"explain": "D 段第一句：The project has since changed its approach。approach = strategy。iv 太片面，菜园只是众多做法中的一种。"
+},
+{
+"type": "mc",
+"q": "What is 'farmer-managed natural regeneration'?",
+"options": [
+"A Planting new trees from abroad",
+"B Allowing trees to grow back on farmland",
+"C Moving farms away from the desert",
+"D Watering trees using rainwater tanks"
+],
+"answer": "B",
+"explain": "D 段：farmers who encouraged trees to regrow on their fields, a practice known as ...。regrow on their fields = grow back on farmland。"
+}
+]
+},
+{
+"id": "s22",
+"topic": "印刷术的传播",
+"title": "The Printing Revolution",
+"text": "A  Printing did not begin in Europe. The oldest surviving printed book with a date, a Buddhist text called the Diamond Sutra, was produced in China in 868 using carved wooden blocks. In the eleventh century, a Chinese craftsman named Bi Sheng created movable type from baked clay, and metal type was being used in Korea by the thirteenth century.\n\nB  Around 1450, the German goldsmith Johannes Gutenberg developed a system that combined metal type, an oil-based ink and a press adapted from those used to make wine. Because the Latin alphabet has only a small number of characters, his method was well suited to European languages, and it allowed books to be produced far more quickly and cheaply than by hand.\n\nC  The technology spread with remarkable speed. By 1500, printing presses were operating in more than 250 European towns, and historians estimate that they had produced several million books. The price of books fell sharply, and reading, once largely limited to the clergy and the wealthy, became possible for merchants and craftsmen.\n\nD  The effects were profound. Scientists could share their findings accurately with colleagues in distant cities, and identical copies made it easier to compare and correct information. Printing also helped standardise spelling and grammar in languages such as English and German. Not everyone welcomed the change, however: some authorities feared that cheap pamphlets would spread dangerous ideas, and introduced systems of licensing and censorship.",
+"vocab": [
+[
+"surviving",
+"现存的"
+],
+[
+"movable type",
+"活字"
+],
+[
+"adapt",
+"改造"
+],
+[
+"profound",
+"深远的"
+],
+[
+"censorship",
+"审查制度"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "The Diamond Sutra is the oldest dated printed book that still exists.",
+"answer": "TRUE",
+"explain": "A 段：The oldest surviving printed book with a date。surviving = still exists，with a date = dated。"
+},
+{
+"type": "tfng",
+"q": "Gutenberg invented movable type.",
+"answer": "FALSE",
+"explain": "A 段说十一世纪毕昇就做出了活字，高丽十三世纪已经在用金属活字，所以活字不是古腾堡发明的。"
+},
+{
+"type": "mc",
+"q": "Why was Gutenberg's method well suited to European languages?",
+"options": [
+"A They used an oil-based ink.",
+"B Their alphabet contains relatively few letters.",
+"C Wine presses were common in Europe.",
+"D Most books were written in Latin."
+],
+"answer": "B",
+"explain": "B 段：Because the Latin alphabet has only a small number of characters。few letters = a small number of characters。A、C 是方法的组成部分，不是“适合”的原因。"
+},
+{
+"type": "fill",
+"q": "By 1500, printing presses could be found in over 250 European ____.",
+"answer": "towns",
+"explain": "C 段：presses were operating in more than 250 European towns。over = more than。"
+},
+{
+"type": "mc",
+"q": "Which paragraph mentions attempts to control what was printed?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "D",
+"explain": "D 段末：introduced systems of licensing and censorship。审查和许可制度就是控制印什么。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i Asian inventions",
+"ii Rapid growth and wider reading",
+"iii The problem of spelling",
+"iv How a press works",
+"v Opposition to printing"
+],
+"answer": "ii",
+"explain": "C 段讲印刷术传播得快（spread with remarkable speed），书价下跌，读书的人变多。iii、v 都是 D 段的内容。"
+}
+]
+},
+{
+"id": "s23",
+"topic": "候鸟迁徙",
+"title": "The Great Journeys of Birds",
+"text": "A  Every year, billions of birds travel between their breeding grounds and the places where they spend the winter. The bar-tailed godwit holds the record for the longest non-stop flight: in 2022, a young bird fitted with a satellite tag flew from Alaska to Tasmania, a distance of about 13,500 kilometres, in eleven days without landing to eat or rest.\n\nB  How birds find their way has fascinated scientists for centuries. Experiments have shown that they use several methods. Many species navigate by the position of the sun during the day and by the pattern of stars at night. Others appear to sense the Earth's magnetic field, possibly through special proteins in their eyes, and some use smell or familiar landmarks such as coastlines and mountain ranges.\n\nC  Young birds of some species complete their first migration alone, without any older bird to follow, which suggests that the basic direction and distance are inherited. In a classic experiment, blackcaps raised in captivity became restless and tried to fly in a particular direction in autumn, even though they had never migrated.\n\nD  Migration is becoming more dangerous. Birds depend on a chain of stopover sites, such as wetlands and estuaries, where they rest and feed. When these are drained or built on, the journey may become impossible. The Yellow Sea, an essential refuelling stop for millions of shorebirds, has lost a large proportion of its tidal flats to land reclamation in recent decades.",
+"vocab": [
+[
+"breeding ground",
+"繁殖地"
+],
+[
+"navigate",
+"导航"
+],
+[
+"inherit",
+"遗传"
+],
+[
+"restless",
+"不安的"
+],
+[
+"reclamation",
+"围垦；填海"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "The godwit stopped several times to feed during its flight from Alaska to Tasmania.",
+"answer": "FALSE",
+"explain": "A 段：in eleven days without landing to eat or rest。一次都没停，题干说停了好几次，所以是 FALSE。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph B.",
+"options": [
+"i A record-breaking flight",
+"ii Different ways of finding direction",
+"iii Birds that travel at night",
+"iv Why birds leave in winter",
+"v The loss of resting places"
+],
+"answer": "ii",
+"explain": "B 段讲鸟用太阳、星星、地磁、气味和地标认路。finding direction 对应 find their way / navigate。"
+},
+{
+"type": "fill",
+"q": "Some birds may detect the Earth's magnetic field using special ____ in their eyes.",
+"answer": "proteins",
+"explain": "B 段：possibly through special proteins in their eyes。detect = sense。"
+},
+{
+"type": "mc",
+"q": "What does the experiment with blackcaps suggest?",
+"options": [
+"A Birds learn routes from their parents.",
+"B Knowledge of migration direction is partly inborn.",
+"C Captive birds cannot migrate.",
+"D Blackcaps migrate only in spring."
+],
+"answer": "B",
+"explain": "C 段：没迁徙过的笼养黑顶林莺秋天也会朝特定方向飞，说明方向是遗传的（inherited）。inborn = inherited。"
+},
+{
+"type": "mc",
+"q": "Which paragraph refers to the loss of feeding areas on the coast?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "D",
+"explain": "D 段：黄海的潮滩因为围垦大量消失，而那里是候鸟补给的地方。coast 对应 tidal flats、estuaries。"
+},
+{
+"type": "tfng",
+"q": "Satellite tags can harm the birds that carry them.",
+"answer": "NOT GIVEN",
+"explain": "A 段只说那只鸟戴了卫星标签，没说标签对鸟有没有害处。"
+}
+]
+},
+{
+"id": "s24",
+"topic": "塑料回收",
+"title": "The Limits of Plastic Recycling",
+"text": "A  Since mass production began in the 1950s, the world has made more than eight billion tonnes of plastic. According to a widely cited study published in 2017, only about 9 percent of all plastic waste ever produced had been recycled, while around 12 percent had been burned and the rest had accumulated in landfill sites or the natural environment.\n\nB  One reason for the low figure is that 'plastic' is not a single material. There are many different types, identified by numbers printed on packaging, and most cannot be recycled together. Bottles made from PET, the clear plastic used for drinks, are relatively easy to process, but films, multi-layer packets and dirty containers often cost more to sort and clean than the recycled material is worth.\n\nC  Even successful recycling has limits. Most plastic is recycled mechanically, by being shredded, melted and reformed. Each time this happens the material becomes weaker, so a drinks bottle may become a fleece jacket or a park bench, which is rarely recycled again. Chemical recycling, which breaks plastics down into their basic building blocks, could solve this problem, but the process currently uses large amounts of energy.\n\nD  For these reasons, many environmental groups argue that the priority should be to use less plastic in the first place. Measures such as charges for plastic bags have proved effective: after England introduced a 5p charge in 2015, the number of single-use bags sold by major supermarkets fell by more than 90 percent within a few years.",
+"vocab": [
+[
+"accumulate",
+"堆积"
+],
+[
+"identify",
+"识别；标明"
+],
+[
+"shred",
+"切碎"
+],
+[
+"priority",
+"优先事项"
+],
+[
+"single-use",
+"一次性的"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Less than a tenth of all plastic waste had been recycled by 2017.",
+"answer": "TRUE",
+"explain": "A 段：only about 9 percent ... had been recycled。9% 不到十分之一（a tenth = 10%）。数字和分数之间的转换要会算。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph B.",
+"options": [
+"i The history of plastic",
+"ii Why many plastics are hard to recycle",
+"iii Plastic in the oceans",
+"iv A successful tax",
+"v New ways of making bottles"
+],
+"answer": "ii",
+"explain": "B 段第一句：One reason for the low figure is that 'plastic' is not a single material，后面讲种类多、分拣清洗太贵。"
+},
+{
+"type": "mc",
+"q": "Which type of plastic is described as relatively easy to recycle?",
+"options": [
+"A Films",
+"B Multi-layer packets",
+"C PET drinks bottles",
+"D Dirty containers"
+],
+"answer": "C",
+"explain": "B 段：Bottles made from PET ... are relatively easy to process。其他三个都是原文说难回收的。"
+},
+{
+"type": "tfng",
+"q": "Plastic that has been mechanically recycled is usually stronger than the original material.",
+"answer": "FALSE",
+"explain": "C 段：Each time this happens the material becomes weaker。越回收越弱，题干说更强，所以是 FALSE。"
+},
+{
+"type": "fill",
+"q": "Chemical recycling breaks plastic down into its basic building ____.",
+"answer": "blocks",
+"explain": "C 段：breaks plastics down into their basic building blocks。"
+},
+{
+"type": "mc",
+"q": "Which paragraph gives evidence that a policy reduced plastic use?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "D",
+"explain": "D 段：英格兰 2015 年开始塑料袋收费后，一次性塑料袋销量下降超过 90%。evidence 对应具体的数字。"
+}
+]
+},
+{
+"id": "s25",
+"topic": "城市热岛",
+"title": "Why Cities Are Hotter",
+"text": "A  On a summer evening, the centre of a large city can be several degrees warmer than the surrounding countryside. This phenomenon, known as the urban heat island effect, was first described in the early nineteenth century by Luke Howard, an amateur scientist who recorded temperatures in and around London.\n\nB  Several factors combine to produce it. Dark surfaces such as roads and roofs absorb sunlight during the day and release the heat slowly at night. Tall buildings trap warm air and block cooling winds, while cars, air conditioners and factories add heat of their own. Cities also have fewer trees and plants, which cool their surroundings by releasing water vapour from their leaves.\n\nC  The effect is more than uncomfortable. During heatwaves, high night-time temperatures prevent the body from recovering from the heat of the day, and the death rate rises, particularly among elderly people living alone. The European heatwave of 2003 is thought to have caused tens of thousands of additional deaths, many of them in cities.\n\nD  Cities are now trying a range of cooling strategies. Painting roofs white or light colours can reflect much of the sunlight back into the sky. Planting street trees provides shade, and 'green roofs' covered in plants both cool buildings and absorb rainwater. Medellin in Colombia, for example, created a network of tree-lined 'green corridors' along its roads and waterways, and officials reported a noticeable fall in local temperatures.",
+"vocab": [
+[
+"phenomenon",
+"现象"
+],
+[
+"amateur",
+"业余的"
+],
+[
+"absorb",
+"吸收"
+],
+[
+"trap",
+"困住"
+],
+[
+"reflect",
+"反射"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Luke Howard was a professional scientist.",
+"answer": "FALSE",
+"explain": "A 段：an amateur scientist，业余科学家，和 professional 相反。"
+},
+{
+"type": "mc",
+"q": "According to paragraph B, how do plants cool the air?",
+"options": [
+"A By blocking the wind",
+"B By releasing water vapour",
+"C By absorbing sunlight",
+"D By reflecting heat"
+],
+"answer": "B",
+"explain": "B 段：which cool their surroundings by releasing water vapour from their leaves。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i The dangers of heat to health",
+"ii Why old buildings are hotter",
+"iii Weather records in Europe",
+"iv How to stay cool at night",
+"v The causes of heatwaves"
+],
+"answer": "i",
+"explain": "C 段第一句：The effect is more than uncomfortable，后面讲热浪中死亡率上升。dangers to health 概括了这一段。"
+},
+{
+"type": "tfng",
+"q": "Elderly people living alone face particular risk during heatwaves.",
+"answer": "TRUE",
+"explain": "C 段：the death rate rises, particularly among elderly people living alone。particularly = particular risk。"
+},
+{
+"type": "fill",
+"q": "Roofs covered with plants are called ____ roofs.",
+"answer": "green",
+"explain": "D 段：'green roofs' covered in plants。"
+},
+{
+"type": "tfng",
+"q": "Medellin's green corridors were the cheapest way to reduce temperatures in the city.",
+"answer": "NOT GIVEN",
+"explain": "D 段只说麦德林的绿色走廊让当地气温明显下降，没提费用，更没说是最便宜的。"
+}
+]
+},
+{
+"id": "s26",
+"topic": "博物馆的未来",
+"title": "Museums in the Digital Age",
+"text": "A  The first public museums opened in Europe in the seventeenth and eighteenth centuries, often displaying the private collections of wealthy individuals. For most of their history, their main activity has been to collect, preserve and study objects, with visitors expected to look quietly at items behind glass.\n\nB  Over recent decades, many museums have tried to become more welcoming. Interactive displays, family activities and cafes have become common, and some institutions now invite local communities to help decide what is exhibited and how it is described. Supporters say this attracts people who would never otherwise visit; critics complain that some museums have become more like theme parks than places of learning.\n\nC  Digital technology has accelerated these changes. Large museums have photographed millions of objects and made the images freely available online. The Rijksmuseum in Amsterdam, for instance, allows anyone to download high-quality images of works in its collection and use them, even for commercial purposes. During the closures of 2020, online visits to many museum websites rose sharply.\n\nD  Some feared that virtual access would reduce the number of real visitors, but so far the opposite appears to be true: museums that share their collections online often report that it encourages people to come and see the originals. Nevertheless, there are growing debates about objects acquired during the colonial period, and several European museums have begun returning items to the countries from which they were taken.",
+"vocab": [
+[
+"preserve",
+"保存"
+],
+[
+"institution",
+"机构"
+],
+[
+"exhibit",
+"展出"
+],
+[
+"virtual",
+"虚拟的"
+],
+[
+"acquire",
+"获得；取得"
+]
+],
+"questions": [
+{
+"type": "mc",
+"q": "What were many early public museums based on?",
+"options": [
+"A Government collections",
+"B Objects owned by rich people",
+"C Items found by scientists",
+"D Gifts from foreign countries"
+],
+"answer": "B",
+"explain": "A 段：often displaying the private collections of wealthy individuals。wealthy individuals = rich people。"
+},
+{
+"type": "tfng",
+"q": "Everyone agrees that recent changes have improved museums.",
+"answer": "FALSE",
+"explain": "B 段：有支持者，也有批评者（critics complain ...），说明并非所有人都同意。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i Sharing collections on the internet",
+"ii The closure of museums",
+"iii Selling museum products",
+"iv How objects are protected",
+"v Museums as theme parks"
+],
+"answer": "i",
+"explain": "C 段讲博物馆把藏品拍照免费放到网上。v 是 B 段批评者的说法。"
+},
+{
+"type": "fill",
+"q": "The Rijksmuseum lets people use its images even for ____ purposes.",
+"answer": "commercial",
+"explain": "C 段：use them, even for commercial purposes。"
+},
+{
+"type": "tfng",
+"q": "Putting collections online has led to fewer people visiting museums in person.",
+"answer": "FALSE",
+"explain": "D 段：so far the opposite appears to be true，上网展示反而吸引更多人去看原件。the opposite 一出现，题干说的就是反的。"
+},
+{
+"type": "mc",
+"q": "Which paragraph mentions objects being sent back to their places of origin?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "D",
+"explain": "D 段末：several European museums have begun returning items to the countries from which they were taken。"
+}
+]
+},
+{
+"id": "s27",
+"topic": "儿童阅读习惯",
+"title": "Reading for Pleasure",
+"text": "A  Surveys in several countries suggest that children are reading for pleasure less than they used to. In the United Kingdom, an annual survey by the National Literacy Trust found in 2024 that only around a third of children aged 8 to 18 said they enjoyed reading in their free time, the lowest figure since the survey began in 2005.\n\nB  Researchers point to a number of causes. Smartphones, video games and streaming services compete for children's attention, and some teachers report that pupils find it increasingly hard to concentrate on long texts. Others argue that schools' focus on testing has turned reading into a task to be assessed rather than an activity to be enjoyed.\n\nC  The decline matters because reading for pleasure appears to bring significant benefits. A long-term study that followed thousands of British children found that those who read for enjoyment at the age of ten made more progress in vocabulary, spelling and mathematics by the age of sixteen than those who rarely read, even after taking their family background into account.\n\nD  Experts suggest several ways to reverse the trend. Allowing children to choose their own books, including comics and graphic novels, can make reading feel less like homework. Reading aloud to children, even after they can read independently, is also associated with greater enjoyment. Well-stocked school libraries play an important role, particularly for families who cannot afford to buy many books.",
+"vocab": [
+[
+"annual",
+"每年的"
+],
+[
+"compete for",
+"争夺"
+],
+[
+"assess",
+"评估"
+],
+[
+"take into account",
+"考虑到"
+],
+[
+"reverse",
+"扭转"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "The 2024 survey recorded the lowest level of reading enjoyment since 2005.",
+"answer": "TRUE",
+"explain": "A 段：the lowest figure since the survey began in 2005。"
+},
+{
+"type": "mc",
+"q": "Which of the following is NOT mentioned as a possible cause of the decline?",
+"options": [
+"A Competition from digital entertainment",
+"B Difficulty concentrating on long texts",
+"C The cost of books",
+"D An emphasis on testing in schools"
+],
+"answer": "C",
+"explain": "B 段提到了电子娱乐、难以专注、学校重考试。书太贵在 D 段出现，但说的是图书馆的作用，不是阅读减少的原因。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i Why reading is good for children",
+"ii How to choose a good book",
+"iii Reading problems in schools",
+"iv The importance of family wealth",
+"v A survey of teachers"
+],
+"answer": "i",
+"explain": "C 段第一句：reading for pleasure appears to bring significant benefits，后面用长期研究证明。"
+},
+{
+"type": "tfng",
+"q": "The study's results could be explained entirely by children's family backgrounds.",
+"answer": "FALSE",
+"explain": "C 段：even after taking their family background into account，排除家庭背景后差距依然存在，所以不能完全用家庭背景解释。"
+},
+{
+"type": "fill",
+"q": "Experts suggest that children should be allowed to ____ their own books.",
+"answer": "choose",
+"explain": "D 段：Allowing children to choose their own books。"
+},
+{
+"type": "mc",
+"q": "Which paragraph mentions continuing to read to children who can already read alone?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "D",
+"explain": "D 段：Reading aloud to children, even after they can read independently。read alone = read independently。"
+}
+]
+},
+{
+"id": "s28",
+"topic": "地铁的发展",
+"title": "Going Underground",
+"text": "A  The world's first underground railway, the Metropolitan Railway, opened in London in January 1863. It was built to relieve the severe congestion on the city's streets, which were crowded with horse-drawn vehicles and pedestrians travelling between the main railway stations and the financial district. On its first day, around 38,000 passengers used the new line.\n\nB  The early trains were pulled by steam locomotives, and despite attempts to reduce smoke, the tunnels were often filled with fumes. Most of the first lines were built using a method called 'cut and cover', in which a deep trench was dug along the route of a street and then roofed over. This caused enormous disruption above ground and required the demolition of many buildings.\n\nC  Two developments transformed underground travel at the end of the nineteenth century. Engineers developed a tunnelling shield that allowed deep, circular tunnels to be bored through clay without disturbing the surface, and electric trains made it possible to operate these deep lines without smoke. The first deep-level electric railway opened in London in 1890.\n\nD  Other cities soon followed, including Budapest in 1896, Paris in 1900 and New York in 1904. Today, more than 190 cities have metro systems, and some of the busiest, in cities such as Tokyo, Shanghai and Beijing, each carry several billion passengers a year. China alone has built more metro lines since 2000 than the rest of the world combined.",
+"vocab": [
+[
+"relieve",
+"缓解"
+],
+[
+"congestion",
+"拥堵"
+],
+[
+"fumes",
+"烟雾"
+],
+[
+"disruption",
+"干扰；混乱"
+],
+[
+"demolition",
+"拆除"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "The Metropolitan Railway was built to reduce traffic problems on London's streets.",
+"answer": "TRUE",
+"explain": "A 段：built to relieve the severe congestion on the city's streets。reduce traffic problems = relieve congestion。"
+},
+{
+"type": "fill",
+"q": "In the 'cut and cover' method, a deep ____ was dug along a street and then covered.",
+"answer": "trench",
+"explain": "B 段：a deep trench was dug along the route of a street and then roofed over。"
+},
+{
+"type": "mc",
+"q": "What was a disadvantage of the 'cut and cover' method?",
+"options": [
+"A It was too slow for steam trains.",
+"B It caused great disruption at street level.",
+"C It could only be used in clay.",
+"D It made tunnels too deep."
+],
+"answer": "B",
+"explain": "B 段：This caused enormous disruption above ground。above ground = at street level。C 是 C 段盾构法的内容。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i Problems with steam",
+"ii New technology makes deeper lines possible",
+"iii Building the first line",
+"iv Metro systems around the world",
+"v Why passengers disliked the tunnels"
+],
+"answer": "ii",
+"explain": "C 段：盾构机可以挖深层隧道，电车解决了烟雾问题，于是有了深层电气化地铁。i 是 B 段的内容。"
+},
+{
+"type": "mc",
+"q": "Which city opened a metro system in 1900?",
+"options": [
+"A Budapest",
+"B Paris",
+"C New York",
+"D Tokyo"
+],
+"answer": "B",
+"explain": "D 段：Budapest in 1896, Paris in 1900 and New York in 1904。这类题要把年份和城市一一对上。"
+},
+{
+"type": "tfng",
+"q": "Tokyo has the longest metro system in the world.",
+"answer": "NOT GIVEN",
+"explain": "D 段只说东京的地铁很繁忙、每年运送几十亿人次，没说线路长度。busiest 和 longest 不是一回事。"
+}
+]
+},
+{
+"id": "s29",
+"topic": "可可和巧克力",
+"title": "From Bean to Bar",
+"text": "A  Chocolate is made from the seeds of the cacao tree, which originated in the rainforests of South America. The Olmec, Maya and Aztec peoples of Central America consumed cacao as a bitter drink, often flavoured with chilli, and the Aztecs valued the beans so highly that they used them as a form of money.\n\nB  Spanish explorers brought cacao to Europe in the sixteenth century, where sugar was added and it became a fashionable drink among the wealthy. Solid chocolate as we know it is a much later invention. In 1828 the Dutch chemist Coenraad van Houten developed a press that separated cocoa butter from the beans, and in 1847 a British company produced what is often described as the first modern chocolate bar.\n\nC  Today, around 70 percent of the world's cocoa is grown in West Africa, mainly in Cote d'Ivoire and Ghana. Most of it is produced by small farmers, many of whom earn very little. Studies have repeatedly found that children work on cocoa farms in the region, sometimes in dangerous conditions, despite promises by large chocolate companies to end the practice.\n\nD  Cacao trees are also vulnerable to disease and to changes in climate, and prices rose to record levels in 2024 after poor harvests in West Africa. Some companies are investing in programmes to help farmers grow more on existing land, while scientists are developing disease-resistant varieties. A few start-ups are even experimenting with growing cocoa cells in laboratories.",
+"vocab": [
+[
+"originate",
+"起源于"
+],
+[
+"bitter",
+"苦的"
+],
+[
+"fashionable",
+"时髦的"
+],
+[
+"separate",
+"分离"
+],
+[
+"variety",
+"品种"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "The Aztecs used cacao beans as currency.",
+"answer": "TRUE",
+"explain": "A 段：they used them as a form of money。currency = money。"
+},
+{
+"type": "tfng",
+"q": "The first Europeans to drink chocolate added chilli to it.",
+"answer": "NOT GIVEN",
+"explain": "A 段说美洲原住民喝的时候加辣椒，B 段说欧洲人加了糖，但没说欧洲人有没有加辣椒。别把两段的信息混在一起。"
+},
+{
+"type": "mc",
+"q": "What did Coenraad van Houten's press do?",
+"options": [
+"A It added sugar to cocoa.",
+"B It removed cocoa butter from the beans.",
+"C It made the first chocolate bar.",
+"D It ground beans into powder for drinks."
+],
+"answer": "B",
+"explain": "B 段：developed a press that separated cocoa butter from the beans。separated from = removed from。C 是 1847 年英国公司做的。"
+},
+{
+"type": "fill",
+"q": "Approximately 70 percent of the world's cocoa comes from West ____.",
+"answer": "Africa",
+"explain": "C 段：around 70 percent of the world's cocoa is grown in West Africa。approximately = around。"
+},
+{
+"type": "mc",
+"q": "Which paragraph mentions a problem that companies have failed to solve?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "C",
+"explain": "C 段：despite promises by large chocolate companies to end the practice，大公司承诺消除童工问题，但问题依然存在。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph D.",
+"options": [
+"i Threats to supply and possible responses",
+"ii The invention of solid chocolate",
+"iii Children on cocoa farms",
+"iv Why chocolate is healthy",
+"v The origins of cacao"
+],
+"answer": "i",
+"explain": "D 段：病害、气候、歉收推高价格（threats to supply），后面讲公司和科学家的对策（responses）。"
+}
+]
+},
+{
+"id": "s30",
+"topic": "海洋酸化",
+"title": "The Other Carbon Problem",
+"text": "A  The oceans absorb roughly a quarter of the carbon dioxide that humans release into the atmosphere each year. This slows the pace of global warming, but it comes at a cost. When carbon dioxide dissolves in seawater, it forms carbonic acid, gradually making the water more acidic. Since the beginning of the industrial era, the average acidity of surface seawater has increased by about 30 percent.\n\nB  The change is particularly harmful to creatures that build shells or skeletons from calcium carbonate, such as corals, oysters, mussels and some types of plankton. In more acidic water, the minerals they need become scarcer, and building shells requires more energy. In extreme cases, existing shells can begin to dissolve.\n\nC  Some of the clearest evidence has come from oyster farms on the west coast of the United States. In the mid-2000s, hatcheries in Oregon and Washington experienced mass deaths of young oysters. Scientists traced the problem to deep, acidic water rising to the surface along the coast, and several businesses now monitor the water and add chemicals to protect their stock.\n\nD  Because tiny shell-building plankton form the base of many ocean food webs, scientists worry that the effects could spread to fish and other animals that depend on them. Unlike warming, however, acidification can be addressed by only one solution on a global scale: reducing carbon dioxide emissions. Local measures, such as protecting seagrass meadows, which absorb carbon dioxide, may offer some limited relief in particular areas.",
+"vocab": [
+[
+"absorb",
+"吸收"
+],
+[
+"dissolve",
+"溶解"
+],
+[
+"acidic",
+"酸性的"
+],
+[
+"scarce",
+"稀少的"
+],
+[
+"trace",
+"追查到"
+]
+],
+"questions": [
+{
+"type": "fill",
+"q": "The oceans take in about a ____ of the carbon dioxide released by humans each year.",
+"answer": "quarter",
+"explain": "A 段：absorb roughly a quarter of the carbon dioxide。take in = absorb。"
+},
+{
+"type": "tfng",
+"q": "The absorption of carbon dioxide by the oceans has no benefits.",
+"answer": "FALSE",
+"explain": "A 段：This slows the pace of global warming，减缓变暖就是好处，所以题干错误。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph B.",
+"options": [
+"i Animals at greatest risk",
+"ii How carbonic acid forms",
+"iii The value of oyster farming",
+"iv Measuring acidity",
+"v Fish populations in decline"
+],
+"answer": "i",
+"explain": "B 段第一句：The change is particularly harmful to creatures that build shells or skeletons，后面讲为什么这些动物受害最重。"
+},
+{
+"type": "mc",
+"q": "What caused the oyster deaths in Oregon and Washington?",
+"options": [
+"A Disease spread by imported oysters",
+"B Acidic water coming up from the deep",
+"C Rising water temperatures",
+"D Chemicals added by businesses"
+],
+"answer": "B",
+"explain": "C 段：deep, acidic water rising to the surface along the coast。D 是企业后来采取的保护措施，不是原因。"
+},
+{
+"type": "mc",
+"q": "Which paragraph explains why the problem may affect fish?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "D",
+"explain": "D 段：浮游生物是很多海洋食物网的基础，影响可能扩散到依赖它们的鱼类。"
+},
+{
+"type": "tfng",
+"q": "Seagrass meadows can solve ocean acidification worldwide.",
+"answer": "FALSE",
+"explain": "D 段：全球范围只有一个办法，就是减排；海草床只能在局部地区缓解（limited relief in particular areas）。题干的 worldwide 和原文矛盾。"
+}
+]
+},
+{
+"id": "s31",
+"topic": "金字塔的建造",
+"title": "How the Pyramids Were Built",
+"text": "A  The Great Pyramid of Giza, built for the pharaoh Khufu around 4,500 years ago, was the tallest human-made structure on Earth for nearly 4,000 years. It originally stood about 146 metres high and contains an estimated 2.3 million blocks of stone, most weighing between two and three tonnes.\n\nB  The ancient Greek historian Herodotus wrote that the pyramids were built by 100,000 slaves, and this image remained popular for centuries. However, archaeologists working at Giza since the 1990s have discovered the remains of a town where the workers lived, including bakeries, breweries and cemeteries. The way the workers were buried, close to the pyramids and with goods for the afterlife, suggests that they were paid labourers who were respected for their work.\n\nC  How the heavy blocks were moved remains partly a mystery. Most limestone was quarried close to the site, but finer stone came from further away and granite was transported more than 800 kilometres by boat along the Nile. In 2013, archaeologists studying papyrus documents found the logbook of an official named Merer, who recorded transporting limestone blocks by boat to Giza.\n\nD  Many researchers believe the blocks were raised using ramps of mud brick and rubble, although the exact design is still debated. A wall painting from another ancient site shows workers pouring water in front of a sledge carrying a large statue, and experiments have shown that wetting the sand in this way greatly reduces the force needed to pull a heavy load.",
+"vocab": [
+[
+"structure",
+"建筑物；结构"
+],
+[
+"archaeologist",
+"考古学家"
+],
+[
+"labourer",
+"劳工"
+],
+[
+"quarry",
+"采石"
+],
+[
+"debate",
+"争论"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "The Great Pyramid was the tallest building in the world for almost four thousand years.",
+"answer": "TRUE",
+"explain": "A 段：the tallest human-made structure on Earth for nearly 4,000 years。almost = nearly。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph B.",
+"options": [
+"i New evidence about the workers",
+"ii The life of Herodotus",
+"iii Food in ancient Egypt",
+"iv The size of the pyramid",
+"v How blocks were lifted"
+],
+"answer": "i",
+"explain": "B 段：希罗多德说是奴隶建的，但考古发现工人村和墓葬，说明他们是受尊重的有偿劳工。new evidence 对应 archaeologists ... have discovered。"
+},
+{
+"type": "tfng",
+"q": "Archaeological evidence supports Herodotus's claim that slaves built the pyramids.",
+"answer": "FALSE",
+"explain": "B 段：墓葬方式表明他们 were paid labourers who were respected，和奴隶说法相反。"
+},
+{
+"type": "fill",
+"q": "Granite was carried over 800 kilometres by ____ on the Nile.",
+"answer": "boat",
+"explain": "C 段：granite was transported more than 800 kilometres by boat along the Nile。"
+},
+{
+"type": "mc",
+"q": "What did Merer's logbook record?",
+"options": [
+"A The design of a ramp",
+"B The transport of limestone to Giza",
+"C The number of workers",
+"D The death of Khufu"
+],
+"answer": "B",
+"explain": "C 段：who recorded transporting limestone blocks by boat to Giza。"
+},
+{
+"type": "mc",
+"q": "Which paragraph mentions an experiment that tested an ancient method?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "D",
+"explain": "D 段：experiments have shown that wetting the sand ... greatly reduces the force needed。实验验证了壁画上往沙子上浇水的做法。"
+}
+]
+},
+{
+"id": "s32",
+"topic": "过度旅游",
+"title": "Too Many Tourists?",
+"text": "A  International tourist arrivals grew from about 25 million in 1950 to almost 1.5 billion in 2019. Cheaper flights, rising incomes and the growth of online booking have made foreign travel possible for many more people, and tourism now accounts for a significant share of employment in countries such as Spain, Thailand and Greece.\n\nB  In some popular destinations, however, residents complain of 'overtourism'. Venice, a city with fewer than 50,000 inhabitants in its historic centre, receives many millions of visitors a year. Locals say that crowds, rising rents and the replacement of ordinary shops by souvenir stores have made daily life difficult, and the population of the old city has fallen steadily for decades.\n\nC  Short-term rental platforms have intensified the problem. When property owners can earn more by letting apartments to tourists than to long-term tenants, housing for local people becomes scarcer and more expensive. Barcelona has responded by refusing new licences for tourist flats and closing thousands of illegal ones.\n\nD  Other places are experimenting with ways to manage visitor numbers. In 2024, Venice began charging day-trippers a fee to enter the city on its busiest days. Amsterdam has banned new hotels in its centre and runs campaigns discouraging certain types of visitors, and Bhutan has long required tourists to pay a substantial daily charge. Critics argue that such fees may turn travel into a privilege of the rich, while supporters say they protect places that would otherwise be damaged.",
+"vocab": [
+[
+"destination",
+"目的地"
+],
+[
+"inhabitant",
+"居民"
+],
+[
+"intensify",
+"加剧"
+],
+[
+"tenant",
+"租户"
+],
+[
+"privilege",
+"特权"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "International tourist numbers increased more than fifty times between 1950 and 2019.",
+"answer": "TRUE",
+"explain": "A 段：从 2500 万涨到将近 15 亿，15 亿 ÷ 2500 万 = 60 倍，超过 50 倍。真题偶尔需要这样简单算一下。"
+},
+{
+"type": "mc",
+"q": "Which of the following is NOT mentioned as a complaint by residents of Venice?",
+"options": [
+"A Large crowds",
+"B Higher rents",
+"C Loss of ordinary shops",
+"D Air pollution from cruise ships"
+],
+"answer": "D",
+"explain": "B 段列了人多、房租上涨、普通商店变成纪念品店。邮轮污染原文没提。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i The effect of holiday rentals on housing",
+"ii The benefits of tourism",
+"iii Venice's new fee",
+"iv Building new hotels",
+"v The history of Barcelona"
+],
+"answer": "i",
+"explain": "C 段讲短租平台让本地人的住房变少变贵。holiday rentals = short-term rental。"
+},
+{
+"type": "fill",
+"q": "Barcelona has stopped giving new ____ for tourist flats.",
+"answer": "licences",
+"explain": "C 段：refusing new licences for tourist flats。stopped giving = refusing。注意英式拼写 licences。"
+},
+{
+"type": "mc",
+"q": "Which paragraph presents arguments for and against charging tourists?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "D",
+"explain": "D 段末：批评者认为收费让旅行成了富人的特权，支持者认为收费保护了景点。"
+},
+{
+"type": "tfng",
+"q": "Venice's entry fee has reduced the number of visitors by half.",
+"answer": "NOT GIVEN",
+"explain": "D 段只说 2024 年开始在最忙的日子收费，没说效果如何。"
+}
+]
+},
+{
+"id": "s33",
+"topic": "机器翻译",
+"title": "Machines That Translate",
+"text": "A  The idea of using computers to translate languages is almost as old as computers themselves. In 1954, researchers at Georgetown University and IBM demonstrated a system that translated more than 60 Russian sentences into English. The organisers predicted that machine translation would be a solved problem within a few years - a forecast that proved wildly optimistic.\n\nB  Early systems relied on rules written by linguists, describing the grammar and vocabulary of each language. These worked reasonably well for simple, technical sentences, but struggled with ambiguity: a word such as 'bank' can mean the side of a river or a financial institution, and choosing correctly requires an understanding of context that rules could not easily capture.\n\nC  From the 1990s, researchers turned to statistical methods, training programs on huge collections of texts that had already been translated by humans, such as the records of the Canadian parliament, which are published in both English and French. Since around 2016, systems based on artificial neural networks have produced far more fluent results, and they are now used by hundreds of millions of people every day.\n\nD  Professional translators remain in demand, however. Machine translation still makes errors that a human would rarely make, especially with humour, cultural references and languages for which little translated text is available. In legal and medical documents, where a single mistake could have serious consequences, many organisations use machines to produce a first draft, which a human then checks and corrects.",
+"vocab": [
+[
+"demonstrate",
+"演示"
+],
+[
+"optimistic",
+"乐观的"
+],
+[
+"ambiguity",
+"歧义"
+],
+[
+"capture",
+"捕捉；表达"
+],
+[
+"fluent",
+"流利的"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "The prediction made in 1954 turned out to be accurate.",
+"answer": "FALSE",
+"explain": "A 段：a forecast that proved wildly optimistic，预言过于乐观，没有实现。"
+},
+{
+"type": "mc",
+"q": "Why did rule-based systems have difficulty with the word 'bank'?",
+"options": [
+"A It is not found in Russian.",
+"B It has more than one meaning.",
+"C It is a technical term.",
+"D It is often misspelt."
+],
+"answer": "B",
+"explain": "B 段：bank 既可以是河岸也可以是银行，选对意思需要理解上下文。has more than one meaning = ambiguity。"
+},
+{
+"type": "fill",
+"q": "Statistical systems were trained using records of the Canadian ____, published in two languages.",
+"answer": "parliament",
+"explain": "C 段：such as the records of the Canadian parliament, which are published in both English and French。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i The limits of human translators",
+"ii Learning from existing translations",
+"iii A famous demonstration",
+"iv Problems with grammar rules",
+"v Translation in hospitals"
+],
+"answer": "ii",
+"explain": "C 段讲统计方法和神经网络都是用人类已经翻好的大量文本来训练。iii 是 A 段，iv 是 B 段。"
+},
+{
+"type": "tfng",
+"q": "Neural network translation is now used daily by very large numbers of people.",
+"answer": "TRUE",
+"explain": "C 段：used by hundreds of millions of people every day。daily = every day。"
+},
+{
+"type": "mc",
+"q": "How do many organisations use machine translation for medical documents?",
+"options": [
+"A They avoid it completely.",
+"B They use it for a first version that a person then reviews.",
+"C They use it only for humorous texts.",
+"D They trust it more than human translators."
+],
+"answer": "B",
+"explain": "D 段：use machines to produce a first draft, which a human then checks and corrects。first draft = first version。"
+}
+]
+},
+{
+"id": "s34",
+"topic": "海上风电",
+"title": "Power from Offshore Wind",
+"text": "A  The world's first offshore wind farm was built in 1991 at Vindeby, off the coast of Denmark. It consisted of eleven turbines, each capable of generating 450 kilowatts. Modern offshore turbines are vastly larger: some now have a capacity of more than 15 megawatts, with blades over 100 metres long, and a single rotation can produce enough electricity to power an average home for a day.\n\nB  Building turbines at sea has several advantages. Winds over the ocean are generally stronger and more consistent than on land, so offshore turbines generate electricity for a greater proportion of the time. They are also less likely to face objections from local residents about noise or the appearance of the landscape, although some coastal communities do oppose them.\n\nC  The main drawback is cost. Turbines must be transported by specialist ships, fixed to the seabed and connected to the grid by long underwater cables, and maintenance in rough seas is expensive and sometimes dangerous. Most turbines stand on foundations fixed to the seabed, which limits them to waters less than about 60 metres deep. Floating turbines, anchored to the bottom by cables, could open up much deeper areas, but they remain at an early stage of development.\n\nD  Despite these challenges, offshore wind has expanded rapidly. The United Kingdom generates a substantial share of its electricity from turbines in the North Sea, and China installed more offshore capacity in 2021 alone than the rest of the world had built in the previous five years. Environmental studies suggest that the foundations can even act as artificial reefs, attracting fish and other marine life.",
+"vocab": [
+[
+"capacity",
+"容量；（发电）能力"
+],
+[
+"consistent",
+"稳定的"
+],
+[
+"objection",
+"反对"
+],
+[
+"maintenance",
+"维护"
+],
+[
+"anchor",
+"锚定；固定"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "The Vindeby wind farm had more than ten turbines.",
+"answer": "TRUE",
+"explain": "A 段：It consisted of eleven turbines。11 台，超过 10 台。"
+},
+{
+"type": "mc",
+"q": "According to paragraph B, why do offshore turbines produce electricity more often?",
+"options": [
+"A They have longer blades.",
+"B Sea winds are stronger and steadier.",
+"C They are closer to cities.",
+"D They face fewer objections."
+],
+"answer": "B",
+"explain": "B 段：Winds over the ocean are generally stronger and more consistent。steadier = more consistent。D 是另一个优点，但不是“发电时间更长”的原因。"
+},
+{
+"type": "tfng",
+"q": "No coastal communities object to offshore wind farms.",
+"answer": "FALSE",
+"explain": "B 段末：although some coastal communities do oppose them。有些社区确实反对，题干说没有，所以是 FALSE。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i Expenses and technical limits",
+"ii The first wind farm",
+"iii Benefits for marine life",
+"iv How turbines work",
+"v Rapid growth in Asia"
+],
+"answer": "i",
+"explain": "C 段第一句：The main drawback is cost，后面还讲了水深限制和浮式风机还不成熟。"
+},
+{
+"type": "fill",
+"q": "Turbines that are not fixed to the seabed but held by cables are called ____ turbines.",
+"answer": "floating",
+"explain": "C 段：Floating turbines, anchored to the bottom by cables。"
+},
+{
+"type": "mc",
+"q": "Which paragraph mentions a possible benefit to sea creatures?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "D",
+"explain": "D 段末：the foundations can even act as artificial reefs, attracting fish and other marine life。"
+}
+]
+},
+{
+"id": "s35",
+"topic": "切叶蚁",
+"title": "The Farming Ants",
+"text": "A  Humans began farming around 12,000 years ago, but leafcutter ants have been cultivating crops for millions of years. Found in Central and South America, these ants cut pieces of leaves and carry them back to their underground nests. They do not eat the leaves. Instead, they use them to grow a fungus, which provides the colony's main source of food.\n\nB  A mature colony can contain several million ants and is organised according to size. The largest workers, known as soldiers, defend the nest; medium-sized workers cut and carry the leaves; and the smallest workers tend the fungus gardens inside the nest, removing waste and chewing the leaf fragments into a pulp on which the fungus grows.\n\nC  The ants must also protect their crop from disease. A particular mould can attack the fungus and destroy a garden. To fight it, the ants carry bacteria on their bodies that produce chemicals which kill the mould - a form of natural pesticide. Some researchers are studying these bacteria in the hope of discovering new antibiotics for human use.\n\nD  Leafcutter ants have a significant effect on their environment. A single colony can harvest a large quantity of vegetation each year, and in some regions they are considered agricultural pests because they strip crops and trees. At the same time, by moving nutrients into the soil and creating underground tunnels, they help to recycle nutrients in rainforest ecosystems.",
+"vocab": [
+[
+"cultivate",
+"种植；培养"
+],
+[
+"colony",
+"（蚂蚁等的）群落"
+],
+[
+"tend",
+"照料"
+],
+[
+"pulp",
+"浆"
+],
+[
+"strip",
+"剥光"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Leafcutter ants feed on the leaves they collect.",
+"answer": "FALSE",
+"explain": "A 段：They do not eat the leaves。它们不吃叶子，而是用叶子种真菌。"
+},
+{
+"type": "mc",
+"q": "What do the smallest workers do?",
+"options": [
+"A Defend the colony",
+"B Cut leaves from trees",
+"C Look after the fungus gardens",
+"D Search for new nest sites"
+],
+"answer": "C",
+"explain": "B 段：the smallest workers tend the fungus gardens。tend = look after。A 是兵蚁，B 是中等体型的工蚁。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i A natural defence against disease",
+"ii How the colony is organised",
+"iii Ants as pests",
+"iv Growing food underground",
+"v The size of ant nests"
+],
+"answer": "i",
+"explain": "C 段讲蚂蚁身上的细菌能产生杀霉菌的化学物质，保护真菌不生病。ii 是 B 段的内容。"
+},
+{
+"type": "fill",
+"q": "Scientists hope the bacteria carried by the ants could lead to new ____.",
+"answer": "antibiotics",
+"explain": "C 段：in the hope of discovering new antibiotics for human use。"
+},
+{
+"type": "mc",
+"q": "Which paragraph describes both harmful and helpful effects of the ants?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "D",
+"explain": "D 段：在一些地方是农业害虫（harmful），同时又帮助雨林生态循环养分（helpful）。"
+},
+{
+"type": "tfng",
+"q": "A leafcutter ant colony can survive for more than twenty years.",
+"answer": "NOT GIVEN",
+"explain": "全文没有提到蚁群能存活多久。题干的细节原文完全没出现，就是 NOT GIVEN。"
+}
+]
+},
+{
+"id": "s36",
+"topic": "手写与打字",
+"title": "Pen or Keyboard?",
+"text": "A  For most of the twentieth century, students took notes by hand. Today, many arrive at lectures with laptops, which allow them to type faster and record more of what is said. It might seem obvious that taking more complete notes would lead to better learning, but a number of studies suggest that the situation is more complicated.\n\nB  In a widely discussed study published in 2014, psychologists Pam Mueller and Daniel Oppenheimer asked students to watch recorded lectures and take notes either by hand or on a laptop. The laptop users wrote more words, but they were also more likely to copy the lecturer's sentences word for word. When tested later, the students who had written by hand performed better on questions that required understanding ideas rather than simply remembering facts.\n\nC  The researchers suggested that because writing by hand is slower, it forces students to choose what is important and put it into their own words, a process that helps them understand and remember the material. Later attempts to repeat the study, however, produced smaller and less consistent differences, and some researchers argue that how students take notes matters more than the tool they use.\n\nD  There is stronger evidence for the benefits of handwriting among young children. Studies of children learning to read have found that practising writing letters by hand, rather than typing them, helps them to recognise the letters more quickly. As a result, many education experts recommend that handwriting continue to be taught in primary schools, even as keyboards become more common.",
+"vocab": [
+[
+"complicated",
+"复杂的"
+],
+[
+"word for word",
+"逐字地"
+],
+[
+"consistent",
+"一致的"
+],
+[
+"recognise",
+"认出"
+],
+[
+"primary school",
+"小学"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Laptops allow students to write down more of a lecture.",
+"answer": "TRUE",
+"explain": "A 段：allow them to type faster and record more of what is said。"
+},
+{
+"type": "mc",
+"q": "What did the laptop users in the 2014 study tend to do?",
+"options": [
+"A Write fewer words",
+"B Copy the lecturer's exact words",
+"C Draw diagrams",
+"D Stop taking notes"
+],
+"answer": "B",
+"explain": "B 段：more likely to copy the lecturer's sentences word for word。exact words = word for word。"
+},
+{
+"type": "mc",
+"q": "On which type of question did hand-writers perform better?",
+"options": [
+"A Questions about simple facts",
+"B Questions requiring understanding of ideas",
+"C Questions about the lecturer",
+"D All types of question"
+],
+"answer": "B",
+"explain": "B 段：performed better on questions that required understanding ideas rather than simply remembering facts。A 正是原文说的 rather than 后面的内容，是反向干扰。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i A possible explanation and later doubts",
+"ii How to type faster",
+"iii The design of the experiment",
+"iv Teaching young children",
+"v Why laptops are banned"
+],
+"answer": "i",
+"explain": "C 段前半讲研究者的解释（手写慢，迫使学生用自己的话总结），后半讲后来的重复研究差异更小、结果不一致（later doubts）。"
+},
+{
+"type": "tfng",
+"q": "Later studies found an even larger advantage for handwriting.",
+"answer": "FALSE",
+"explain": "C 段：produced smaller and less consistent differences。差异更小，题干说更大，所以是 FALSE。"
+},
+{
+"type": "fill",
+"q": "Many experts recommend that handwriting should still be taught in ____ schools.",
+"answer": "primary",
+"explain": "D 段：handwriting continue to be taught in primary schools。"
+}
+]
+},
+{
+"id": "s37",
+"topic": "城市骑行",
+"title": "The Cycling City",
+"text": "A  In Copenhagen, more people now travel to work or education by bicycle than by car. This was not always the case. In the 1960s and early 1970s, Danish cities, like many others in Europe, were redesigning their streets to accommodate rapidly growing car traffic, and cycling was in decline.\n\nB  The oil crisis of 1973, when fuel prices rose sharply, prompted a change of direction. The Danish government introduced car-free Sundays to save fuel, and campaigners demanded safer streets for cyclists. Over the following decades, Copenhagen built an extensive network of cycle lanes, many of them physically separated from motor traffic by a raised kerb.\n\nC  The city has continued to invest. It has constructed bridges exclusively for cyclists and pedestrians, and on some main routes the traffic lights are timed so that a cyclist riding at about 20 kilometres per hour can pass through a series of green lights without stopping. Official counts on one bridge have recorded more than 40,000 cyclists on a single day.\n\nD  Supporters argue that the benefits extend well beyond transport. Cycling improves physical health, reduces air pollution and noise, and takes up far less space than driving. Studies in Denmark have estimated that each kilometre cycled saves society money once health benefits are taken into account. Other cities, including Paris, have recently tried to follow Copenhagen's example, although critics complain that new cycle lanes have increased congestion for drivers.",
+"vocab": [
+[
+"accommodate",
+"容纳"
+],
+[
+"prompt",
+"促使"
+],
+[
+"extensive",
+"广泛的"
+],
+[
+"exclusively",
+"专门地"
+],
+[
+"congestion",
+"拥堵"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Cycling in Copenhagen was becoming less common in the 1960s.",
+"answer": "TRUE",
+"explain": "A 段：cycling was in decline。in decline = becoming less common。"
+},
+{
+"type": "mc",
+"q": "What led Denmark to change its transport policy in the 1970s?",
+"options": [
+"A A rise in road accidents",
+"B A sudden increase in fuel prices",
+"C A new government",
+"D Pressure from car manufacturers"
+],
+"answer": "B",
+"explain": "B 段：The oil crisis of 1973, when fuel prices rose sharply, prompted a change of direction。prompted = led to。"
+},
+{
+"type": "fill",
+"q": "Many cycle lanes are separated from cars by a raised ____.",
+"answer": "kerb",
+"explain": "B 段：physically separated from motor traffic by a raised kerb。kerb 是英式拼写，美式写作 curb。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i Further improvements for cyclists",
+"ii The oil crisis",
+"iii Problems for drivers",
+"iv Health benefits",
+"v Cycling in Paris"
+],
+"answer": "i",
+"explain": "C 段第一句：The city has continued to invest，后面举了自行车专用桥、绿波信号灯的例子。"
+},
+{
+"type": "tfng",
+"q": "Copenhagen's traffic lights are timed to help cyclists travelling at around 20 km/h.",
+"answer": "TRUE",
+"explain": "C 段：timed so that a cyclist riding at about 20 kilometres per hour can pass through a series of green lights。"
+},
+{
+"type": "mc",
+"q": "Which paragraph mentions an objection to building cycle lanes?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "D",
+"explain": "D 段末：critics complain that new cycle lanes have increased congestion for drivers。"
+}
+]
+},
+{
+"id": "s38",
+"topic": "真菌网络",
+"title": "The Hidden Network Beneath the Forest",
+"text": "A  Beneath the floor of most forests lies a vast network of fungal threads. Many of these fungi form partnerships, called mycorrhizae, with the roots of trees and other plants. The fungi supply the plants with water and nutrients such as phosphorus from the soil, and in return the plants provide the fungi with sugars produced by photosynthesis. More than 90 percent of plant species are thought to form such relationships.\n\nB  In the 1990s, the Canadian ecologist Suzanne Simard reported that carbon could pass between trees through these fungal connections. Her research, and that of others, led to the idea of a 'wood wide web', through which trees might share resources and even warn one another of insect attacks. Popular books presented a picture of forests as cooperative communities in which older 'mother trees' nourish their young.\n\nC  In recent years, however, some scientists have questioned how strong the evidence is. A review published in 2023 argued that while fungal networks clearly exist, there is limited proof that they transfer significant amounts of resources between trees in natural forests, or that trees use them to help their offspring. The authors warned that popular accounts had gone further than the research justified.\n\nD  The debate has practical importance. If fungal networks play a major role in forest health, forestry practices such as clearing all trees from an area may cause more harm than expected, because they destroy the networks along with the trees. Researchers on both sides agree that more field studies are needed, particularly in forests outside North America and Europe.",
+"vocab": [
+[
+"partnership",
+"合作关系"
+],
+[
+"in return",
+"作为回报"
+],
+[
+"nourish",
+"滋养"
+],
+[
+"offspring",
+"后代"
+],
+[
+"justify",
+"证明……有理"
+]
+],
+"questions": [
+{
+"type": "mc",
+"q": "What do plants give the fungi in a mycorrhizal partnership?",
+"options": [
+"A Water",
+"B Phosphorus",
+"C Sugars",
+"D Nitrogen"
+],
+"answer": "C",
+"explain": "A 段：the plants provide the fungi with sugars。A 和 B 是真菌给植物的，方向别看反。"
+},
+{
+"type": "tfng",
+"q": "Most plant species form partnerships with fungi.",
+"answer": "TRUE",
+"explain": "A 段：More than 90 percent of plant species are thought to form such relationships。90% 以上就是 most。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph B.",
+"options": [
+"i An attractive idea becomes popular",
+"ii Doubts about the research",
+"iii How fungi grow",
+"iv Cutting down forests",
+"v The need for more studies"
+],
+"answer": "i",
+"explain": "B 段：Simard 的研究催生了“树联网”的说法，畅销书把森林描述成互助社区。ii 是 C 段，v 是 D 段。"
+},
+{
+"type": "tfng",
+"q": "The 2023 review denied that fungal networks exist.",
+"answer": "FALSE",
+"explain": "C 段：while fungal networks clearly exist，综述承认网络存在，质疑的是它们传递资源的规模。"
+},
+{
+"type": "fill",
+"q": "The 2023 review said popular accounts had gone further than the ____ justified.",
+"answer": "research",
+"explain": "C 段：popular accounts had gone further than the research justified。"
+},
+{
+"type": "mc",
+"q": "Which paragraph explains why the debate matters for forest management?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "D",
+"explain": "D 段：The debate has practical importance，如果真菌网络很重要，把一片树全砍掉的林业做法可能危害更大。"
+}
+]
+},
+{
+"id": "s39",
+"topic": "食物浪费",
+"title": "The Problem of Food Waste",
+"text": "A  According to the United Nations Environment Programme, around 1 billion tonnes of food were wasted in 2022, roughly a fifth of all the food available to consumers. Households were responsible for the largest share, about 60 percent, with the rest wasted by restaurants, canteens and shops. Further losses occur earlier in the supply chain, on farms and during storage and transport.\n\nB  The environmental cost is considerable. Producing food that is never eaten uses land, water and energy, and food that rots in landfill sites releases methane, a powerful greenhouse gas. It has been estimated that food loss and waste together account for between 8 and 10 percent of global greenhouse gas emissions.\n\nC  The causes differ between countries. In poorer nations, much food is lost before it reaches consumers because of inadequate storage facilities, refrigeration and roads. In wealthier countries, a greater proportion is thrown away by shops and households, often because of confusion over date labels: many people discard food that has passed its 'best before' date, even though this label refers to quality rather than safety.\n\nD  A variety of solutions are being tried. Some supermarkets have removed 'best before' dates from fresh fruit and vegetables, and apps allow shops and restaurants to sell surplus food cheaply at the end of the day. France passed a law in 2016 that prohibits large supermarkets from destroying unsold food that is still fit to eat and requires them to donate it to charities instead.",
+"vocab": [
+[
+"supply chain",
+"供应链"
+],
+[
+"rot",
+"腐烂"
+],
+[
+"inadequate",
+"不足的"
+],
+[
+"discard",
+"丢弃"
+],
+[
+"donate",
+"捐赠"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Households waste more food than restaurants, canteens and shops combined.",
+"answer": "TRUE",
+"explain": "A 段：家庭约占 60%，剩下的 40% 才是餐馆、食堂和商店加起来，所以家庭更多。"
+},
+{
+"type": "fill",
+"q": "Food that decays in landfill produces ____, a strong greenhouse gas.",
+"answer": "methane",
+"explain": "B 段：food that rots in landfill sites releases methane, a powerful greenhouse gas。decays = rots。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i Different reasons in rich and poor countries",
+"ii The cost to the environment",
+"iii New laws in Europe",
+"iv How to store food safely",
+"v The size of the problem"
+],
+"answer": "i",
+"explain": "C 段第一句：The causes differ between countries，然后分别讲穷国和富国。"
+},
+{
+"type": "tfng",
+"q": "A 'best before' date indicates when food becomes unsafe to eat.",
+"answer": "FALSE",
+"explain": "C 段：this label refers to quality rather than safety。它说的是品质，不是安全。"
+},
+{
+"type": "mc",
+"q": "What does the French law of 2016 require?",
+"options": [
+"A Shops must sell food more cheaply.",
+"B Large supermarkets must give edible unsold food to charities.",
+"C Households must recycle food waste.",
+"D Restaurants must use food apps."
+],
+"answer": "B",
+"explain": "D 段：requires them to donate it to charities instead。edible = fit to eat，give = donate。"
+},
+{
+"type": "tfng",
+"q": "Food-sharing apps have greatly reduced food waste in France.",
+"answer": "NOT GIVEN",
+"explain": "D 段提到了应用和法国的法律，但没说这些应用在法国的效果。"
+}
+]
+},
+{
+"id": "s40",
+"topic": "南极科考",
+"title": "Science at the End of the Earth",
+"text": "A  Antarctica is the coldest, driest and windiest continent on Earth. It has no permanent human population, but around 30 countries operate research stations there, housing several thousand scientists and support staff in summer and a much smaller number during the long, dark winter.\n\nB  The continent is governed by the Antarctic Treaty, signed in 1959 by twelve countries and since joined by more than 50 others. The treaty states that Antarctica shall be used for peaceful purposes only, bans military activity and nuclear testing, and encourages scientific cooperation. A later agreement, which came into force in 1998, prohibits mining.\n\nC  Antarctic research has produced major discoveries. In 1985, British scientists at Halley Research Station published evidence of a dramatic seasonal thinning of the ozone layer above the continent. This finding contributed to the Montreal Protocol of 1987, an international agreement to phase out the chemicals responsible, and the ozone layer is now slowly recovering.\n\nD  Cores of ice drilled from deep within the ice sheet provide a record of the Earth's past climate. Tiny bubbles trapped in the ice contain samples of ancient air, allowing scientists to measure how levels of carbon dioxide have changed. The longest continuous core, drilled at a site called Dome C, covers around 800,000 years, and researchers are now drilling in search of ice more than a million years old.",
+"vocab": [
+[
+"permanent",
+"永久的"
+],
+[
+"treaty",
+"条约"
+],
+[
+"come into force",
+"生效"
+],
+[
+"phase out",
+"逐步淘汰"
+],
+[
+"core",
+"岩芯；冰芯"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "More people live in Antarctic research stations in winter than in summer.",
+"answer": "FALSE",
+"explain": "A 段：several thousand ... in summer and a much smaller number during the long, dark winter。冬天人少得多。"
+},
+{
+"type": "mc",
+"q": "Which of the following is NOT banned under the Antarctic Treaty system?",
+"options": [
+"A Military activity",
+"B Nuclear testing",
+"C Mining",
+"D Scientific research"
+],
+"answer": "D",
+"explain": "B 段：条约禁止军事活动和核试验，1998 年的协议禁止采矿，科研是被鼓励的。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i A discovery that changed international policy",
+"ii Life at a research station",
+"iii The coldest place on Earth",
+"iv Drilling into the ice",
+"v Countries that signed the treaty"
+],
+"answer": "i",
+"explain": "C 段：英国科学家发现臭氧层变薄，促成了 1987 年的《蒙特利尔议定书》。international agreement = international policy。"
+},
+{
+"type": "tfng",
+"q": "The ozone layer above Antarctica has now fully recovered.",
+"answer": "FALSE",
+"explain": "C 段：the ozone layer is now slowly recovering，正在慢慢恢复，没有完全恢复。"
+},
+{
+"type": "fill",
+"q": "Small ____ in ice cores contain samples of ancient air.",
+"answer": "bubbles",
+"explain": "D 段：Tiny bubbles trapped in the ice contain samples of ancient air。small = tiny。"
+},
+{
+"type": "mc",
+"q": "Which paragraph mentions an attempt to find even older material?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "D",
+"explain": "D 段末：researchers are now drilling in search of ice more than a million years old。"
+}
+]
+},
+{
+"id": "s41",
+"topic": "颜色与营销",
+"title": "The Psychology of Colour",
+"text": "A  Businesses spend large sums choosing the colours of their logos, products and packaging, based on the belief that colour influences how consumers feel and behave. Some marketing guides make confident claims: that red stimulates appetite, that blue suggests trustworthiness and that green signals environmental responsibility.\n\nB  Scientific evidence for such fixed associations is weaker than these guides suggest. Reactions to colour vary according to culture, age and personal experience. White, for example, is associated with weddings and purity in many Western countries, but with mourning in parts of East Asia. Red, a symbol of good fortune in China, can signal danger or debt elsewhere.\n\nC  What research does support is the importance of 'fit'. In studies where participants were shown brands in different colours, they responded more positively when the colour seemed appropriate to the product's personality. A colour that suits a children's toy may seem wrong for a bank or a luxury watch.\n\nD  Colour can also help a brand stand out. Psychologists have long known that people remember items that differ from their surroundings, a principle sometimes called the isolation effect. Some companies have gone as far as seeking legal protection for a particular shade: a chocolate maker spent years in the courts trying to register a specific purple as its trademark, although its claim was ultimately rejected.",
+"vocab": [
+[
+"stimulate",
+"刺激"
+],
+[
+"association",
+"联想"
+],
+[
+"mourning",
+"哀悼"
+],
+[
+"appropriate",
+"合适的"
+],
+[
+"trademark",
+"商标"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Some marketing guides claim that blue makes a brand seem reliable.",
+"answer": "TRUE",
+"explain": "A 段：blue suggests trustworthiness。reliable = trustworthy。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph B.",
+"options": [
+"i Colours mean different things to different people",
+"ii The cost of designing logos",
+"iii Why red makes people hungry",
+"iv Colour and memory",
+"v Legal disputes over colour"
+],
+"answer": "i",
+"explain": "B 段：人们对颜色的反应因文化、年龄、个人经历而不同，并举了白色和红色的例子。iii 是 A 段营销指南的说法，被 B 段质疑了。"
+},
+{
+"type": "tfng",
+"q": "White is linked with sadness in parts of East Asia.",
+"answer": "TRUE",
+"explain": "B 段：with mourning in parts of East Asia。mourning（哀悼）和 sadness 意思相关，这是真题常见的近义改写。"
+},
+{
+"type": "mc",
+"q": "According to paragraph C, when do people respond best to a brand's colour?",
+"options": [
+"A When the colour is bright",
+"B When it matches the character of the product",
+"C When it is red or blue",
+"D When it is the same as competitors' colours"
+],
+"answer": "B",
+"explain": "C 段：when the colour seemed appropriate to the product's personality。matches the character = appropriate to the personality。"
+},
+{
+"type": "fill",
+"q": "People's tendency to remember things that differ from their surroundings is called the ____ effect.",
+"answer": "isolation",
+"explain": "D 段：a principle sometimes called the isolation effect。"
+},
+{
+"type": "tfng",
+"q": "The chocolate maker succeeded in registering its purple as a trademark.",
+"answer": "FALSE",
+"explain": "D 段：its claim was ultimately rejected，最后被驳回了。"
+}
+]
+},
+{
+"id": "s42",
+"topic": "光污染",
+"title": "Losing the Night Sky",
+"text": "A  For most of human history, people could look up on a clear night and see thousands of stars and the bright band of the Milky Way. Today, according to a study published in 2016, more than a third of humanity, including around 80 percent of North Americans, can no longer see the Milky Way from where they live, because artificial light makes the sky too bright.\n\nB  Light pollution is not only a problem for astronomers. Many animals depend on natural patterns of light and darkness. Newly hatched sea turtles find the ocean by moving towards the brighter horizon over the water, but lights from coastal buildings can lead them inland, where they die. Migrating birds can become disoriented by brightly lit buildings, and millions are killed each year in collisions.\n\nC  There may also be effects on human health. Exposure to light at night, particularly blue light, suppresses the production of melatonin, a hormone that regulates sleep. Some studies have found associations between night-time light and health problems, although it is difficult to separate the effects of light from other features of modern life.\n\nD  Unlike many forms of pollution, light pollution can be reduced quickly and cheaply. Shielding street lamps so that light is directed downwards, using warmer colours and switching off unnecessary lighting late at night can all make a significant difference. Several places have been certified as 'dark sky' areas, and in 2001 Flagstaff in Arizona became the world's first International Dark Sky City.",
+"vocab": [
+[
+"artificial",
+"人造的"
+],
+[
+"hatch",
+"孵化"
+],
+[
+"disoriented",
+"迷失方向的"
+],
+[
+"suppress",
+"抑制"
+],
+[
+"certify",
+"认证"
+]
+],
+"questions": [
+{
+"type": "tfng",
+"q": "Most North Americans cannot see the Milky Way from their homes.",
+"answer": "TRUE",
+"explain": "A 段：around 80 percent of North Americans can no longer see the Milky Way。80% 就是 most。"
+},
+{
+"type": "mc",
+"q": "How do coastal lights harm young sea turtles?",
+"options": [
+"A They make the water too warm.",
+"B They lead the turtles away from the sea.",
+"C They attract predators.",
+"D They stop eggs from hatching."
+],
+"answer": "B",
+"explain": "B 段：lights from coastal buildings can lead them inland。inland = away from the sea。"
+},
+{
+"type": "mc",
+"q": "Choose the correct heading for paragraph C.",
+"options": [
+"i Possible risks to people",
+"ii Danger to wildlife",
+"iii How stars are studied",
+"iv Simple solutions",
+"v The first dark sky city"
+],
+"answer": "i",
+"explain": "C 段第一句：There may also be effects on human health。may 对应 possible。ii 是 B 段，iv、v 是 D 段。"
+},
+{
+"type": "fill",
+"q": "Light at night reduces the production of ____, which controls sleep.",
+"answer": "melatonin",
+"explain": "C 段：suppresses the production of melatonin, a hormone that regulates sleep。reduces = suppresses，controls = regulates。"
+},
+{
+"type": "tfng",
+"q": "Scientists have proved that night-time light directly causes serious illness.",
+"answer": "FALSE",
+"explain": "C 段：只发现了相关性（associations），而且很难和现代生活的其他因素分开，所以不能说已经证明了直接导致。题干说 proved ... directly causes，和原文矛盾。"
+},
+{
+"type": "mc",
+"q": "Which paragraph states that this kind of pollution is easy to reduce?",
+"options": [
+"A",
+"B",
+"C",
+"D"
+],
+"answer": "D",
+"explain": "D 段第一句：light pollution can be reduced quickly and cheaply。"
+}
+]
+}
+]

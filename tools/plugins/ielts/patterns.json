@@ -1,0 +1,254 @@
+[
+{
+"id": 1,
+"pat": "It is widely believed that ...",
+"zh": "人们普遍认为……（大作文开头引出观点）",
+"ex": "It is widely believed that technology has made our lives more convenient.",
+"ex_zh": "人们普遍认为科技让我们的生活更便利了。"
+},
+{
+"id": 2,
+"pat": "There is no doubt that ...",
+"zh": "毫无疑问……（语气肯定的开头）",
+"ex": "There is no doubt that regular exercise is good for our health.",
+"ex_zh": "毫无疑问，经常锻炼对健康有好处。"
+},
+{
+"id": 3,
+"pat": "... plays a vital role in ...",
+"zh": "……在……中起关键作用",
+"ex": "Education plays a vital role in the development of a country.",
+"ex_zh": "教育在一个国家的发展中起着关键作用。"
+},
+{
+"id": 4,
+"pat": "On the one hand, ...; on the other hand, ...",
+"zh": "一方面……另一方面……（讨论两面）",
+"ex": "On the one hand, working from home saves time; on the other hand, it can make people feel lonely.",
+"ex_zh": "一方面，在家办公节省时间；另一方面，它会让人感到孤独。"
+},
+{
+"id": 5,
+"pat": "Not only ... but also ...",
+"zh": "不仅……而且……",
+"ex": "Public transport not only reduces traffic but also protects the environment.",
+"ex_zh": "公共交通不仅减少拥堵，而且保护环境。"
+},
+{
+"id": 6,
+"pat": "The main reason why ... is that ...",
+"zh": "……的主要原因是……",
+"ex": "The main reason why many young people move to big cities is that they can find better jobs there.",
+"ex_zh": "很多年轻人搬到大城市的主要原因是那里能找到更好的工作。"
+},
+{
+"id": 7,
+"pat": "This is mainly because ...",
+"zh": "这主要是因为……（紧跟在观点后解释）",
+"ex": "Online shopping is popular. This is mainly because it is fast and cheap.",
+"ex_zh": "网购很流行。这主要是因为它又快又便宜。"
+},
+{
+"id": 8,
+"pat": "As a result, ...",
+"zh": "结果，……（引出结果）",
+"ex": "Many factories were built near the river. As a result, the water became polluted.",
+"ex_zh": "河边建了很多工厂，结果河水被污染了。"
+},
+{
+"id": 9,
+"pat": "It is essential for sb to do ...",
+"zh": "某人做……是必不可少的",
+"ex": "It is essential for children to learn how to cooperate with others.",
+"ex_zh": "孩子学会与人合作是必不可少的。"
+},
+{
+"id": 10,
+"pat": "A growing number of ...",
+"zh": "越来越多的……",
+"ex": "A growing number of people are choosing to cycle to work.",
+"ex_zh": "越来越多的人选择骑车上班。"
+},
+{
+"id": 11,
+"pat": "In terms of ..., ...",
+"zh": "就……而言",
+"ex": "In terms of cost, studying online is much cheaper.",
+"ex_zh": "就费用而言，在线学习便宜得多。"
+},
+{
+"id": 12,
+"pat": "Compared with ..., ...",
+"zh": "和……相比，……",
+"ex": "Compared with older generations, young people spend more time on their phones.",
+"ex_zh": "和老一辈相比，年轻人花在手机上的时间更多。"
+},
+{
+"id": 13,
+"pat": "... is likely to ...",
+"zh": "……很可能会……（谨慎的预测）",
+"ex": "The price of housing is likely to rise in the next few years.",
+"ex_zh": "未来几年房价很可能会上涨。"
+},
+{
+"id": 14,
+"pat": "Although ..., I believe ...",
+"zh": "尽管……，我认为……（让步后给观点）",
+"ex": "Although video games can be addictive, I believe they also help children think quickly.",
+"ex_zh": "尽管电子游戏会让人上瘾，我认为它们也能帮助孩子快速思考。"
+},
+{
+"id": 15,
+"pat": "From my perspective, ...",
+"zh": "在我看来，……",
+"ex": "From my perspective, schools should teach students how to manage money.",
+"ex_zh": "在我看来，学校应该教学生如何理财。"
+},
+{
+"id": 16,
+"pat": "One possible solution is to ...",
+"zh": "一个可能的解决办法是……",
+"ex": "One possible solution is to build more affordable housing in cities.",
+"ex_zh": "一个可能的解决办法是在城市里建更多价格合理的住房。"
+},
+{
+"id": 17,
+"pat": "Governments should take measures to ...",
+"zh": "政府应该采取措施……",
+"ex": "Governments should take measures to reduce air pollution.",
+"ex_zh": "政府应该采取措施减少空气污染。"
+},
+{
+"id": 18,
+"pat": "... can lead to ...",
+"zh": "……会导致……",
+"ex": "Spending too much time indoors can lead to health problems.",
+"ex_zh": "在室内待太久会导致健康问题。"
+},
+{
+"id": 19,
+"pat": "A case in point is ...",
+"zh": "一个很好的例子是……（举例）",
+"ex": "Tourism can help local economies. A case in point is Yunnan, where many villages now earn money from visitors.",
+"ex_zh": "旅游业能带动当地经济。一个很好的例子是云南，那里很多村子现在靠游客赚钱。"
+},
+{
+"id": 20,
+"pat": "It is often argued that ..., but ...",
+"zh": "常有人认为……，但……（反驳常见观点）",
+"ex": "It is often argued that money brings happiness, but many rich people are not happy.",
+"ex_zh": "常有人认为钱能带来幸福，但很多有钱人并不快乐。"
+},
+{
+"id": 21,
+"pat": "The more ..., the more ...",
+"zh": "越……就越……",
+"ex": "The more you read, the more you understand the world.",
+"ex_zh": "你读得越多，就越了解这个世界。"
+},
+{
+"id": 22,
+"pat": "... has a significant impact on ...",
+"zh": "……对……有重大影响",
+"ex": "Social media has a significant impact on how teenagers see themselves.",
+"ex_zh": "社交媒体对青少年怎么看待自己有重大影响。"
+},
+{
+"id": 23,
+"pat": "In conclusion, I firmly believe that ...",
+"zh": "总之，我坚信……（结尾段）",
+"ex": "In conclusion, I firmly believe that the benefits of learning a foreign language outweigh the costs.",
+"ex_zh": "总之，我坚信学外语的好处大于付出。"
+},
+{
+"id": 24,
+"pat": "... outweigh ...",
+"zh": "……大于……（比较利弊）",
+"ex": "In my view, the advantages of city life outweigh the disadvantages.",
+"ex_zh": "在我看来，城市生活的好处大于坏处。"
+},
+{
+"id": 25,
+"pat": "Only by ... can we ...",
+"zh": "只有通过……我们才能……（倒装，加分）",
+"ex": "Only by working together can we solve the problem of climate change.",
+"ex_zh": "只有共同努力，我们才能解决气候变化问题。"
+},
+{
+"id": 26,
+"pat": "... rather than ...",
+"zh": "……而不是……",
+"ex": "Students should be encouraged to think for themselves rather than simply memorise facts.",
+"ex_zh": "应该鼓励学生独立思考，而不是只背知识点。"
+},
+{
+"id": 27,
+"pat": "Instead of doing ..., sb should ...",
+"zh": "与其……，某人应该……",
+"ex": "Instead of building new roads, the city should improve public transport.",
+"ex_zh": "与其修新路，城市应该改善公共交通。"
+},
+{
+"id": 28,
+"pat": "..., which means that ...",
+"zh": "……，这意味着……（定语从句接结果）",
+"ex": "Many people now work online, which means that they can live anywhere.",
+"ex_zh": "现在很多人在网上工作，这意味着他们可以住在任何地方。"
+},
+{
+"id": 29,
+"pat": "Unless ..., ...",
+"zh": "除非……，否则……",
+"ex": "Unless we act now, many animals will disappear.",
+"ex_zh": "除非我们现在行动，否则很多动物会消失。"
+},
+{
+"id": 30,
+"pat": "Whereas ..., ...",
+"zh": "……，而……（对比两者）",
+"ex": "Whereas older people prefer reading newspapers, young people get news from their phones.",
+"ex_zh": "老年人喜欢看报纸，而年轻人从手机上获取新闻。"
+},
+{
+"id": 31,
+"pat": "The chart shows ...",
+"zh": "图表显示……（小作文开头）",
+"ex": "The chart shows the number of tourists who visited three countries between 2010 and 2020.",
+"ex_zh": "图表显示了 2010 到 2020 年间去三个国家旅游的人数。"
+},
+{
+"id": 32,
+"pat": "... rose sharply from ... to ...",
+"zh": "……从……急剧上升到……（描述趋势）",
+"ex": "The number of car owners rose sharply from 2 million to 5 million.",
+"ex_zh": "车主人数从 200 万急剧上升到 500 万。"
+},
+{
+"id": 33,
+"pat": "... fell slightly to ...",
+"zh": "……略微下降到……",
+"ex": "Sales fell slightly to 300 units in March.",
+"ex_zh": "三月份销量略微下降到 300 件。"
+},
+{
+"id": 34,
+"pat": "... accounted for ...% of ...",
+"zh": "……占……的百分之……",
+"ex": "Coal accounted for 40% of the total energy used.",
+"ex_zh": "煤炭占总能源消耗的 40%。"
+},
+{
+"id": 35,
+"pat": "Overall, it is clear that ...",
+"zh": "总体来看，很明显……（小作文概述句）",
+"ex": "Overall, it is clear that more people used the internet over the period.",
+"ex_zh": "总体来看，很明显这段时间里用互联网的人变多了。"
+},
+{
+"id": 36,
+"pat": "..., reaching a peak of ... in ...",
+"zh": "……，在……年达到最高点……",
+"ex": "The price kept rising, reaching a peak of $50 in 2015.",
+"ex_zh": "价格持续上涨，在 2015 年达到 50 美元的最高点。"
+}
+]
