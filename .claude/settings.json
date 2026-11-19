@@ -16,10 +16,14 @@
       "Read(/tools/.auth.json)",
       "Edit(/tools/.auth.json)",
       "Edit(/_RULES/AI_ACCESS_RULES.md)",
-      "Read(//G:/VAULT/**)",
-      "Edit(//G:/VAULT/**)",
-      "Read(//g/VAULT/**)",
-      "Edit(//g/VAULT/**)"
+      "Read(//*:/VAULT/**)",
+      "Edit(//*:/VAULT/**)",
+      "Read(//*/VAULT/**)",
+      "Edit(//*/VAULT/**)",
+      "Read(**/*.kdbx)",
+      "Edit(**/*.kdbx)",
+      "Read(**/*.keyx)",
+      "Edit(**/*.keyx)"
     ]
   }
 }

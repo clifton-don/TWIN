@@ -1,6 +1,6 @@
 ---
 type: rule
-updated: 2026-11-10
+updated: 2026-11-19
 privacy: public
 ---
 # 字段规范（Frontmatter）
@@ -40,7 +40,7 @@ privacy: public
 | summary、crown | `public`（这是上云的那一层，写的时候就要按可公开的标准写） |
 | skill、life、milestone、project、decision | `internal` |
 | person、asset | `private` |
-| 保险箱里的东西 | 不建 md，放在知识库外的 `G:\VAULT\` |
+| 保险箱里的东西 | 不建 md，放在知识库外、和 `TWIN` 同级的 `VAULT` 文件夹（`<盘符>:\VAULT\`，盘符随硬盘插在哪个口而变） |
 
 ## 四、子分支
 
