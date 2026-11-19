@@ -1,0 +1,29 @@
+# 只放开发工具的配置。TWIN 本身只用 Python 标准库，没有要安装的依赖。
+# 开发时：python -m pip install ruff pyright pytest
+
+[project]
+name = "twin"
+requires-python = ">=3.9"
+dependencies = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 160
+target-version = "py39"
+src = ["tools", "tests"]
+# 资料目录里有别人的工程代码（ESP-IDF 组件等），不归这里检查
+extend-exclude = ["tools/.cache", "0*", "_INBOX", "_export", "_TEMPLATES", ".chats", ".history", ".trash"]
+
+[tool.ruff.lint]
+# 先只开查真 bug 的规则（语法、未定义名字、没用到的导入/变量、常见坑），风格类以后再说
+select = ["E9", "F", "B"]
+
+[tool.pyright]
+include = ["tools", "tests"]
+exclude = ["**/__pycache__", "tools/.cache", "0*", "_INBOX", "_export", "_TEMPLATES", ".chats", ".history", ".trash"]
+extraPaths = ["tools"]
+pythonVersion = "3.9"
+typeCheckingMode = "basic"

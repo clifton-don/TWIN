@@ -22,7 +22,8 @@ PROJECT_INDEXES = ["03_Projects/diy_mk/INDEX.md"]
 SKIP_FILES = {"CLAUDE.md", "AGENTS.md", "README.md", "context_pack.md"}  # 仓库首页和给 AI 工具的说明，不按 privacy 规则查
 LEVELS = ("public", "internal", "private", "secret")
 
-PRIVATE_BLOCK = re.compile(r"<!--\s*private\s*-->.*?<!--\s*/private\s*-->", re.S | re.I)
+# 忘了写结束标记时，一直到文件末尾都算私密（和网页的显示一致），宁可少发也不能漏发
+PRIVATE_BLOCK = re.compile(r"<!--\s*private\s*-->.*?(?:<!--\s*/private\s*-->|\Z)", re.S | re.I)
 SENSITIVE = {
     "身份证号": re.compile(r"(?<!\d)\d{17}[\dXx](?!\d)"),
     "手机号": re.compile(r"(?<!\d)1[3-9]\d{9}(?!\d)"),
