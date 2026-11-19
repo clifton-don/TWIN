@@ -1,7 +1,7 @@
 <p align="center"><img src="docs/banner.jpg" alt="TWIN" width="100%"></p>
 
 <p align="center">
-  <a href="../../releases"><img src="https://img.shields.io/badge/version-0.26.0--beta-7f6fe0" alt="version"></a>
+  <a href="../../releases"><img src="https://img.shields.io/badge/version-0.27.0--beta-7f6fe0" alt="version"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-55c2b8" alt="MIT"></a>
   <img src="https://img.shields.io/badge/python-3.9%2B-6fa6d6" alt="Python 3.9+">
   <img src="https://img.shields.io/badge/dependencies-none-8a7fe0" alt="no dependencies">

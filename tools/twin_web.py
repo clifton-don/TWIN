@@ -776,7 +776,7 @@ ICON = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width
 
 
 # ---------- 版本：每次改动加一条 CHANGELOG.md；正式版之前都带 beta ----------
-VERSION = "0.26.0-beta"
+VERSION = "0.27.0-beta"
 
 
 # ---------- 对话记录（存在知识库的 .chats/，不进 Git）----------
