@@ -894,7 +894,7 @@ def main():
     threading.Thread(target=scan_loop, daemon=True).start()  # 每 2 分钟看一次有没有在别处改过的文件
     server = ThreadingHTTPServer(("127.0.0.1", port), Handler)
     url = f"http://127.0.0.1:{port}"
-    print(f"TWIN 网页版已启动：{url}\n关闭这个窗口即可停止。")
+    print(f"TWIN 网页版已启动：{url}\n停止：右下角托盘图标右键“退出 TWIN”；在命令行里直接运行的，按 Ctrl+C 或关掉窗口。")
     if "--phone" in sys.argv:
         ip = tailscale_ip()
         if not ip:

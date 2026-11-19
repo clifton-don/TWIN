@@ -14,7 +14,8 @@ privacy: internal
 
 ## 未发布
 
-- 盘上自带 Python 和 KeePassXC：第一次双击 `Open_Web.bat` 会问要不要把官方免安装版 Python（约 12 MB）和 KeePassXC 便携版（约 70 MB，电脑上装了就不问）放进这块盘，核对校验值后放在 `tools\runtime\`。之后插到别的 Windows 电脑直接双击就能用，不用另装。KeePassXC 没开着会顺手打开。按 N 不再问。
+- 不再有黑色窗口：双击 `Open_Web.bat` 后 TWIN 在后台运行，右下角托盘有个“T”图标，双击打开 TWIN，右键看运行记录（手机访问地址、报错）或退出。第一次的提问、出错提示都改成弹窗。已经开着时再双击只打开网页，不会再开一个。运行记录在 `tools\runtime\twin.log`。
+- 盘上自带 Python 和 KeePassXC：第一次双击 `Open_Web.bat` 会问要不要把官方免安装版 Python（约 12 MB）和 KeePassXC 便携版（约 70 MB）放进这块盘，核对校验值后放在 `tools\runtime\`。之后插到别的 Windows 电脑直接双击就能用，不用另装。电脑上装了 KeePassXC 时平时用电脑上的，盘里那份只作去别的电脑时的备用。KeePassXC 没开着会顺手打开。选“否”不再问。
 - 新增 Mac 启动文件 `Open_Web.command`：检查 python3，没装 KeePassXC 时提示一次下载地址。
 - 修复：`Open_Web.bat` 改成只放英文、固定 CRLF 换行，中文提示挪到 `tools/launch.ps1`。之前从 GitHub 拉下来的 bat 是 LF 换行，带中文时 cmd 可能读错行。
 
