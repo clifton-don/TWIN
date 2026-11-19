@@ -108,7 +108,6 @@ def check_password(password):
 
 def new_session():
     token = secrets.token_urlsafe(32)
-    now = time.time()
     with LOCK:
         SESSIONS[token] = expiry()
     return token
@@ -457,12 +456,12 @@ class Handler(BaseHTTPRequestHandler):
             return self.stream(twin_ai.ask_stream(body.get("messages", []), body.get("provider_id") or None, str(body.get("project") or "")))
         label, source = MUTATING.get(path, (None, None))
         if label is None:
-            return self.send(*self.result(path, body))
+            return self.send(*self.result(path, body))  # pyright: ignore[reportArgumentType]  # result 总是 (状态码, 内容)
         if path in ("/api/action", "/api/actions"):
             source = "AI" if body.get("via") == "ai" else "手动"
         with (contextlib.nullcontext() if path in SLOW_WRITES else WRITE_LOCK):
             scan_external()  # 先把别处的改动记下来，免得混进这次
-            with twin_hist.group(label, source) as g:
+            with twin_hist.group(label, source or "手动") as g:
                 code, payload = self.result(path, body)
         TREE_CACHE["t"] = 0
         twin_health.clear()
@@ -864,7 +863,7 @@ def save_chat(body):
         old = {}
     # fixed：插件建的专用对话（比如“雅思答疑”），标题固定，不能改名、不让 AI 整理
     fixed = bool(body["fixed"]) if "fixed" in body else bool(old.get("fixed"))
-    data = {"id": cid, "title": (old.get("title") if fixed and "fixed" not in body and old.get("title") else str(body.get("title", "")))[:60], "updated": time.time(),
+    data = {"id": cid, "title": str(old.get("title") if fixed and "fixed" not in body and old.get("title") else body.get("title", ""))[:60], "updated": time.time(),
             "project": str(body.get("project") or "")[:300], "auto": str(body.get("auto") or "")[:300],
             "titled": str(body.get("titled") or "")[:10], "messages": body.get("messages", [])[-200:], **({"fixed": True} if fixed else {})}
     f.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")

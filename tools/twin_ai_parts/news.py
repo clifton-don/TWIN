@@ -1,7 +1,14 @@
 # twin_ai 的一部分：每日要闻。
-# 不单独 import：twin_ai.py 末尾把这个文件放进它自己的命名空间里执行，和写在 twin_ai.py 里完全一样，
-# 直接用那里的函数和变量（ROOT、_write、call_model……），外面照旧用 twin_ai.xxx。
-# flake8: noqa
+# 由 twin_ai.py 末尾 import；外面照旧用 twin_ai.xxx。要先 import twin_ai（twin_ai_parts/__init__.py 会保证）。
+
+import datetime as dt
+import json
+import re
+import urllib.error
+import urllib.request
+from twin import privacy_of, PRIVATE_BLOCK, ROOT
+from twin_ai import _cell, _table_rows, active_provider, BRIEFS, call_model, check_outgoing, today
+from twin_ai_parts.jobs import parse_json_block
 
 # ---------- 每日要闻：本机从各家 RSS 取标题；AI 按“对他个人影响大不大、能不能赚钱”挑，不按领域 ----------
 NEWS_DIR = BRIEFS / "News"
@@ -112,7 +119,7 @@ def _fetch_feed(src, per=10):
     for it in root.iter():
         if it.tag.split("}")[-1] not in ("item", "entry"):
             continue
-        get = lambda *names: next((c for c in it if c.tag.split("}")[-1] in names), None)
+        get = lambda *names, it=it: next((c for c in it if c.tag.split("}")[-1] in names), None)
         t, d, l, p = get("title"), get("description", "summary", "content"), get("link"), get("pubDate", "published", "updated", "date")
         link = (l.get("href") or l.text or "").strip() if l is not None else ""
         when = None

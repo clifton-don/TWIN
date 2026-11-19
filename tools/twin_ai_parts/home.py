@@ -1,7 +1,15 @@
 # twin_ai 的一部分：首页常用网站、网站图标、小组件。
-# 不单独 import：twin_ai.py 末尾把这个文件放进它自己的命名空间里执行，和写在 twin_ai.py 里完全一样，
-# 直接用那里的函数和变量（ROOT、_write、call_model……），外面照旧用 twin_ai.xxx。
-# flake8: noqa
+# 由 twin_ai.py 末尾 import；外面照旧用 twin_ai.xxx。要先 import twin_ai（twin_ai_parts/__init__.py 会保证）。
+
+import json
+import re
+import urllib.error
+import urllib.request
+from pathlib import Path
+from urllib.parse import urlparse
+from twin import ROOT
+from twin_ai import _cell, _table_rows, _write, active_provider, call_model, check_outgoing
+from twin_ai_parts.news import _rules_file
 
 # ---------- 首页：常用网站（_RULES/Home_Links.md，一张表，网页上也能加减）----------
 HOME_LINKS = ROOT / "_RULES" / "Home_Links.md"
@@ -63,7 +71,7 @@ def clean_svg(text):
     try:
         root = ET.fromstring(src)
     except ET.ParseError as e:
-        raise RuntimeError(f"SVG 格式有问题：{e}")
+        raise RuntimeError(f"SVG 格式有问题：{e}") from e
 
     def local(t):
         return t.split("}")[-1].lower()
@@ -127,7 +135,7 @@ def _site_meta(host):
 SI_VER = "13.21.0"
 SI_MIRRORS = ["https://registry.npmmirror.com/simple-icons/{v}/files/{p}", "https://cdn.jsdelivr.net/npm/simple-icons@{v}/{p}",
               "https://unpkg.com/simple-icons@{v}/{p}"]
-SI_CACHE = Path(__file__).resolve().parent / ".cache" / f"simple-icons-{SI_VER}.json"
+SI_CACHE = Path(__file__).resolve().parent.parent / ".cache" / f"simple-icons-{SI_VER}.json"  # tools/.cache
 
 
 def _get(url, limit=400000, timeout=8):
@@ -200,6 +208,12 @@ def _tile(inner_svg, bg, pad=14):
                      f'<svg x="{pad}" y="{pad}" width="{s}" height="{s}" viewBox="{vb}"{fill}>{body}</svg></svg>')
 
 
+def _tag_attr(tag, name):
+    """HTML 标签里某个属性的值，没有就是空字符串。"""
+    m = re.search(name + r'=["\']([^"\']+)', tag, re.I)
+    return m.group(1) if m else ""
+
+
 def _site_svg(host):
     """网站首页里声明的 SVG 图标（<link rel="icon" href="….svg"> 或 mask-icon）。"""
     try:
@@ -208,9 +222,7 @@ def _site_svg(host):
         return None
     html = raw.decode(cs, "ignore")
     for tag in re.findall(r"<link\b[^>]*>", html, re.I):
-        rel = (re.search(r'rel=["\']([^"\']+)', tag, re.I) or [None, ""])[1].lower()
-        href = (re.search(r'href=["\']([^"\']+)', tag, re.I) or [None, ""])[1]
-        typ = (re.search(r'type=["\']([^"\']+)', tag, re.I) or [None, ""])[1].lower()
+        rel, href, typ = _tag_attr(tag, "rel").lower(), _tag_attr(tag, "href"), _tag_attr(tag, "type").lower()
         if "icon" not in rel or not href or not (href.split("?")[0].lower().endswith(".svg") or "svg" in typ):
             continue
         try:

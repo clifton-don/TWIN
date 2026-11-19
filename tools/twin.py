@@ -12,6 +12,7 @@ import os
 import re
 import sys
 from pathlib import Path
+from typing import AbstractSet
 from datetime import date
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -59,7 +60,7 @@ def project_boards():
     return [d / "board.md" for d in project_dirs() if (d / "board.md").exists()]
 
 
-def walk_md(base=None, skip=frozenset()):
+def walk_md(base=None, skip: AbstractSet[str] = frozenset()):
     """按目录剪枝地找 .md 文件（不进入 PRUNE 和 skip 里的目录）。返回排好序的 Path 列表。"""
     out = []
     for d, dirs, files in os.walk(base or ROOT):

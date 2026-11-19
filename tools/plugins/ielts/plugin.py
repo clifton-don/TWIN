@@ -92,16 +92,20 @@ def _new_card(p, bank, skip=()):
     out = []
     if day[2] < NEW["w"]:
         w = next((x["word"] for x in _words() if f"wr:{x['word']}" not in c), None)
-        w and out.append((0.4, f"wr:{w}"))
+        if w:
+            out.append((0.4, f"wr:{w}"))
     if day[3] < NEW["p"]:
         i = next((x["id"] for x in _patterns() if f"p:{x['id']}" not in c), None)
-        i and out.append((0.15, f"p:{i}"))
+        if i:
+            out.append((0.15, f"p:{i}"))
     if day[4] < NEW["r"]:
         r = next((f"r:{s['id']}:{k}" for s in bank for k in range(len(s["questions"])) if f"r:{s['id']}:{k}" not in c), None)
-        r and out.append((0.3, r))
+        if r:
+            out.append((0.3, r))
     if day[5] < NEW["s"]:
         s = next((x["word"] for x in _syns() if f"s:{x['word']}" not in c), None)
-        s and out.append((0.15, f"s:{s}"))
+        if s:
+            out.append((0.15, f"s:{s}"))
     return random.choices([x for _, x in out], [w for w, _ in out])[0] if out else None
 
 

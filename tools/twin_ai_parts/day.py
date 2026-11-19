@@ -1,7 +1,17 @@
 # twin_ai 的一部分：天气和作息、个人设置。
-# 不单独 import：twin_ai.py 末尾把这个文件放进它自己的命名空间里执行，和写在 twin_ai.py 里完全一样，
-# 直接用那里的函数和变量（ROOT、_write、call_model……），外面照旧用 twin_ai.xxx。
-# flake8: noqa
+# 由 twin_ai.py 末尾 import；外面照旧用 twin_ai.xxx。要先 import twin_ai（twin_ai_parts/__init__.py 会保证）。
+
+import datetime as dt
+import json
+import re
+import time
+import urllib.error
+import urllib.request
+from urllib.parse import quote
+from twin import ROOT
+from twin_ai import _cell, _table_rows, active_provider, BRIEFS, call_model, check_outgoing, RATIONAL_RULES, today
+from twin_ai_parts.jobs import parse_json_block
+from twin_ai_parts.news import _rules_file
 
 # ---------- 天气和作息：本机从 Open-Meteo 取天气（免费、不用注册）；AI 只看到城市名、天气数字和作息时段 ----------
 WEATHER_DIR = BRIEFS / "Weather"
@@ -230,7 +240,7 @@ def weather(force=False):
         old = None
     r = rhythm()
     fresh = old and max((x["h"] for x in old.get("hours", [])), default=0) > 26  # 旧缓存只到凌晨 2 点，重新取
-    if fresh and not force and time.time() - old.get("ts", 0) < 3600:
+    if old and fresh and not force and time.time() - old.get("ts", 0) < 3600:
         return old
     p = r["place"]
     if not p:
@@ -256,7 +266,7 @@ def weather(force=False):
             o = json.loads(y.read_text(encoding="utf-8"))
             return {**o, "date": today(), "today": o["tomorrow"], "hours": [{**x, "h": x["h"] - 24} for x in o["hours"] if x["h"] >= 24], "stale": True}
         except (OSError, ValueError, KeyError):
-            raise RuntimeError("天气暂时取不到：连不上天气服务器（open-meteo.com），可能是网络或代理的问题，过一会儿会自动再试。")
+            raise RuntimeError("天气暂时取不到：连不上天气服务器（open-meteo.com），可能是网络或代理的问题，过一会儿会自动再试。") from None
     c, dl, hl = j["current"], j["daily"], j["hourly"]
     day = lambda i: {"max": dl["temperature_2m_max"][i], "min": dl["temperature_2m_min"][i], "rain": dl["precipitation_probability_max"][i] or 0,
                      "uv": dl["uv_index_max"][i] or 0, "text": WX.get(dl["weather_code"][i], ("", ""))[0], "icon": WX.get(dl["weather_code"][i], ("", "cloud"))[1]}
@@ -293,3 +303,7 @@ def weather_tips(provider_id=None):
     w["ai_tips"] = tips
     (WEATHER_DIR / f"{today()}.json").write_text(json.dumps(w, ensure_ascii=False, indent=1), encoding="utf-8")
     return w
+
+
+# 排在后面加载的部分：只在函数里用到，放在末尾 import，避免循环依赖
+from twin_ai_parts.home import _get

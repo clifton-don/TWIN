@@ -1,7 +1,13 @@
 # twin_ai 的一部分：零散待办、项目任务表、项目链接、子任务。
-# 不单独 import：twin_ai.py 末尾把这个文件放进它自己的命名空间里执行，和写在 twin_ai.py 里完全一样，
-# 直接用那里的函数和变量（ROOT、_write、call_model……），外面照旧用 twin_ai.xxx。
-# flake8: noqa
+# 由 twin_ai.py 末尾 import；外面照旧用 twin_ai.xxx。要先 import twin_ai（twin_ai_parts/__init__.py 会保证）。
+
+import datetime as dt
+import json
+import re
+from pathlib import Path
+from twin import find_sensitive, privacy_of, PRIVATE_BLOCK, project_boards, ROOT, SKIP_SUBDIRS, walk_md
+from twin_ai import _cell, _insert_row, _parse_due, _table_rows, _touch, _write, BRIEFS, DASHBOARD, deadlines, DECISIONS, goals, today, todos
+from twin_ai_parts.jobs import open_tasks
 
 # ---------- 零散待办：不属于任何项目的小事，放在一个普通的项目文件里，打勾、截止、完成记录、子任务都和项目任务一样 ----------
 LOOSE_NAME, LOOSE_REL = "零散待办", "03_Projects/零散待办/board.md"
@@ -893,6 +899,8 @@ def merge_tasks(rel, keys, text, note=None):
     f = _board_path(rel)
     src = f.read_text(encoding="utf-8")
     t = _task_table(src)
+    if t is None:
+        raise RuntimeError("项目里找不到任务表。")
     col, _, rows, width = t
     lines, (ln, cells) = src.splitlines(), rows[first]
     cells = cells + [""] * (width - len(cells))
@@ -991,11 +999,14 @@ def add_profile(rel, section, items):
     if not _profile_block(text):
         text = text.rstrip("\n") + f"\n\n{PROFILE_HEAD}\n\n> 和 AI 聊这个项目时确认过的真实情况，越聊越清楚。可以直接改。\n"
     lines = text.splitlines()
-    i, j = _profile_block(text)
+    blk = _profile_block(text)
+    if blk is None:  # 上面刚补过标题，不会走到这里
+        raise RuntimeError("项目说明里写不进项目画像。")
+    i, j = blk
     have = "\n".join(lines[i:j])
     new = [x.replace("\n", " ").strip() for x in items if x.strip() and x.strip() not in have]
     if not new:
-        return f"项目画像里已经有了"
+        return "项目画像里已经有了"
     sh = next((k for k in range(i + 1, j) if lines[k].strip() == f"### {section}"), None)
     add = [f"- {x}（{today()}）" for x in new]
     if sh is None:
@@ -1009,3 +1020,8 @@ def add_profile(rel, section, items):
         lines[end:end] = add
     f.write_text(_set_fm("\n".join(lines) + "\n", "updated", today()), encoding="utf-8")
     return f"项目画像 · {section}：" + "；".join(new)
+
+
+# 排在后面加载的部分：只在函数里用到，放在末尾 import，避免循环依赖
+from twin_ai_parts.reports import _set_fm, suggest_today, upgrade_status
+from twin_ai_parts.news import news_today

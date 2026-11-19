@@ -1,7 +1,15 @@
 # twin_ai 的一部分：每日简报、周报、决策回看、复盘升级、待决策、每日建议。
-# 不单独 import：twin_ai.py 末尾把这个文件放进它自己的命名空间里执行，和写在 twin_ai.py 里完全一样，
-# 直接用那里的函数和变量（ROOT、_write、call_model……），外面照旧用 twin_ai.xxx。
-# flake8: noqa
+# 由 twin_ai.py 末尾 import；外面照旧用 twin_ai.xxx。要先 import twin_ai（twin_ai_parts/__init__.py 会保证）。
+
+import datetime as dt
+import json
+import re
+from twin import find_sensitive, PRIVATE_BLOCK, ROOT
+from twin_ai import (
+    _cell, _insert_row, _table_rows, _write, active_provider, apply_action, board_facts, BRIEFS, call_model, check_outgoing, DASHBOARD, deadlines,
+    DECISIONS, ensure_rule_files, FEEDBACK_FILE, goals, LESSONS_FILE, RULES_FILE, system_prompt, today)
+from twin_ai_parts.jobs import _num_or_none, decision_rules, open_tasks, parse_json_block
+from twin_ai_parts.boards import _board_files, board, brief_path, decisions, DONE, due_reviews
 
 # ---------- 每日简报 ----------
 BRIEF_PROMPT = """请给我写今天（{today}）的简报。下面“本地计算的事实”是程序从我的文件里直接算出来的，准确，优先采用。
@@ -291,10 +299,12 @@ def upgrade_apply(lessons, changes, removes, summary=""):
     # 打分规则
     md = _rules_md()
     m = re.search(r"```json\s*(\{.*?\})\s*```", md, re.S)
+    if not m:
+        raise RuntimeError("_RULES/Decision_Rules.md 里找不到打分规则的 json 代码块，请检查。")
     r = json.loads(m.group(1))
     applied = []
     for c in changes:
-        k, v = c["key"], _num(c["to"], None)
+        k, v = c["key"], _num_or_none(c["to"])
         if k not in TUNABLE or v is None:
             continue
         v = int(v) if v == int(v) else v

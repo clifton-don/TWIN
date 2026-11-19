@@ -10,7 +10,6 @@ AI 在对话里提出动作，网页弹确认卡，点了“确认写入”才�
 发给 AI 的：可以放文件的目录名、暂存箱里的文件名和文本内容（去掉私密段落和敏感值）、资产清单的分类标题。
 资产清单的内容、私密文件的内容不发。
 """
-import datetime as dt
 import re
 import shutil
 from pathlib import Path

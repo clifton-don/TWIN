@@ -74,6 +74,14 @@ LOG_HEAD = "## 记录"
 _FM = re.compile(r"^---\n(.*?)\n---\n?", re.S)
 
 
+def _fm(text):
+    """卡片的 Frontmatter（卡片都是 TWIN 自己写的，一定有）。"""
+    m = _FM.match(text)
+    if not m:
+        raise RuntimeError("卡片开头的 --- 属性区格式不对。")
+    return m
+
+
 def _kind(kind):
     if kind not in KINDS:
         raise RuntimeError("没有这种卡片。")
@@ -164,7 +172,7 @@ def write_fm(text, values):
     m = _FM.match(text)
     if not m:
         text = "---\nprivacy: private\n---\n" + text
-        m = _FM.match(text)
+        m = _fm(text)
     lines = m.group(1).splitlines()
     for k, v in values.items():
         new = f"{k}: {_dump_value(v)}"
@@ -283,7 +291,7 @@ def save(kind, rel, fields, body=None):
     vals["updated"] = twin_ai.today()
     text = write_fm(text, vals)
     if body is not None:
-        text = _FM.match(text).group(0) + str(body).replace("\r\n", "\n").lstrip("\n")
+        text = _fm(text).group(0) + str(body).replace("\r\n", "\n").lstrip("\n")
     elif not rel:
         text = re.sub(r"^# .*$", f"# {name}", text, count=1, flags=re.M)
     p.write_text(text, encoding="utf-8")
@@ -384,7 +392,7 @@ def import_assets():
                     made.append(save("assets", "", fields, None)["path"])
                     p = ROOT / made[-1]
                     t = p.read_text(encoding="utf-8")
-                    p.write_text(_FM.match(t).group(0) + f"# {name}\n\n" + body, encoding="utf-8")
+                    p.write_text(_fm(t).group(0) + f"# {name}\n\n" + body, encoding="utf-8")
                     acct = next((c for c in cells if c.startswith("{{VAULT")), "")
                     if acct:
                         p.write_text(write_fm(p.read_text(encoding="utf-8"), {"serial": acct}), encoding="utf-8")

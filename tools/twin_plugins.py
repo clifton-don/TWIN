@@ -72,8 +72,10 @@ def module(pid):
     if pid not in _MODS:
         f = DIR / pid / "plugin.py"
         spec = importlib.util.spec_from_file_location(f"twin_plugin_{pid}", f)
+        if spec is None or spec.loader is None:
+            raise RuntimeError(f"插件 {pid} 缺少 plugin.py。")
         m = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(m)
+        spec.loader.exec_module(m)  # pyright: ignore[reportAttributeAccessIssue]  # typeshed 的 Loader 没写 exec_module
         _MODS[pid] = m
     return _MODS[pid]
 
@@ -120,7 +122,7 @@ def install(name, data):
     try:
         z = zipfile.ZipFile(io.BytesIO(raw))
     except zipfile.BadZipFile:
-        raise RuntimeError("这不是 zip 文件。")
+        raise RuntimeError("这不是 zip 文件。") from None
     names = [n for n in z.namelist() if not n.endswith("/")]
     if any(".." in n.split("/") or n.startswith("/") or ":" in n for n in names):
         raise RuntimeError("插件包里有不安全的路径，没有安装。")

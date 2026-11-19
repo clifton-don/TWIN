@@ -11,14 +11,12 @@ import datetime as dt
 import json
 import re
 import threading
-from urllib.parse import quote, urlparse
-import time
 import urllib.error
 import urllib.request
 from pathlib import Path
 
-from twin import (SENSITIVE, SKIP_SUBDIRS, project_boards, project_dirs, PACK_HEADER, PRIVATE_BLOCK, ROOT, find_sensitive, mask, md_files, privacy_of,
-                  public_context, walk_md)
+from twin import (SENSITIVE, SKIP_SUBDIRS, project_dirs, PACK_HEADER, PRIVATE_BLOCK, ROOT, find_sensitive, mask, md_files, privacy_of,
+                  public_context)
 
 CONFIG_FILE = Path.home() / ".twin" / "ai.json"
 RULES_FILE = ROOT / "_RULES" / "Decision_Rules.md"
@@ -491,7 +489,7 @@ def match_project(messages):
     from twin_search import Index, tokens
     bs = boards()
     users = [m.get("content", "") for m in messages if m.get("role") == "user"]
-    for text in (users[-1:] and users[-1], " ".join(users[-3:])):
+    for text in (users[-1] if users else "", " ".join(users[-3:])):
         if not text:
             continue
         low = text.lower()
@@ -630,6 +628,11 @@ TODO_ACTS = {"add_todo": "task_add", "complete_todo": "task_done", "reopen_todo"
              "todo_delete": "task_delete", "todo_due": "task_due", "todo_priority": "task_priority"}
 
 
+def _as_list(v, fallback):
+    """AI 给的字段是列表就用它，否则用 fallback。"""
+    return v if isinstance(v, list) else fallback
+
+
 def apply_action(a):
     t = a.get("type")
     if t in TODO_ACTS:
@@ -676,7 +679,7 @@ def apply_action(a):
                "task_reopen", "project_due", "project_status", "project_link", "task_merge", "subtask_add", "subtask_done", "project_profile"):
         rel, name = _find_board(a.get("project", ""))
         if t == "project_profile":
-            items = [str(x).strip() for x in (a.get("items") if isinstance(a.get("items"), list) else [a.get("text", "")]) if str(x).strip()]
+            items = [str(x).strip() for x in _as_list(a.get("items"), [a.get("text", "")]) if str(x).strip()]
             return f"{name}：" + add_profile(rel, a.get("section", ""), items)
         if t == "project_link":
             return f"{name}：" + set_board_link(rel, a.get("name", ""), a.get("url", ""))
@@ -691,11 +694,11 @@ def apply_action(a):
         if t == "task_add":
             return f"{name}：" + add_task(rel, a.get("text", ""), a.get("priority", ""), _iso(a.get("due", "")) if a.get("due") else "", a.get("note", ""))
         if t == "task_merge":
-            ms = a.get("matches") if isinstance(a.get("matches"), list) else []
+            ms = _as_list(a.get("matches"), [])
             return f"{name}：" + merge_tasks(rel, [str(x) for x in ms], a.get("text", ""), a.get("note") if "note" in a else None)
         tk = _find_task(rel, a.get("match", ""))
         if t == "subtask_add":
-            items = [str(x).strip() for x in (a.get("items") if isinstance(a.get("items"), list) else []) if str(x).strip()]
+            items = [str(x).strip() for x in _as_list(a.get("items"), []) if str(x).strip()]
             have = {x["text"] for x in tk["subs"]}
             return f"{name}：" + set_subtasks(rel, tk["i"], tk["subs"] + [{"text": x, "done": False} for x in items if x not in have])
         if t == "subtask_done":
@@ -745,9 +748,9 @@ def apply_action(a):
         return add_task(str(a.get("path", "")), a.get("text", ""), a.get("priority", ""), a.get("due", ""), a.get("note", ""))
     elif t == "add_income":
         try:
-            amount = float(a.get("amount"))
+            amount = float(str(a.get("amount")))
         except (TypeError, ValueError):
-            raise RuntimeError("金额不是数字，没有记。")
+            raise RuntimeError("金额不是数字，没有记。") from None
         text = INCOME_LOG.read_text(encoding="utf-8") if INCOME_LOG.exists() else INCOME_MD.format(today=today())
         text = _insert_row(text, "金额", f"| {_cell(a.get('date')) or today()} | {amount:g} | {_cell(a.get('source'))} | {_cell(a.get('note'))} |")
         _write(INCOME_LOG, _touch(text))
@@ -819,7 +822,7 @@ def goals():
         if len(cells) < 5:
             continue
         name, cur, target, unit, due = cells[:5]
-        c, t = _num(cur, None), _num(target, None)
+        c, t = _num_or_none(cur), _num_or_none(target)
         pct = round(min(c / t, 1) * 100) if c is not None and t else None
         out.append({"name": name, "current": cur, "target": target, "unit": unit, "due": due, "pct": pct,
                     "private": f"| {name} |" in private})
@@ -870,12 +873,22 @@ def todos():
 
 
 # ---------- 其余功能在 twin_ai_parts/ 里，一个功能一个文件 ----------
-# 按顺序放进本模块的命名空间执行：和写在这个文件里一样，外面照旧用 twin_ai.xxx
-def _load_parts():
-    d = Path(__file__).resolve().parent / "twin_ai_parts"
-    for n in ("jobs", "boards", "reports", "news", "day", "home"):
-        f = d / f"{n}.py"
-        exec(compile(f.read_text(encoding="utf-8"), str(f), "exec"), globals())
-
-
-_load_parts()
+# 放在末尾 import：各部分要用上面定义的核心函数。这里导入核心自己用到的、和外面通过 twin_ai.xxx 用到的名字。
+from twin_ai_parts.jobs import (
+    _num_or_none, ai_opinion as ai_opinion, local_score as local_score, parse_json_block as parse_json_block, save_job_decision as save_job_decision)
+from twin_ai_parts.boards import (
+    _find_board, _find_task, _iso, _sub_hit, add_profile, add_task, board, boards, create_board, del_board_link, delete_task, DONE,
+    due_reviews as due_reviews, ensure_loose, frontmatter as frontmatter, home as home, idea_add, idea_remove, ideas, LOOSE, LOOSE_NAME, LOOSE_REL,
+    merge_tasks, move_task, profile_text, project_parents as project_parents, rename_task, set_board_due, set_board_link, set_board_name,
+    set_board_priority, set_board_status, set_subtasks, set_task, set_task_due, set_task_priority, set_task_review, TODO)
+from twin_ai_parts.reports import (
+    _set_fm, chat_title as chat_title, close_decision, ensure_weekly as ensure_weekly, latest_weekly as latest_weekly, make_brief as make_brief,
+    make_suggest as make_suggest, make_weekly as make_weekly, mark_suggest as mark_suggest, review_decision as review_decision,
+    upgrade_apply as upgrade_apply, upgrade_payload as upgrade_payload, upgrade_run as upgrade_run)
+from twin_ai_parts.news import make_news as make_news, news_star as news_star, news_starred as news_starred, news_today as news_today
+from twin_ai_parts.day import (
+    geocode as geocode, profile as profile, rhythm as rhythm, rules_text, save_profile as save_profile, weather as weather,
+    weather_tips as weather_tips)
+from twin_ai_parts.home import (
+    _icon_host as _icon_host, draw_icon as draw_icon, edit_home_links as edit_home_links, find_icon as find_icon, home_links as home_links,
+    icon_file as icon_file, save_icon as save_icon)

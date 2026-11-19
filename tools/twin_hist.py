@@ -212,8 +212,9 @@ def install():
         capture(self)
         return ul(self, *a, **k)
 
-    Path.write_text, Path.write_bytes, Path.open, Path.unlink = write_text, write_bytes, open_, unlink
-    Path._twin_hist = True
+    # 故意替换 Path 的写方法：所有写文件都经过改动历史
+    Path.write_text, Path.write_bytes, Path.open, Path.unlink = write_text, write_bytes, open_, unlink  # pyright: ignore[reportAttributeAccessIssue]
+    Path._twin_hist = True  # pyright: ignore[reportAttributeAccessIssue]
 
 
 def _entries():

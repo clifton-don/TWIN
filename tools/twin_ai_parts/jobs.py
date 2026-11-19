@@ -1,15 +1,19 @@
 # twin_ai 的一部分：接单评估：本地规则打分 + AI 第二意见。
-# 不单独 import：twin_ai.py 末尾把这个文件放进它自己的命名空间里执行，和写在 twin_ai.py 里完全一样，
-# 直接用那里的函数和变量（ROOT、_write、call_model……），外面照旧用 twin_ai.xxx。
-# flake8: noqa
+# 由 twin_ai.py 末尾 import；外面照旧用 twin_ai.xxx。要先 import twin_ai（twin_ai_parts/__init__.py 会保证）。
+
+import datetime as dt
+import json
+import re
+from twin import ROOT
+from twin_ai import active_provider, call_model, check_outgoing, DECISIONS, ensure_rule_files, RULES_FILE, system_prompt, today, todos
 
 # ---------- 接单评估：本地规则打分 ----------
 def decision_rules():
     ensure_rule_files()
     m = re.search(r"```json\s*(\{.*?\})\s*```", RULES_FILE.read_text(encoding="utf-8"), re.S)
     try:
-        return json.loads(m.group(1))
-    except (AttributeError, ValueError):
+        return json.loads(m.group(1) if m else "")
+    except ValueError:
         raise RuntimeError("_RULES/Decision_Rules.md 里的 json 格式有误，请检查。") from None
 
 
@@ -24,6 +28,14 @@ def _num(v, default=0.0):
     except (TypeError, ValueError):
         return default
 
+
+
+def _num_or_none(v):
+    """能转成数字就转，转不了返回 None。"""
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return None
 
 def local_score(job):
     r = decision_rules()
