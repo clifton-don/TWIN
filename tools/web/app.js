@@ -188,7 +188,7 @@ document.addEventListener('click', e => { const btn = e.target.closest('.modeBtn
 darkMq.addEventListener('change', drawModeBtns); drawModeBtns();
 
 // ---------------- 路由 ----------------
-function setTitle(t) { $('#topTitle').textContent = t; document.title = t === 'TWIN' ? 'TWIN' : `${t} · TWIN`; }
+function setTitle(t) { $('#topTitle').textContent = t; $('#topTitle').classList.toggle('brandt', t === 'TWIN'); document.title = t === 'TWIN' ? 'TWIN' : `${t} · TWIN`; }
 function closeNav() { document.body.classList.remove('nav-open'); }
 $('#menuBtn').onclick = () => document.body.classList.add('nav-open');
 $('#scrim').onclick = closeNav;

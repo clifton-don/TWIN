@@ -81,6 +81,18 @@ if (-not $created) {
     exit 0
 }
 
+# ---------- 上次没退干净的 TWIN：先停掉 ----------
+# 托盘已经不在了、后台却还有 twin_web.py 占着这个端口（旧版本），不停掉的话网页会时不时连到旧的那个
+$WebPy = Join-Path $PSScriptRoot 'twin_web.py'
+Get-CimInstance Win32_Process -Filter "Name='python.exe' or Name='pythonw.exe'" -ErrorAction SilentlyContinue | ForEach-Object {
+    $c = [string]$_.CommandLine
+    $i = $c.IndexOf($WebPy, [StringComparison]::OrdinalIgnoreCase)
+    if ($i -lt 0) { return }
+    $m = [regex]::Match($c.Substring($i + $WebPy.Length), '(?<![\w.-])(\d{2,5})(?![\w.-])')
+    $p = if ($m.Success) { [int]$m.Groups[1].Value } else { 8765 }
+    if ($p -eq $Port) { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }
+}
+
 # ---------- TWIN.exe：没有或源码、图标更新了就重新编译 ----------
 $Exe = Join-Path $Root 'TWIN.exe'
 $Cs = Join-Path $PSScriptRoot 'launcher\TWIN.cs'

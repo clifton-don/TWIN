@@ -67,3 +67,37 @@ def test_mac_launcher_shipped():
     assert "Open_Web.command" in twin.BLANK_FILES
     text = (ROOT / "Open_Web.command").read_text(encoding="utf-8")
     assert text.startswith("#!/bin/bash") and "\r\n" not in text
+
+
+def test_web_server_owns_port_alone():
+    """旧的 TWIN 还占着端口时，新的不能也绑上去（否则网页会时而连到旧版本）。"""
+    from http.server import BaseHTTPRequestHandler
+
+    import twin_web
+    a = twin_web.Server(("127.0.0.1", 0), BaseHTTPRequestHandler)
+    try:
+        port = a.server_address[1]
+        try:
+            b = twin_web.Server(("127.0.0.1", port), BaseHTTPRequestHandler)
+        except OSError:
+            return
+        b.server_close()
+        raise AssertionError("同一个端口绑上了两个 TWIN")
+    finally:
+        a.server_close()
+
+
+def test_logo_files_for_web():
+    """登录页有 logo；手机主屏图标是 PNG；网页图标是新 logo（不是旧的黑底 T）。"""
+    import twin_web
+    assert "/icon.svg" in twin_web.gate_page("login") and "/icon.svg" in twin_web.gate_page("setup")
+    assert (TOOLS / "web" / "apple-touch-icon.png").read_bytes()[:8] == b"\x89PNG\r\n\x1a\n"
+    assert "#7f6fe0" in twin_web.ICON and "<text" not in twin_web.ICON
+    assert "apple-touch-icon.png" in (TOOLS / "web" / "index.html").read_text(encoding="utf-8")
+
+
+def test_launch_stops_leftover_server():
+    """托盘不在了、后台还剩的 twin_web.py，下次打开时先停掉。"""
+    s = (TOOLS / "launch.ps1").read_text(encoding="utf-8-sig")
+    assert "Stop-Process -Id $_.ProcessId" in s
+    assert s.index("Stop-Process -Id $_.ProcessId") < s.index("Start-Process -FilePath $PyCmd")

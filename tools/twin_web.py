@@ -21,6 +21,7 @@ import os
 import re
 import secrets
 import shutil
+import socket
 import subprocess
 import sys
 import contextlib
@@ -294,6 +295,8 @@ class Handler(BaseHTTPRequestHandler):
             return self.send(200, MANIFEST, "application/manifest+json")
         if u.path == "/icon.svg":
             return self.send(200, ICON.encode(), "image/svg+xml")
+        if u.path == "/apple-touch-icon.png":  # 手机“添加到主屏幕”用的图标（iPhone 不认 SVG）
+            return self.send(200, (WEB / "apple-touch-icon.png").read_bytes(), "image/png")
         if not self.logged_in():
             return self.send(401, {"error": "已锁定，请重新输入密码"})
         if u.path == "/api/tree":
@@ -729,10 +732,13 @@ button,input,select,textarea{font:inherit;color:inherit}
 """
 
 GATE = r"""<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>TWIN</title><link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>TWIN</title><link rel="icon" href="/icon.svg?v=2" type="image/svg+xml">
 <script>try{var m=localStorage.getItem('twin.mode');if(m==='dark'||m==='light')document.documentElement.dataset.mode=m}catch(e){}</script>
 <style>__STYLE__
 body{display:grid;place-items:center;min-height:100vh;padding:16px}
+.wrap{width:100%;max-width:360px}
+.brand{display:flex;align-items:center;justify-content:center;gap:10px;margin:0 0 18px;font-size:20px;font-weight:700;letter-spacing:.04em}
+.brand img{width:44px;height:44px;flex:none}
 .card{width:100%;max-width:360px;background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:32px 28px 24px}
 h1{font-size:22px;line-height:1.3;margin:0 0 6px}
 p{margin:0 0 22px;color:var(--ink-2);font-size:14px}
@@ -744,12 +750,13 @@ button:disabled{opacity:.6}
 .err{color:var(--p0);font-size:13px;min-height:20px;margin-top:10px}
 .foot{margin-top:18px;font-size:12px;color:var(--ink-3);line-height:1.6}
 </style></head><body>
+<div class="wrap"><div class="brand"><img src="/icon.svg?v=2" alt="" width="44" height="44">TWIN</div>
 <form class="card" id="f" autocomplete="off">
 <h1>__TITLE__</h1><p>__HINT__</p>
 <label for="pw">密码</label><input id="pw" type="password" autofocus required>
 __CONFIRM__
 <button id="btn">__BTN__</button><div class="err" id="err"></div>
-<div class="foot">__FOOT__</div></form>
+<div class="foot">__FOOT__</div></form></div>
 <script>
 const mode='__MODE__';
 document.getElementById('f').onsubmit=async e=>{e.preventDefault();
@@ -769,7 +776,7 @@ def gate_page(mode):
                  "__BTN__": "设置并进入",
                  "__FOOT__": "至少 8 位。密码只保存加盐哈希，不保存原文。忘记了就删掉 tools\\.auth.json 重新设置。"}
     else:
-        parts = {"__TITLE__": "TWIN 已锁定", "__HINT__": "输入密码继续。", "__CONFIRM__": "",
+        parts = {"__TITLE__": "已锁定", "__HINT__": "输入密码继续。", "__CONFIRM__": "",
                  "__BTN__": "解锁", "__FOOT__": "连续输错 5 次会锁定 1 分钟。"}
     html = GATE.replace("__STYLE__", STYLE).replace("__MODE__", mode)
     for k, v in parts.items():
@@ -784,7 +791,8 @@ STATIC = {**{f"{n}.js": "application/javascript; charset=utf-8" for n in ("i18n"
           "app.css": "text/css; charset=utf-8"}
 MANIFEST = {"name": "TWIN", "short_name": "TWIN", "start_url": "/", "display": "standalone",
             "background_color": "#ffffff", "theme_color": "#ffffff",
-            "icons": [{"src": "/icon.svg", "sizes": "any", "type": "image/svg+xml"}]}
+            "icons": [{"src": "/icon.svg?v=2", "sizes": "any", "type": "image/svg+xml"},
+                      {"src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png"}]}
 # logo：原件与副本，两张错开叠放的卡片，中间一个 T（和 docs/logo.svg 一样；托盘和 TWIN.exe 用的 tools/web/logo.ico
 # 由 make_logo.ps1 + make_ico.py 生成）
 ICON = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><clipPath id="f">'
@@ -902,6 +910,18 @@ def tailscale_ip():
     return ""
 
 
+class Server(ThreadingHTTPServer):
+    """不和别人共用端口。Windows 上默认的 reuse 选项会让第二个 TWIN 也绑上同一个端口，
+    网页时而连到旧进程（比如看到旧 logo）；改成独占，被占用就直接报错。"""
+    allow_reuse_address = os.name != "nt"
+
+    def server_bind(self):
+        excl = getattr(socket, "SO_EXCLUSIVEADDRUSE", None)
+        if excl is not None:
+            self.socket.setsockopt(socket.SOL_SOCKET, excl, 1)
+        super().server_bind()
+
+
 def main():
     nums = [a for a in sys.argv[1:] if a.isdigit()]
     port = int(nums[0]) if nums else 8765
@@ -912,7 +932,11 @@ def main():
     except OSError:
         pass
     threading.Thread(target=scan_loop, daemon=True).start()  # 每 2 分钟看一次有没有在别处改过的文件
-    server = ThreadingHTTPServer(("127.0.0.1", port), Handler)
+    try:
+        server = Server(("127.0.0.1", port), Handler)
+    except OSError:
+        sys.exit(f"端口 {port} 已经被占用：可能有一个 TWIN 还在后台运行。\n"
+                 "右下角托盘图标右键“退出 TWIN”，再重新打开；还不行就重启电脑。")
     url = f"http://127.0.0.1:{port}"
     print(f"TWIN 网页版已启动：{url}\n停止：右下角托盘图标右键“退出 TWIN”；在命令行里直接运行的，按 Ctrl+C 或关掉窗口。")
     if "--phone" in sys.argv:
@@ -923,7 +947,7 @@ def main():
             # 只监听 Tailscale 网卡：同一 Wi-Fi 的其他设备、公网都连不上，只有登录你账号的设备能连
             ALLOWED_HOSTS.add(ip)
             PHONE["on"] = True
-            phone = ThreadingHTTPServer((ip, port), Handler)
+            phone = Server((ip, port), Handler)
             threading.Thread(target=phone.serve_forever, daemon=True).start()
             print(f"\n手机访问已打开：手机上打开 Tailscale，再用浏览器访问 http://{ip}:{port}")
     if "--no-browser" not in sys.argv:
