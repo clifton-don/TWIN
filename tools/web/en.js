@@ -185,7 +185,7 @@ window.I18N_EN = {
   '称呼': 'Name', '补充或修改': 'Add or edit', '比如：小明': 'e.g. Alex', '保持现在的': 'Keep current', '你在哪个城市': 'Which city are you in',
   '输入城市，回车搜索': 'Type a city, press Enter to search', '现在：': 'Current: ', '作息大概是什么样': 'What does your day look like',
   '接一个 AI': 'Connect an AI', '先写一个称呼': 'Enter a name first', '保存并继续': 'Save and continue', '好了，以后在设置里能改': 'Done. You can change it later in Settings',
-  '可以现在去设置里接，也可以以后再说。': 'Set it up in Settings now, or later.', '以后再说': 'Later', 'TWIN 说明': 'TWIN docs', '程序自带': 'built in', '去设置': 'Go to settings',
+  '可以现在去设置里接，也可以以后再说。': 'Set it up in Settings now, or later.', '以后再说': 'Later', '依据': 'Sources', '开机自动启动': 'Start on login', '已关掉开机自动启动': 'Start on login turned off', '项目时间线': 'Project timeline', '从文件和 git 记录自动整理 · 只在本机': 'Built from files and git history · on this computer only', '重新整理': 'Rebuild', '整理中…': 'Building…', 'TWIN 说明': 'TWIN docs', '程序自带': 'built in', '去设置': 'Go to settings',
   '默认用这家': 'Use as default', '设为默认': 'Set as default', '删除这家': 'Remove provider', '接口类型': 'API type', '接口地址': 'API URL',
   '模型': 'Model', '没填模型': 'No model', '还没填 key': 'No key yet', 'key 已填': 'Key set', '展开修改': 'Edit', 'OpenAI 兼容': 'OpenAI compatible',
   '例如 deepseek-chat': 'e.g. deepseek-chat', '连通了：': 'Connected: ', 'API key 存在哪': 'Where the API key is stored',

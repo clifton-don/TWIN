@@ -136,6 +136,11 @@ async function drawHello() {
   } catch (e) { /* 首页摘要拿不到不影响对话 */ }
 }
 
+// 回答下面列出这次的依据：关联项目，加上按相关度挑中、真的发给 AI 的资料；点一下打开原文，核对它说的有没有根据
+function srcName(p) { const parts = p.replace(/\.md$/, '').split('/'), last = parts.at(-1);
+  return last === 'board' || last === 'index' ? `${parts.at(-2)} · ${last === 'board' ? '任务' : '说明'}` : last; }
+function srcHtml(list) { if (!list || !list.length) return '';
+  return `<div class="srcs"><span class="lbl">依据</span>${list.map(p => `<a href="${p.endsWith('/board.md') ? bLink(p) : libLink(p)}" title="${esc(p)}">${esc(srcName(p))}</a>`).join('')}</div>`; }
 function drawMsgs() {
   const box = $('#mlist'); if (!box) return;
   const cw = $('.chatwrap'); if (cw) cw.classList.toggle('has-msgs', chat.messages.length > 0);
@@ -143,6 +148,7 @@ function drawMsgs() {
   box.innerHTML = chat.messages.map((m, i) => m.role === 'user' ? `<div class="m-user">${userHtml(m.content)}</div>` : `
     <div class="m-ai ${m.streaming ? 'live' : ''}"><div class="body"><div class="who">${esc(m.who || 'AI')}</div>
       ${m.pending ? '<div class="thinking"><i></i><i></i><i></i></div>' : m.streaming ? `<div class="md">${render(m.content, true)}<span class="caretblink"></span></div>` : `<div class="md">${render(m.content, true)}</div>
+      ${srcHtml(m.sources)}
       ${(m.actions || []).length ? `<div class="cards">${previewHtml(m, i)}${m.actions.map((a, j) => FORM_ACTIONS.has(a.type) ? actionCard(a, i, j) : '').join('')}</div>` : ''}
       <div class="acts"><button type="button" data-copy="${i}">复制</button>
         ${m.rated ? `<span class="done">已记录：${esc(m.rated)}</span>` : `<button type="button" data-rate="1" data-i="${i}">有用</button><button type="button" data-rate="0" data-i="${i}">没用</button>`}
@@ -223,7 +229,7 @@ async function ask(pid, who, restore) {
       }
     }
     if (!fin) throw new Error('AI 的回答中断了，点“重新回答”再试一次');
-    chat.messages[last] = { role: 'assistant', content: fin.answer, actions: fin.actions || [], who };
+    chat.messages[last] = { role: 'assistant', content: fin.answer, actions: fin.actions || [], who, ...(fin.sources && fin.sources.length ? { sources: fin.sources } : {}) };
     await saveChat();
   } catch (e) {
     chat.messages.splice(-2, 2); toast(e.message, 8000);

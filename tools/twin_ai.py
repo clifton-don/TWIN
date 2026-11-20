@@ -439,7 +439,14 @@ DETAIL_INDEX = None
 
 
 def detail_context(messages):
-    """任务板块全部带上；其余文件用本地相关度（BM25）挑和最近几句话最相关的，总量有上限。"""
+    """发给 AI 的项目细节资料（只要文本）。"""
+    text, _ = detail_context_with_sources(messages)
+    return text
+
+
+def detail_context_with_sources(messages):
+    """任务板块全部带上；其余文件用本地相关度（BM25）挑和最近几句话最相关的，总量有上限。
+    返回 (发给 AI 的文本, 按相关度挑中并真的发出去的文件)：后者就是这次回答的依据，网页上列在回答下面。"""
     global DETAIL_INDEX
     from twin_search import Index, tokens
     recent = " ".join(m.get("content", "") for m in messages[-6:] if m.get("role") == "user")
@@ -456,7 +463,7 @@ def detail_context(messages):
         top = scored[0][0] if scored else 0
         # 只要明显相关的：分数够高，且不低于最相关那篇的三分之一
         rest = [r for sc, r in scored if sc >= 2.0 and sc >= top / 3][:8]
-    out, used = [], 0
+    out, used, sent = [], 0, set()
     for rel in always + rest:
         if used >= DETAIL_BUDGET:
             break
@@ -464,7 +471,8 @@ def detail_context(messages):
         body = body[:FILE_CAP] + ("\n…（后面省略）" if len(body) > FILE_CAP else "")
         out.append(f"\n\n<!-- 文件：{rel} -->\n{body}")
         used += len(body)
-    return "".join(out)
+        sent.add(rel)
+    return "".join(out), [r for r in rest if r in sent]
 
 
 # ---------- 对话关联项目：手动选，或者在本地按对话内容自动匹配（不问 AI）----------
@@ -544,12 +552,15 @@ def resolve_project(messages, project):
         return "", True
 
 
-def _prepare(messages, project="", auto=False):
+def _prepare(messages, project="", auto=False, sources=None):
+    """sources：传一个列表进来，会填上这次回答的依据：关联项目的板块排第一，再是按相关度挑中、发给 AI 的资料。"""
     for m in messages:
         if m.get("role") == "user":
             check_outgoing(m.get("content", ""))
     msgs = [{"role": m["role"], "content": m.get("content", "")} for m in messages[-30:] if m.get("role") in ("user", "assistant")]
-    detail = detail_context(messages)
+    detail, picked = detail_context_with_sources(messages)
+    if sources is not None:
+        sources[:] = ([project] if project else []) + [r for r in picked if r != project]
     import twin_org
     sys_ = system_prompt() + ("\n\n=== 项目细节资料（任务板块全部，加上和这次对话相关的文档；私密内容已移除）===" + detail if detail else "")
     sys_ += twin_org.context(messages)
@@ -560,22 +571,24 @@ def _prepare(messages, project="", auto=False):
 
 def ask(messages, provider_id=None, project=""):
     rel, auto = resolve_project(messages, project)
-    sys_, msgs = _prepare(messages, rel, auto)
+    sources = []
+    sys_, msgs = _prepare(messages, rel, auto, sources)
     answer, actions = split_actions(call_model(sys_, msgs, active_provider(provider_id)))
-    return {"answer": answer, "actions": actions, "project": rel, "auto": auto}
+    return {"answer": answer, "actions": actions, "project": rel, "auto": auto, "sources": sources}
 
 
 def ask_stream(messages, provider_id=None, project=""):
     """逐字返回：先告诉网页关联了哪个项目，再一段段给文字，最后给整理好的 {answer, actions}。"""
     rel, auto = resolve_project(messages, project)
     yield {"project": rel, "auto": auto}
-    sys_, msgs = _prepare(messages, rel, auto)
+    sources = []
+    sys_, msgs = _prepare(messages, rel, auto, sources)
     full = ""
     for piece in call_model_stream(sys_, msgs, active_provider(provider_id)):
         full += piece
         yield {"delta": piece}
     answer, actions = split_actions(full)
-    yield {"done": True, "answer": answer, "actions": actions}
+    yield {"done": True, "answer": answer, "actions": actions, "sources": sources}
 
 
 # ---------- 对话里提出的写入动作（用户确认后才执行）----------

@@ -173,7 +173,9 @@ async function viewTodo(path) {
     ${!L && b.total && b.done === b.total && (b.status || 'active') === 'active' ? `<p class="note">任务都做完了，项目结束了吗？<button type="button" class="btn sm" id="pDone">标成已完成</button></p>` : ''}
     ${open.length ? `<ul class="list tdl">${open.map(row).join('')}</ul>` : ''}
     ${b.has_table ? addRow('addTask', L ? '加一条零散待办，回车保存' : '加一个任务，回车保存') : '<p class="note">这个文件还没有任务表。</p>'}
-    ${done.length ? `<div class="tgd"><button class="linkbtn" id="tgDone">${bShowDone ? '收起已完成' : `已完成 ${done.length}`}</button></div>${bShowDone ? `<ul class="list tdl">${done.map(row).join('')}</ul>` : ''}` : ''}`);
+    ${done.length ? `<div class="tgd"><button class="linkbtn" id="tgDone">${bShowDone ? '收起已完成' : `已完成 ${done.length}`}</button></div>${bShowDone ? `<ul class="list tdl">${done.map(row).join('')}</ul>` : ''}` : ''}
+    ${L ? '' : timelineBox(b.path)}`);
+  bindTimeline(main);
   bindTasks(main, T, boards, reload);
   bindAdd(main, 'addTask', a => act({ type: 'add_task', ...a }));
   bindSubs(main, T, act, reload);
@@ -287,4 +289,30 @@ async function upgradeFlow() {
     const ok = mm.querySelector('#mok'); if (ok) ok.onclick = async () => { const pick = k => [...mm.querySelectorAll(`[data-${k}]`)].filter(x => x.checked).map(x => +x.dataset[k]);
       try { const j = await api('/api/upgrade/apply', { lessons: pick('l').map(i => L[i].text), changes: pick('c').map(i => C[i]), removes: pick('r').map(i => R[i]), summary: r.summary || '' });
         closeModal(); toast(`已升级：新增 ${j.lessons} 条经验${j.rules.length ? '，规则：' + j.rules.join('、') : ''}`, 6000); viewTodo(null); } catch (e) { toast(e.message, 7000); } }; };
+}
+
+// ---------------- 项目时间线：不用手写，从项目文件夹的文件修改时间和 git 记录整理出来；只在本机算，不发给 AI ----------------
+function timelineBox(path) {
+  return `<details class="tline" data-tl="${esc(path)}" ${pref('tlOpen', '') === '1' ? 'open' : ''}><summary>${lu('history', 15)}<b>项目时间线</b><small>从文件和 git 记录自动整理 · 只在本机</small></summary><div class="tlb note">展开后整理…</div></details>`;
+}
+function bindTimeline(root) {
+  root.querySelectorAll('details.tline').forEach(d => {
+    const load = async fresh => { const b = d.querySelector('.tlb'); b.className = 'tlb note'; b.textContent = '整理中…';
+      try { drawTimeline(b, await api('/api/project/timeline?path=' + encodeURIComponent(d.dataset.tl) + (fresh ? '&fresh=1' : '')), () => load(true)); }
+      catch (e) { b.textContent = e.message; } };
+    d.ontoggle = () => { setPref('tlOpen', d.open ? '1' : ''); if (d.open && !d.dataset.loaded) { d.dataset.loaded = '1'; load(); } };
+    if (d.open) { d.dataset.loaded = '1'; load(); } });
+}
+function drawTimeline(el, t, refresh) {
+  if (!t.files && !t.commits) { el.textContent = '这个项目文件夹里还没有别的文件（代码、图纸、文档放进来就会自动整理）。'; return; }
+  const max = Math.max(1, ...t.months.map(m => m.files));
+  const kinds = m => m.files ? `${m.files} 个文件改过${m.kinds.length ? '：' + m.kinds.map(([k, n]) => `${esc(k)} ${n}`).join('、') : ''}` : '没有文件改动';
+  el.className = 'tlb';
+  el.innerHTML = `<p class="tlsum">${esc(t.start)} 开始，最近一次 ${esc(t.last)} · ${t.files} 个文件${t.commits ? ` · ${t.commits} 次提交` : ''}${t.truncated ? ' · 文件太多，只看了前 20000 个' : ''}<button type="button" class="linkbtn" data-tlr>重新整理</button></p>
+    ${t.versions.length ? `<div class="tlv">${t.versions.map(v => `<span><b>${esc(v.name)}</b><small>${esc(v.from)} 到 ${esc(v.to)} · ${v.files} 个文件</small></span>`).join('')}</div>` : ''}
+    <ol class="tll">${t.months.slice().reverse().map(m => `<li><span class="tlm">${esc(m.month)}</span><div class="tlc">
+      <div class="tlbar"><i style="width:${Math.max(3, Math.round(m.files / max * 100))}%"></i></div><small>${kinds(m)}</small>
+      ${m.commits.length ? `<ul class="tlg">${m.commits.map(c => `<li><time>${esc(c.date.slice(5))}</time>${esc(c.msg)}</li>`).join('')}${m.more ? `<li class="note">还有 ${m.more} 条提交</li>` : ''}</ul>` : ''}</div></li>`).join('')}</ol>
+    <p class="note">文件时间是最后修改的时间：整个文件夹拷贝过的话可能都挤在同一天，git 记录不受影响。</p>`;
+  el.querySelector('[data-tlr]').onclick = refresh;
 }

@@ -34,3 +34,27 @@ def fake_root(tmp_path, monkeypatch):
         return p
 
     return write
+
+
+# 防线：测试绝不能动真实资料。整轮测试前后比一下真实资料文件夹的修改时间，动过就直接报错。
+# （有的模块在导入时就把 ROOT 下的路径算好了，换 twin.ROOT 管不到它们，所以要有这道兜底。）
+_REAL = TOOLS.parent
+_GUARDED = ["00_Crown", "01_Skills", "02_Life", "03_Projects", "04_Milestones", "05_Network", "06_Assets", "07_Decisions", "_INBOX"]
+
+
+def _stamp():
+    out = {}
+    for name in _GUARDED:
+        d = _REAL / name
+        if d.is_dir():
+            out[name] = (d.stat().st_mtime_ns, sorted((p.name, p.stat().st_mtime_ns) for p in d.iterdir()))
+    return out
+
+
+@pytest.fixture(autouse=True, scope="session")
+def _real_data_untouched():
+    before = _stamp()
+    yield
+    after = _stamp()
+    changed = [k for k in set(before) | set(after) if before.get(k) != after.get(k)]
+    assert not changed, f"测试改动了真实资料：{changed}（检查是不是有模块用了导入时定死的 ROOT 路径）"

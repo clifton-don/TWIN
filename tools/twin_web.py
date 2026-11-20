@@ -45,6 +45,8 @@ import twin_health  # noqa: E402
 import twin_hist  # noqa: E402
 import twin_inbox  # noqa: E402
 import twin_update  # noqa: E402
+import twin_autostart  # noqa: E402
+import twin_timeline  # noqa: E402
 import twin_plugins  # noqa: E402
 import twin_cards  # noqa: E402
 from twin_search import INDEX  # noqa: E402
@@ -349,6 +351,13 @@ class Handler(BaseHTTPRequestHandler):
             return self.send(200, twin_ai.rhythm())
         if u.path == "/api/version":
             return self.send(200, {"version": VERSION})
+        if u.path == "/api/autostart":
+            return self.send(200, twin_autostart.status())
+        if u.path == "/api/project/timeline":  # 项目时间线：只在本机按文件和 git 记录算，不发给 AI
+            try:
+                return self.send(200, twin_timeline.timeline(qs.get("path", [""])[0], fresh=bool(qs.get("fresh"))))
+            except (RuntimeError, ValueError) as e:
+                return self.send(400, {"error": str(e)})
         if u.path == "/api/ideas":
             return self.send(200, twin_ai.ideas())
         if u.path == "/api/project/parents":
@@ -676,6 +685,8 @@ class Handler(BaseHTTPRequestHandler):
             return 200, twin_cards.import_assets()
         if path == "/api/inbox/suggest":
             return 200, twin_inbox.suggest(body.get("name", ""), body.get("note", ""), pid)
+        if path == "/api/autostart":  # 开机自动启动：写的是当前用户的登录启动项，不是资料，不进改动历史
+            return 200, twin_autostart.set_on(bool(body.get("on")))
         if path == "/api/plugins":
             return 200, twin_plugins.set_enabled(body.get("id", ""), bool(body.get("on")))
         if path == "/api/plugins/remove":
@@ -895,6 +906,7 @@ def main():
     nums = [a for a in sys.argv[1:] if a.isdigit()]
     port = int(nums[0]) if nums else 8765
     twin_hist.install()
+    twin_autostart.refresh_copy()
     try:
         twin_hist.prune()
     except OSError:

@@ -512,7 +512,8 @@ def project_parents():
             out.append(dp.relative_to(ROOT).as_posix())
         if len(dp.relative_to(base).parts) >= 2:
             dirs[:] = []
-    return [x for x in out if not {"board.md", "index.md"} & set(os.listdir(ROOT / x))]  # 按名字比，Windows 不分大小写会把 INDEX.md 当成项目
+    # 按名字比，Windows 不分大小写会把 INDEX.md 当成项目；新装的 TWIN 还没有 03_Projects，建项目时会顺手建
+    return [x for x in out if not (ROOT / x).is_dir() or not {"board.md", "index.md"} & set(os.listdir(ROOT / x))]
 
 
 def set_board_priority(rel, pr):
@@ -670,6 +671,10 @@ def _board_link(rel):
 
 def _dash_row(rel, add, pri="", name="", due=""):
     """总览“板块”表：项目暂停、完成时拿掉这一行，重新开始时加回来。"""
+    if not DASHBOARD.exists():  # 新装的 TWIN 还没有总览：要加行就先建（和 ensure_loose 一样），要删行就没什么可删
+        if not add:
+            return
+        _write(DASHBOARD, DASHBOARD_MD.format(today=today()))
     text = DASHBOARD.read_text(encoding="utf-8")
     link, lines = _board_link(rel), text.splitlines()
     hit = [i for i, l in enumerate(lines) if l.startswith("|") and l.count("|") == 5 and link in l]
@@ -745,11 +750,17 @@ privacy: internal
 """
 
 
+def parent_ok(parent):
+    """新建项目能不能放在这里。03_Projects 本身总是可以（新装的 TWIN 还没有这个文件夹，建项目时会一起建）。"""
+    import twin_inbox
+    return parent == "03_Projects" or (parent in twin_inbox.targets() and parent.startswith(BOARD_DIRS))
+
+
 def create_board(parent, folder, name, priority="P2", due="", goal="", why="", tasks=()):
     """新建项目：parent/folder/board.md。放在 03_Projects 里时一起建 index.md 和 01_code / 02_docs / 03_materials。"""
     import twin_inbox
     parent = str(parent or "").strip().strip("/")
-    if parent not in twin_inbox.targets() or not parent.startswith(BOARD_DIRS):
+    if not parent_ok(parent):
         raise RuntimeError(f"“{parent or '空'}”不是可以放项目的目录。")
     folder = re.sub(r'[\\/:*?"<>|\s]+', "_", str(folder or name).strip()).strip("._")[:80]
     name = _cell(name)

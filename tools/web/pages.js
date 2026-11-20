@@ -45,7 +45,10 @@ function drawTree() {
 function markTree() { document.querySelectorAll('#tnav .f').forEach(a => { const on = a.dataset.p === libCur; a.classList.toggle('on', on);
   if (on) { let d = a.parentElement; while (d && d.id !== 'tnav') { if (d.tagName === 'DETAILS') d.open = true; d = d.parentElement; } } }); }
 function drawDoc() {
-  $('#doc').innerHTML = reviewPanel() + render(libText) + '<div id="related"></div>';
+  // 项目的说明页（03_Projects/…/index.md）下面也放时间线：做完的项目没有任务板块，回看经历、写简历时在这里看
+  const isProj = /^03_Projects\/.+\/index\.md$/.test(libCur || '');
+  $('#doc').innerHTML = reviewPanel() + render(libText) + (isProj ? timelineBox(libCur) : '') + '<div id="related"></div>';
+  if (isProj) bindTimeline($('#doc'));
   const cur = libCur; api('/api/related?path=' + encodeURIComponent(cur)).then(r => { const el = $('#related'); if (!el || libCur !== cur || !r.length) return;
     el.innerHTML = `<div class="related"><div class="lbl">相关文档 · 本地按内容相似度找的</div>${r.map(x => `<a href="${libLink(x.path)}">${esc(x.title)}<small>${esc(x.path)}</small></a>`).join('')}</div>`; }).catch(() => {});
   document.querySelectorAll('#doc .chk').forEach(el => { el.onclick = () => toggleChk(+el.dataset.i); el.onkeydown = e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggleChk(+el.dataset.i); } }; });
@@ -278,6 +281,7 @@ function drawSettings() { const tab = STABS.some(t => t[0] === pref('setTab', ''
   const body = {
     gen: `${srow('个人画像', '称呼、身份、技能、方向、作息、天气地点，存在 <code>00_Crown/Profile.md</code>', '<button class="btn sm" id="wzBtn">补充或修改</button>')}
       ${srow('界面语言', '', `<div class="mseg" id="langSeg" translate="no">${[['zh', '中文'], ['en', 'English']].map(([k, n]) => `<button type="button" data-l="${k}" class="${(pref('lang', 'zh') === 'en' ? 'en' : 'zh') === k ? 'on' : ''}" style="width:auto;padding:0 12px">${n}</button>`).join('')}</div>`)}
+      ${srow('开机自动启动', '<span id="asInfo">登录 Windows 后在后台打开 TWIN（不弹浏览器，右下角托盘有图标）。移动硬盘换了盘符也能找到，盘没插就什么都不做。</span>', '<button type="button" class="plsw" role="switch" aria-checked="false" id="asSw" aria-label="开机自动启动"><i></i></button>')}
       ${srow('版本', `<span id="upInfo">现在是 ${esc(upInfo.current || '')}</span>`, '<button class="btn sm" id="upChk">检查更新</button><button class="btn sm" id="upLocal" title="选一个别人发给你的 TWIN 空白版 zip，不用联网">用升级包</button><input type="file" id="upFile" accept=".zip" hidden><button class="btn sm primary" id="upGo" hidden>升级</button>')}`,
     look: `<p class="sdesc">只对这台设备生效。</p>
       ${srow('模式', '', `<div class="mseg" id="modeSeg">${[['auto', '跟随系统', 'monitor'], ['light', '白天', 'sun'], ['dark', '夜间', 'moon']].map(([k, n, ic]) => `<button type="button" data-m="${k}" class="${pref('mode', 'auto') === k ? 'on' : ''}" data-tip="${n}" aria-label="${n}">${lu(ic, 17)}</button>`).join('')}</div>`)}
@@ -332,6 +336,13 @@ function drawSettings() { const tab = STABS.some(t => t[0] === pref('setTab', ''
   if (lm) lm.onchange = async () => { try { lockTimer(await api('/api/lock', { min: +lm.value })); toast(`${lm.selectedOptions[0].text}就自动锁定`); } catch (e) { toast(e.message); } };
   on('#scanBtn').onclick = run('scan'); on('#packBtn').onclick = run('pack');
   drawUp(); on('#upChk').onclick = () => checkUp(true).then(drawUp);
+  // 开机自动启动：开关先动，请求失败再弹回去；不支持（不是 Windows、还没有 TWIN.exe）就灰掉并说明原因
+  const asw = $('#asSw'); if (asw) { const show = st => { asw.setAttribute('aria-checked', !!st.on); asw.disabled = !st.supported;
+      if (!st.supported && st.why) $('#asInfo').textContent = st.why; };
+    api('/api/autostart').then(show).catch(() => {});
+    asw.onclick = async () => { const want = asw.getAttribute('aria-checked') !== 'true'; asw.setAttribute('aria-checked', want);
+      try { show(await api('/api/autostart', { on: want })); toast(want ? '好了，以后登录 Windows 就会在后台打开 TWIN' : '已关掉开机自动启动'); }
+      catch (e) { asw.setAttribute('aria-checked', !want); toast(e.message, 6000); } }; }
   const uf = $('#upFile'); if (uf) { on('#upLocal').onclick = () => uf.click();
     uf.onchange = async () => { const z = uf.files[0]; uf.value = ''; if (!z) return;
       if (!confirm(`用“${z.name}”升级？会先把现在的程序备份到 _export，资料、对话、密码都不动。`)) return;
