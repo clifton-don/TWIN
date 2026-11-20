@@ -7,13 +7,14 @@ const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(
 const coarse = matchMedia('(pointer:coarse)').matches;
 // 同一个 GET 还没回来时又要一次（比如首页几个小组件都要 /api/home），共用同一个请求
 const inflight = {};
-function api(u, b) { if (b) { for (const k in inflight) delete inflight[k]; return api1(u, b); } return inflight[u] ||= api1(u).finally(() => delete inflight[u]); }
-async function api1(u, b) {
+// opt.quiet：后台自动做的事（首页自动取要闻、今日建议）不弹“撤销”提示，用户没动手就不打扰
+function api(u, b, opt) { if (b) { for (const k in inflight) delete inflight[k]; return api1(u, b, opt); } return inflight[u] ||= api1(u).finally(() => delete inflight[u]); }
+async function api1(u, b, opt) {
   const r = await fetch(u, b ? { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Twin': '1' }, body: JSON.stringify(b) } : {});
   const j = await r.json().catch(() => ({}));
   if (r.status === 401 && !u.includes('password')) { location.reload(); throw new Error(j.error); }
   if (!r.ok) { const er = new Error(j.error || '出错了'); er.data = j; throw er; }
-  if (j.undo_id) { undoTip = { id: j.undo_id, t: Date.now() }; toast(j.undo_label || '已保存'); }
+  if (j.undo_id && !(opt && opt.quiet)) { undoTip = { id: j.undo_id, t: Date.now() }; toast(j.undo_label || '已保存'); }
   return j;
 }
 // 每次写文件后都可以撤销：提示条上带一个“撤销”按钮（几秒内有效，之后到“改动历史”里撤）

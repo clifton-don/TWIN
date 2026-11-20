@@ -12,6 +12,7 @@ import io
 import json
 import re
 import time
+import urllib.error
 import urllib.request
 import zipfile
 from pathlib import Path
@@ -54,10 +55,16 @@ def check(current, force=False):
                 d = {"latest": r.get("tag_name", "").lstrip("v"), "notes": (r.get("body") or "")[:2000],
                      "url": zips[0]["browser_download_url"] if zips else "", "page": r.get("html_url", "")}
                 break
-            except Exception as e:  # 网络不通、仓库没发版：换下一个
+            except urllib.error.HTTPError as e:
+                if e.code == 404:  # 仓库还没发过版本（或还没公开）：不是错，就是没有新版本
+                    d = {"latest": current, "notes": "", "url": "", "page": ""}
+                    break
+                err = str(e)
+            except Exception as e:  # 网络不通：换下一个
                 err = str(e)
         if not d:
-            return {"current": current, "enabled": True, "error": f"检查不到更新：{err[:120]}"}
+            # 不把原始报错丢给用户；细节留在返回里，网页鼠标停上去能看到
+            return {"current": current, "enabled": True, "error": "暂时连不上更新服务器（可能没联网），过一会儿再试。", "detail": err[:200]}
         CACHE.parent.mkdir(parents=True, exist_ok=True)
         CACHE.write_text(json.dumps(d, ensure_ascii=False), encoding="utf-8")
     return {"current": current, "enabled": True, **d, "newer": bool(d.get("url")) and _vt(d["latest"]) > _vt(current)}

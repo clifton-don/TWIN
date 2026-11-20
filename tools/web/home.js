@@ -47,7 +47,7 @@ const WIDGETS = {
       box.dataset.tip = [cur ? `现在：${cur.name} · ${cur.what}` : '', ...list.map(x => `· ${x.text}${due(x)}`)].filter(Boolean).join('\n'); } },
   sug: { name: '今日建议', desc: 'AI 给今天的几条建议，点开采纳', icon: 'lightbulb',
     load: async put => { await loadAi().catch(() => {}); const sg = (await api('/api/home')).suggest || null; put(sg);
-      if (!sg && aiCfg.providers.length && sugAuto() && onceToday('sug')) { await api('/api/suggest', {}).catch(() => {}); put((await api('/api/home')).suggest || null); } },
+      if (!sg && aiCfg.providers.length && sugAuto() && onceToday('sug')) { await api('/api/suggest', {}, { quiet: true }).catch(() => {}); put((await api('/api/home')).suggest || null); } },
     draw: (box, sg) => { const n = sugNew(sg);
       box.innerHTML = `<span class="hwt">今日建议</span>${n.length ? `<span class="hwbig">${n.length}<small>条待看</small></span><span class="hwn">点开采纳</span>`
         : `<span class="hwov">${sg ? '都看完了' : aiCfg.providers.length ? '还没生成' : '接入 AI 后才有'}</span><span class="hwn">${sg ? '明天再来' : aiCfg.providers.length ? '点开生成' : ''}</span>`}`;
@@ -56,7 +56,7 @@ const WIDGETS = {
   // 要闻：今天的一句话总结，每天第一次打开首页时自动取一次
   news: { name: '要闻', desc: '今天的要闻总结', icon: 'newspaper', href: '#news',
     load: async put => { await loadAi().catch(() => {}); const nw = await api('/api/news'), has = nw && nw.items; put(has ? nw : {});
-      if (!has && aiCfg.providers.length && onceToday('news')) { put({ msg: '正在取今天的要闻…' }); put(await api('/api/news', {}).catch(e => ({ msg: e.message }))); } },
+      if (!has && aiCfg.providers.length && onceToday('news')) { put({ msg: '正在取今天的要闻…' }); put(await api('/api/news', {}, { quiet: true }).catch(e => ({ msg: e.message }))); } },
     draw: (box, nw) => { const n = (nw.items || []).length;
       box.innerHTML = `<span class="hwt">要闻</span>${n ? `<span class="hwbig">${n}<small>条和你有关</small></span><span class="hwn">点开看总结</span>`
         : `<span class="hwov">${esc(nw.msg || (aiCfg.providers.length ? '今天还没取' : '接入 AI 后才有'))}</span>`}`;

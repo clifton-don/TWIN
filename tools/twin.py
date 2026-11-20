@@ -20,6 +20,8 @@ SKIP_DIRS = {"_VAULT", ".git", ".obsidian", "tools", "01data"}
 SKIP_SUBDIRS = {"diy_mk"}  # 项目库：内部文件不按 privacy 规则检查
 # 项目库的索引本身就是该树枝的总结，打包时一并带上
 PROJECT_INDEXES = ["03_Projects/diy_mk/INDEX.md"]
+# 程序自带的说明（跟着程序升级，不是你的资料）：体检不查，资料库里收进“TWIN 说明”
+PROGRAM_DOCS = {"README.md", "CHANGELOG.md", "Guide.md", "CLAUDE.md", "AGENTS.md"}
 SKIP_FILES = {"CLAUDE.md", "AGENTS.md", "README.md", "context_pack.md"}  # 仓库首页和给 AI 工具的说明，不按 privacy 规则查
 LEVELS = ("public", "internal", "private", "secret")
 

@@ -10,7 +10,7 @@ import re
 import time
 from pathlib import Path
 
-from twin import ROOT, SKIP_FILES, SKIP_SUBDIRS, find_sensitive, mask, privacy_of
+from twin import PROGRAM_DOCS, ROOT, SKIP_FILES, SKIP_SUBDIRS, find_sensitive, mask, privacy_of
 
 import twin_ai
 
@@ -116,7 +116,7 @@ def check(items, inbox_count=0, fresh=False):
     unwritten = []
     for it in items:
         rel = it["path"]
-        if rel.startswith(("_TEMPLATES/", "_INBOX/")) or rel in SKIP_FILES:
+        if rel.startswith(("_TEMPLATES/", "_INBOX/")) or rel in SKIP_FILES or rel in PROGRAM_DOCS:
             continue
         try:
             text = (ROOT / rel).read_text(encoding="utf-8", errors="ignore")

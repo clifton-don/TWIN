@@ -39,7 +39,7 @@ LOCK_CHOICES = (5, 15, 30, 60)  # 多久没操作就锁（分钟），最长 1 �
 GRACE = 30  # 服务器这边多等 30 秒：网页按真实的最后操作时间先锁，服务器只是兜底
 ITERATIONS = 240_000
 sys.path.insert(0, str(TOOLS))
-from twin import PROJECTS, SKIP_SUBDIRS, project_dirs, privacy_of, walk_md  # noqa: E402
+from twin import PROGRAM_DOCS, PROJECTS, SKIP_SUBDIRS, project_dirs, privacy_of, walk_md  # noqa: E402
 import twin_ai  # noqa: E402
 import twin_health  # noqa: E402
 import twin_hist  # noqa: E402
@@ -148,13 +148,16 @@ def tree(fresh=False):
         paths += [*d.glob("*.md"), *d.glob("[0-9][0-9]_docs/*.md")]
     for p in sorted(set(paths)):
         rel = p.relative_to(ROOT)
+        if rel.as_posix() in ("CLAUDE.md", "AGENTS.md"):  # 写给 AI 工具看的说明，资料库里不列
+            continue
         try:
             with open(p, encoding="utf-8", errors="ignore") as fh:
                 text = fh.read(3000)  # 标题和隐私级别都在开头，不用读全文
         except OSError:
             continue
         items.append({"path": rel.as_posix(), "title": title_of(text, p.stem),
-                      "privacy": privacy_of(text) or ("internal" if SKIP_SUBDIRS & set(rel.parts) else "secret")})
+                      "privacy": privacy_of(text) or ("internal" if SKIP_SUBDIRS & set(rel.parts) else "secret"),
+                      **({"doc": True} if rel.as_posix() in PROGRAM_DOCS else {})})
     TREE_CACHE.update(t=time.time(), items=items)
     return items
 

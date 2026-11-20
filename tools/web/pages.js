@@ -34,10 +34,12 @@ function drawTree() {
   const link = (f, name) => `<a class="f" href="${libLink(f.path)}" data-p="${esc(f.path)}" title="${esc(f.title)}"><i class="dot ${f.privacy}"></i><span>${esc(name)}</span></a>`;
   const keys = n => Object.keys(n).sort((a, b) => (b.endsWith('/') - a.endsWith('/')) || a.localeCompare(b));
   const draw = (n, pre) => keys(n).map(k => k.endsWith('/') ? `<details class="dir"><summary>${caret}${esc(k.slice(0, -1))}</summary><div class="kids">${draw(n[k], pre + k)}</div></details>` : link(n[k], k.replace(/\.md$/, ''))).join('');
-  let main = '', sys = '';
-  for (const k of keys(root)) { if (!k.endsWith('/')) { sys += link(root[k], k.replace(/\.md$/, '')); continue; }
+  let main = '', sys = '', docs = '';
+  // 程序自带的说明（README、修改日志、使用步骤）收进一个默认折叠的“TWIN 说明”，不和你的资料混在一起
+  for (const k of keys(root)) { if (!k.endsWith('/')) { if (root[k].doc) docs += link(root[k], k.replace(/\.md$/, '')); else sys += link(root[k], k.replace(/\.md$/, '')); continue; }
     const name = k.slice(0, -1); const html = `<details class="trunk" ${name === '00_Crown' ? 'open' : ''}><summary>${caret}<span class="zh">${esc(TRUNKS[name] || name)}</span><span class="code">${esc(name)}</span></summary><div class="kids">${draw(root[k], k)}</div></details>`;
     if (name.startsWith('_')) sys = html + sys; else main += html; }
+  if (docs) sys += `<details class="trunk"><summary>${caret}<span class="zh">TWIN 说明</span><span class="code">程序自带</span></summary><div class="kids">${docs}</div></details>`;
   $('#tnav').innerHTML = main + `<div style="border-top:1px solid var(--rule);margin-top:10px;padding-top:8px">${sys}</div>`; markTree();
 }
 function markTree() { document.querySelectorAll('#tnav .f').forEach(a => { const on = a.dataset.p === libCur; a.classList.toggle('on', on);
@@ -336,10 +338,10 @@ function drawSettings() { const tab = STABS.some(t => t[0] === pref('setTab', ''
       const b = $('#upLocal'); b.disabled = true; b.textContent = '安装中…';
       try { const data = await new Promise((ok, no) => { const r = new FileReader(); r.onload = () => ok(r.result); r.onerror = no; r.readAsDataURL(z); });
         const r = await api('/api/update/local', { name: z.name, data });
-        $('#upInfo').textContent = `已升级到 ${r.version}，关掉 TWIN 窗口再双击 Open_Web.bat 重开就生效。旧程序备份在 ${r.backup}。`; b.hidden = true; }
+        $('#upInfo').textContent = `已升级到 ${r.version}，在右下角托盘图标右键“退出 TWIN”，再双击 TWIN.exe 重开就生效。旧程序备份在 ${r.backup}。`; b.hidden = true; }
       catch (e) { toast(e.message, 8000); b.disabled = false; b.textContent = '用升级包'; } }; }
   on('#upGo').onclick = async () => { const b = $('#upGo'); b.disabled = true; b.textContent = '下载安装中…';
-    try { const r = await api('/api/update/apply', {}); $('#upInfo').textContent = `已升级到 ${r.version}，关掉 TWIN 窗口再双击 Open_Web.bat 重开就生效。旧程序备份在 ${r.backup}。`; b.hidden = true; }
+    try { const r = await api('/api/update/apply', {}); $('#upInfo').textContent = `已升级到 ${r.version}，在右下角托盘图标右键“退出 TWIN”，再双击 TWIN.exe 重开就生效。旧程序备份在 ${r.backup}。`; b.hidden = true; }
     catch (e) { toast(e.message, 8000); b.disabled = false; b.textContent = '升级'; } };
   on('#wzBtn').onclick = () => api('/api/profile').then(setupWizard).catch(e => toast(e.message));
   on('#pwBtn').onclick = () => { const m = modal(`<h3>修改密码</h3><input id="o" type="password" placeholder="原密码"><input id="n1" type="password" placeholder="新密码（至少 8 位）"><input id="n2" type="password" placeholder="再输一遍"><div class="row"><button class="btn" id="mx">取消</button><button class="btn primary" id="mok">修改</button></div>`);
@@ -399,7 +401,7 @@ let upInfo = {};
 const checkUp = force => api('/api/update' + (force ? '?force=1' : '')).then(r => upInfo = r).catch(e => upInfo = { ...upInfo, error: e.message });
 function drawUp() { const el = $('#upInfo'); if (!el) return; const u = upInfo;
   el.textContent = `现在是 ${u.current || ''}。` + (u.enabled === false ? '这一份没有配置更新来源。' : u.error ? u.error : u.newer ? `有新版本 ${u.latest}。资料、对话、密码不会动，升级前会先备份程序。` : u.latest ? '已经是最新版。' : '');
-  if (u.newer && u.notes) el.title = u.notes; $('#upGo').hidden = !u.newer; }
+  el.title = u.newer && u.notes ? u.notes : u.detail || ''; $('#upGo').hidden = !u.newer; }
 
 // ---------------- 自动锁定：一直没有操作（点、打字、滚动、移动鼠标）才锁；在用就不锁 ----------------
 // 到点前 1 分钟顶上居中一条倒计时（标签页标题也跟着倒数），动一下就取消。服务器那边每 20 秒最多续一次，后台自己发的请求不算操作
@@ -421,7 +423,9 @@ const lockSync = () => api('/api/lock').then(j => { lockTimer.min = j.min; if (j
 // ---------------- 启动 ----------------
 function inboxBadge(n) { inboxBadge.n = n; window.TwinUI?.bus.dispatchEvent(new CustomEvent('inbox', { detail: n })); }
 (async () => { try { files = await api('/api/tree'); } catch (e) {} loadHist(); route();
-  api('/api/profile').then(p => { setPref('name', p.name); if (!p.done) setupWizard(p); }).catch(() => {}); api('/api/inbox').then(d => { viewInbox.d = viewInbox.d || d; inboxBadge(d.items.length); }).catch(() => {});
+  // 画像没填完时自动弹向导，但 7 天里最多自动弹一次（点“以后再说”、✕、Esc 都算）；设置里随时能手动打开
+  api('/api/profile').then(p => { setPref('name', p.name);
+    if (!p.done && Date.now() - (+pref('wizShown', 0) || 0) > 7 * 864e5) { setPref('wizShown', Date.now()); setupWizard(p); } }).catch(() => {}); api('/api/inbox').then(d => { viewInbox.d = viewInbox.d || d; inboxBadge(d.items.length); }).catch(() => {});
   // 本机记着有小组件、但已经关掉或删掉的插件：拿掉首页给它占的位置
   api('/api/plugins').then(ps => { Object.keys(plugWs()).filter(k => !ps.some(p => p.on && p.id === k)).forEach(unloadPlugin); ps.filter(p => p.on).forEach(p => loadPlugin(p.id)); }).catch(() => {});
   lockSync(); document.addEventListener('visibilitychange', () => { if (!document.hidden) lockSync(); });
