@@ -1303,6 +1303,14 @@ body[data-v=""] #sideOpen:hover,body[data-v="home"] #sideOpen:hover{background:v
 .m-ai:not(.live) .think summary,.think summary:hover{animation:none;color:var(--ink-2)}
 @keyframes thinkp{50%{opacity:.5}}
 .think .tk{white-space:pre-wrap;word-break:break-word;margin:6px 0 0 4px;padding:2px 0 2px 12px;border-left:2px solid var(--rule);max-height:300px;overflow:auto;line-height:1.65;color:var(--ink-3)}
+.csum{margin:4px 0;font-size:12.5px;color:var(--ink-3);text-align:center}
+.csum summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px}
+.csum summary::-webkit-details-marker{display:none}
+.csum summary::before,.csum summary::after{content:"";flex:1;border-top:1px dashed var(--rule)}
+.csum summary:hover{color:var(--ink-2)}
+.csum .tk{text-align:left;white-space:pre-wrap;word-break:break-word;margin:8px 0 0;padding:10px 12px;background:var(--paper);border:1px solid var(--rule);border-radius:10px;line-height:1.65;color:var(--ink-2);max-height:320px;overflow:auto}
+.thinking .note{font-size:12.5px;color:var(--ink-3);margin-left:8px;align-self:center}
+.thinking:has(.note) i{align-self:center}
 .pthink{grid-column:1/-1;display:flex;gap:8px;align-items:flex-start;font-size:13px;cursor:pointer}
 .pedit .pthink input{width:auto;margin:3px 0 0;flex:none}
 .pthink small{display:block;color:var(--ink-3);font-size:12px;line-height:1.5;margin-top:2px}

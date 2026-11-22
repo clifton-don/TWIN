@@ -468,7 +468,8 @@ class Handler(BaseHTTPRequestHandler):
                 SESSIONS[self.token()] = expiry()
             return self.send(200, {"min": lock_min(), "left": lock_min() * 60})
         if path == "/api/ask/stream":
-            return self.stream(twin_ai.ask_stream(body.get("messages", []), body.get("provider_id") or None, str(body.get("project") or "")))
+            return self.stream(twin_ai.ask_stream(body.get("messages", []), body.get("provider_id") or None, str(body.get("project") or ""),
+                                                  str(body.get("summary") or "")))
         label, source = MUTATING.get(path, (None, None))
         if label is None:
             return self.send(*self.result(path, body))  # pyright: ignore[reportArgumentType]  # result 总是 (状态码, 内容)
@@ -548,7 +549,9 @@ class Handler(BaseHTTPRequestHandler):
             answer = twin_ai.call_model("你是连接测试。", [{"role": "user", "content": "只回复“连接正常”四个字。"}], p, 20)
             return 200, {"answer": answer.strip()[:60]}
         if path == "/api/ask":
-            return 200, twin_ai.ask(body.get("messages", []), pid, str(body.get("project") or ""))
+            return 200, twin_ai.ask(body.get("messages", []), pid, str(body.get("project") or ""), str(body.get("summary") or ""))
+        if path == "/api/chat/compact":  # 聊长了：把更早的几轮压缩成总结
+            return 200, {"summary": twin_ai.compact_chat(body.get("summary", ""), body.get("messages", []), pid)}
         if path == "/api/actions":  # 预览里一键应用：一条条按顺序写，算一条改动记录，一次就能撤销
             out = []
             for a in body.get("actions", [])[:40]:
@@ -893,6 +896,11 @@ def save_chat(body):
     data = {"id": cid, "title": str(old.get("title") if fixed and "fixed" not in body and old.get("title") else body.get("title", ""))[:60], "updated": time.time(),
             "project": str(body.get("project") or "")[:300], "auto": str(body.get("auto") or "")[:300],
             "titled": str(body.get("titled") or "")[:10], "messages": body.get("messages", [])[-200:], **({"fixed": True} if fixed else {})}
+    # 自动总结：upto 是总结到第几条消息为止；消息超过 200 条被截掉开头时跟着往前挪
+    s = body.get("summary")
+    if isinstance(s, dict) and s.get("text"):
+        cut = max(0, len(body.get("messages", [])) - 200)
+        data["summary"] = {"upto": max(0, int(s.get("upto") or 0) - cut), "text": str(s["text"])[:twin_ai.SUMMARY_CAP]}
     f.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
     return {"id": cid}
 

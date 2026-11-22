@@ -619,11 +619,14 @@ def resolve_project(messages, project):
         return "", True
 
 
-def _prepare(messages, project="", auto=False, sources=None):
-    """sources：传一个列表进来，会填上这次回答的依据：关联项目的板块排第一，再是按相关度挑中、发给 AI 的资料。"""
+def _prepare(messages, project="", auto=False, sources=None, summary=""):
+    """sources：传一个列表进来，会填上这次回答的依据：关联项目的板块排第一，再是按相关度挑中、发给 AI 的资料。
+    summary：聊长了以后，更早的对话压缩成的总结（messages 里只剩最近几轮）。"""
     for m in messages:
         if m.get("role") == "user":
             check_outgoing(m.get("content", ""))
+    summary = str(summary or "")[:SUMMARY_CAP]
+    check_outgoing(summary)
     msgs = [{"role": m["role"], "content": m.get("content", "")} for m in messages[-30:] if m.get("role") in ("user", "assistant")]
     detail, picked = detail_context_with_sources(messages)
     if sources is not None:
@@ -633,23 +636,55 @@ def _prepare(messages, project="", auto=False, sources=None):
     sys_ += twin_org.context(messages)
     if project:
         sys_ += project_context(project, auto)
+    if summary:
+        sys_ += "\n\n=== 这次对话前面部分的总结（更早的原话已压缩，接着聊时以这份为准）===\n" + summary
     return sys_ + CHAT_RULES, msgs
 
 
-def ask(messages, provider_id=None, project=""):
+# ---------- 聊长了自动压缩：更早的对话让 AI 总结成一段，之后只发总结 + 最近几轮 ----------
+SUMMARY_CAP = 3000
+COMPACT_PROMPT = """把下面这段对话压缩成一份总结。之后接着聊时，AI 只看得到这份总结和最近几轮原话，所以重要的事不能丢。
+要求：
+- 中文要点，不超过 600 字，不要客套。
+- 保留：我的情况和背景、我提过的偏好和要求、做出的决定和理由、提到的数字日期和名字、已经写入或我没要的改动、还没解决的问题。
+- 去掉寒暄、重复和 AI 的长篇解释；对话里没有的不要补。
+{prev}
+=== 要总结的对话 ===
+{talk}"""
+
+
+def compact_chat(prev, messages, provider_id=None):
+    """prev：上一次的总结（合并进新总结）；messages：这次要压缩掉的那几轮。返回新的总结。"""
+    talk = []
+    for m in messages:
+        c = str(m.get("content", "")).strip()
+        if c and m.get("role") in ("user", "assistant"):
+            talk.append(("我：" if m["role"] == "user" else "AI：") + c[:2000])
+    if not talk:
+        return str(prev or "")
+    prev_txt = f"\n=== 之前的总结（合并进新总结里）===\n{str(prev)[:SUMMARY_CAP]}\n" if prev else ""
+    text = COMPACT_PROMPT.replace("{prev}", prev_txt).replace("{talk}", "\n\n".join(talk))
+    check_outgoing(text)
+    out = call_model("你只负责把对话压缩成总结。", [{"role": "user", "content": text}], active_provider(provider_id), 1500).strip()
+    if not out:
+        raise RuntimeError("AI 没给出总结")
+    return out[:SUMMARY_CAP]
+
+
+def ask(messages, provider_id=None, project="", summary=""):
     rel, auto = resolve_project(messages, project)
     sources = []
-    sys_, msgs = _prepare(messages, rel, auto, sources)
+    sys_, msgs = _prepare(messages, rel, auto, sources, summary)
     answer, actions = split_actions(call_model(sys_, msgs, active_provider(provider_id)))
     return {"answer": answer, "actions": actions, "project": rel, "auto": auto, "sources": sources}
 
 
-def ask_stream(messages, provider_id=None, project=""):
+def ask_stream(messages, provider_id=None, project="", summary=""):
     """逐字返回：先告诉网页关联了哪个项目，再一段段给文字，最后给整理好的 {answer, actions}。"""
     rel, auto = resolve_project(messages, project)
     yield {"project": rel, "auto": auto}
     sources = []
-    sys_, msgs = _prepare(messages, rel, auto, sources)
+    sys_, msgs = _prepare(messages, rel, auto, sources, summary)
     full = ""
     p = active_provider(provider_id)
     for piece in call_model_stream(sys_, msgs, p, think=bool(p.get("think"))):

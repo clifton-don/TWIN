@@ -27,6 +27,14 @@ const CHIPS = [
   ['推荐几款最近好玩的单机游戏', '随便聊什么都可以'],
 ];
 
+// 输入框里没发出去的话：切到别的页面、刷新都留着（只存在这台设备的浏览器里），每个对话各存各的
+const drafts = (() => { try { return JSON.parse(pref('drafts', '{}')) || {}; } catch (e) { return {}; } })();
+function saveDraft(v) {
+  const k = chat.id || 'new'; if ((drafts[k] || '') === v) return;
+  if (v.trim()) { delete drafts[k]; drafts[k] = v; } else delete drafts[k];
+  const ks = Object.keys(drafts); if (ks.length > 30) delete drafts[ks[0]];
+  setPref('drafts', JSON.stringify(drafts));
+}
 async function viewChat(id) {
   setTitle('TWIN'); const ok = fresh(); editIdx = -1;
   if (id && id !== chat.id) { let c; try { c = await api('/api/chat?id=' + encodeURIComponent(id)); } catch (e) { if (ok()) { toast(e.message); location.hash = 'c'; } return; } if (!ok()) return; chat = c; }
@@ -43,7 +51,7 @@ async function viewChat(id) {
   sc.onscroll = () => { stick = sc.scrollHeight - sc.scrollTop - sc.clientHeight < 80 || (stick && sc.scrollTop >= stickTop); stickTop = sc.scrollTop; };
   const inp = $('#inp');
   const grow = () => { inp.style.height = 'auto'; inp.style.height = Math.min(inp.scrollHeight, 220) + 'px'; $('#sendBtn').disabled = (!inp.value.trim() && !atts.length) || sending; };
-  inp.oninput = grow;
+  inp.oninput = () => { grow(); saveDraft(inp.value); };
   // 附件：点回形针、拖进来、粘贴截图都行。先放在这里，发送时才存进暂存箱
   const addFiles = fl => { for (const f of fl) { if (f.size > 25 * 1024 * 1024) { toast(`${f.name} 超过 25 MB，请直接复制到 _INBOX 文件夹`, 6000); continue; } atts.push(f); } drawAtts(); grow(); };
   $('#clipBtn').onclick = () => $('#clipIn').click();
@@ -62,6 +70,7 @@ async function viewChat(id) {
   drawMsgs(); drawProj(); fancy($('#prov')); if (viewChat.last != null && viewChat.last !== chat.id && !$('#view').classList.contains('enter')) replay($('#mlist'), 'fade'); viewChat.last = chat.id;
   $('#cproj').onclick = () => { const m = modal('<div class="cside insheet"></div><div class="row"><button class="btn" id="mx">关闭</button></div>'); m.querySelector('#mx').onclick = closeModal; drawProj(); };
   // pendingSend：带过来的话直接发出去（比如雅思“让 AI 批改”），不用再点发送
+  if (!pendingAsk && drafts[chat.id || 'new']) { inp.value = drafts[chat.id || 'new']; grow(); }
   if (pendingAsk) { inp.value = pendingAsk; pendingAsk = ''; inp.dispatchEvent(new Event('input')); if (pendingSend) { pendingSend = false; send(); } }
   if (!coarse) inp.focus();
 }
@@ -156,14 +165,15 @@ function drawMsgs() {
   const box = $('#mlist'); if (!box) return; hideTip();  // 按钮重画了，停在旧按钮上的说明框也收掉
   const cw = $('.chatwrap'); if (cw) cw.classList.toggle('has-msgs', chat.messages.length > 0);
   if (!chat.messages.length) return drawHello();
-  box.innerHTML = chat.messages.map((m, i) => m.role === 'user' ? userMsg(m, i) : `
+  const sm = chat.summary && chat.summary.upto > 0 && chat.summary.upto < chat.messages.length ? chat.summary : null;
+  box.innerHTML = chat.messages.map((m, i) => (sm && i === sm.upto ? `<details class="csum"><summary>上面的对话已自动总结，AI 按总结记得前面聊过什么 · 看总结</summary><div class="tk" translate="no">${esc(sm.text)}</div></details>` : '') + (m.role === 'user' ? userMsg(m, i) : `
     <div class="m-ai ${m.streaming ? 'live' : ''}"><div class="body"><div class="who">${esc(m.who || 'AI')}</div>
-      ${m.pending ? '<div class="thinking"><i></i><i></i><i></i></div>' : m.streaming ? `${thinkHtml(m)}<div class="md">${m.content || !m.think ? render(m.content, true) + '<span class="caretblink"></span>' : ''}</div>` : `${thinkHtml(m)}<div class="md">${render(m.content, true)}</div>
+      ${m.pending ? `<div class="thinking"><i></i><i></i><i></i>${m.note ? `<span class="note">${esc(m.note)}</span>` : ''}</div>` : m.streaming ? `${thinkHtml(m)}<div class="md">${m.content || !m.think ? render(m.content, true) + '<span class="caretblink"></span>' : ''}</div>` : `${thinkHtml(m)}<div class="md">${render(m.content, true)}</div>
       ${srcHtml(m.sources)}
       ${(m.actions || []).length ? `<div class="cards">${previewHtml(m, i)}${m.actions.map((a, j) => FORM_ACTIONS.has(a.type) ? actionCard(a, i, j) : '').join('')}</div>` : ''}
       <div class="acts">${ib(`data-copy="${i}"`, 'copy', '复制')}
         ${i === chat.messages.length - 1 && m.who !== '本地' ? ib('id="retry"', 'rotate-ccw', '重新回答') : ''}
-        ${m.rated ? `<span class="done">已记录：${esc(m.rated)}</span>` : `${ib(`data-rate="1" data-i="${i}"`, 'thumbs-up', '有用')}${ib(`data-rate="0" data-i="${i}"`, 'thumbs-down', '没用')}`}</div>`}</div></div>`).join('');
+        ${m.rated ? `<span class="done">已记录：${esc(m.rated)}</span>` : `${ib(`data-rate="1" data-i="${i}"`, 'thumbs-up', '有用')}${ib(`data-rate="0" data-i="${i}"`, 'thumbs-down', '没用')}`}</div>`}</div></div>`)).join('');
   box.querySelectorAll('[data-copy]').forEach(b => b.onclick = async () => { if (!await copyText(chat.messages[+b.dataset.copy].content)) return;
     b.innerHTML = lu('check', 15); b.classList.add('ok'); setTimeout(() => { b.innerHTML = lu('copy', 15); b.classList.remove('ok'); }, 1500); });
   box.querySelectorAll('[data-edit]').forEach(b => b.onclick = () => { if (sending) return; editIdx = +b.dataset.edit; drawMsgs(); });
@@ -183,7 +193,7 @@ async function saveChat() {
   if (!chat.title) { const f = chat.messages.find(m => m.role === 'user'); chat.title = f ? (f.content.replace(/\[附件：([^\]\n]+)\]/g, ' $1').trim()).slice(0, 24) : '新对话'; }
   // 资产价格只在确认写入时用一次，不存进对话记录
   const clean = chat.messages.filter(m => !m.pending).map(m => m.actions ? { ...m, actions: m.actions.map(({ price, value_range, ...a }) => a) } : m);
-  const j = await api('/api/chat/save', { id: chat.id, title: chat.title, project: chat.project || '', auto: chat.auto || '', titled: chat.titled || '', messages: clean });
+  const j = await api('/api/chat/save', { id: chat.id, title: chat.title, project: chat.project || '', auto: chat.auto || '', titled: chat.titled || '', messages: clean, ...(chat.summary ? { summary: chat.summary } : {}) });
   const isNew = !chat.id; chat.id = j.id;
   if (isNew) { history.replaceState(null, '', '#c/' + chat.id); }
   loadHist();
@@ -219,15 +229,34 @@ function cardResults(m) {
     return a.state === 'done' ? `已写入：${what}${a.result ? ' → ' + a.result : ''}` : a.state === 'skip' ? `他没要：${what}` : a.state === 'fail' || a.err ? `失败：${what}，原因：${a.err}` : `还没处理：${what}`; });
   return xs.length ? `[上一条回答的确认卡结果（系统记录）：${xs.join('；')}]` : '';
 }
+// 发给 AI 的消息：本地记账那类不发；确认卡结果放进他下一句话的开头，不接在 AI 回答后面（接在后面 AI 会学着自己编一段“已写入”）
+// from / to 是 chat.messages 的下标；from 前一条 AI 回答的确认卡结果也带上
+function sendable(from, to) {
+  const ok = m => !m.pending && !m.local && m.who !== '本地';
+  const prev = chat.messages[from - 1]; let carry = prev && prev.role === 'assistant' && ok(prev) ? cardResults(prev) : '';
+  return chat.messages.slice(from, to).filter(ok).map(m => { if (m.role === 'assistant') { carry = cardResults(m); return { role: m.role, content: m.content.split(/\n*\[(?:上一条回答的)?确认卡结果/)[0] }; }
+    const c = carry ? carry.trim() + '\n\n' + m.content : m.content; carry = ''; return { role: m.role, content: c }; });
+}
+// 聊长了自动压缩：没总结过的消息超过 COMPACT_AT 条，就把除了最近 KEEP 条以外的让 AI 总结（和旧总结合并），之后只发总结 + 最近几轮
+const COMPACT_AT = 24, KEEP = 10;
+async function compact(pid, last) {
+  const from = chat.summary ? chat.summary.upto : 0, idx = [];
+  chat.messages.slice(from, last).forEach((m, k) => { if (!m.pending && !m.local && m.who !== '本地') idx.push(from + k); });
+  if (idx.length <= COMPACT_AT) return;
+  let cut = idx[idx.length - KEEP]; if (chat.messages[cut].role === 'assistant') cut = idx[idx.length - KEEP - 1];  // 从他的一句话开始留
+  const m = chat.messages[last]; m.note = '聊得有点长，先把前面的对话总结一下…'; drawMsgs();
+  try { const j = await api('/api/chat/compact', { summary: chat.summary ? chat.summary.text : '', messages: sendable(from, cut), provider_id: pid });
+    chat.summary = { upto: cut, text: j.summary };
+  } catch (e) { /* 没总结成：这次照旧发最近 30 条，下次再试 */ }
+  delete m.note; drawMsgs();
+}
 async function ask(pid, who, restore) {
   pvBoards = {}; let ok = false;
   const last = chat.messages.length - 1;
   try {
-    // 确认卡结果放进他下一句话的开头，不接在 AI 回答后面：接在后面 AI 会学着自己编一段“已写入”
-    const xs = chat.messages.filter(m => !m.pending && !m.local && m.who !== '本地'); let carry = '';
-    const msgs = xs.map(m => { if (m.role === 'assistant') { carry = cardResults(m); return { role: m.role, content: m.content.split(/\n*\[(?:上一条回答的)?确认卡结果/)[0] }; }
-      const c = carry ? carry.trim() + '\n\n' + m.content : m.content; carry = ''; return { role: m.role, content: c }; });
-    const r = await fetch('/api/ask/stream', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Twin': '1' }, body: JSON.stringify({ messages: msgs, provider_id: pid, project: chat.project || '' }) });
+    await compact(pid, last);
+    const from = chat.summary ? chat.summary.upto : 0, msgs = sendable(from, last);
+    const r = await fetch('/api/ask/stream', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Twin': '1' }, body: JSON.stringify({ messages: msgs, provider_id: pid, project: chat.project || '', summary: from ? chat.summary.text : '' }) });
     if (r.status === 401) { location.reload(); return; }
     if (!r.ok || !r.body) throw new Error((await r.json().catch(() => ({}))).error || '出错了');
     const reader = r.body.getReader(), dec = new TextDecoder(); let buf = '', text = '', think = '', fin = null, t = 0;
@@ -267,9 +296,10 @@ async function ask(pid, who, restore) {
 async function resend(i, text) {
   text = (text || '').trim(); if (!text || sending) return;
   const sel = $('#prov'), who = sel ? sel.options[sel.selectedIndex].text : 'AI', before = chat.messages;
+  const sumBefore = chat.summary; if (chat.summary && i < chat.summary.upto) delete chat.summary;  // 改了已经总结过的话：总结作废，需要时重新总结
   editIdx = -1; chat.messages = [...before.slice(0, i), { role: 'user', content: text }, { role: 'assistant', pending: true, who }];
   sending = true; stick = true; drawMsgs();
-  if (!await ask(sel && sel.value, who)) { chat.messages = before; drawMsgs(); }
+  if (!await ask(sel && sel.value, who)) { chat.messages = before; if (sumBefore) chat.summary = sumBefore; drawMsgs(); }
 }
 async function retry() {
   if (sending) return; const sel = $('#prov'), who = sel ? sel.options[sel.selectedIndex].text : 'AI', before = chat.messages;
