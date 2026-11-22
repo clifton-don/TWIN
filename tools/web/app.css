@@ -74,7 +74,15 @@ main{flex:1;min-width:0;display:flex;flex-direction:column;height:100%}
 .chatview{display:flex;flex-direction:column;height:100%}
 .msgs{flex:1;overflow:auto;-webkit-overflow-scrolling:touch}
 .msgs .wrap{display:flex;flex-direction:column;gap:22px;padding-bottom:12px}
-.m-user{align-self:flex-end;max-width:82%;background:var(--user);border-radius:18px 18px 4px 18px;padding:10px 16px;white-space:pre-wrap;word-break:break-word}
+.m-uwrap{align-self:flex-end;max-width:82%;display:flex;flex-direction:column;align-items:flex-end;min-width:0}
+.m-user{align-self:flex-end;max-width:100%;background:var(--user);border-radius:18px 18px 4px 18px;padding:10px 16px;white-space:pre-wrap;word-break:break-word}
+.uacts{display:flex;gap:2px;margin-top:4px;color:var(--ink-3);opacity:0;transition:opacity .15s}
+.m-uwrap:hover .uacts,.uacts:focus-within{opacity:1}
+@media (hover:none){.uacts{opacity:.8}}
+.m-uedit{align-self:stretch;margin-left:10%;background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:10px 12px}
+.m-uedit textarea{width:100%;border:0;background:none;resize:none;outline:none;font-size:15px;line-height:1.7;min-height:48px}
+.m-uedit .row{display:flex;align-items:center;gap:8px;margin-top:6px}
+.m-uedit .note{font-size:12px;color:var(--ink-3)}
 .m-ai{display:block}
 
 .m-ai .body{flex:1;min-width:0}
@@ -87,7 +95,10 @@ main{flex:1;min-width:0;display:flex;flex-direction:column;height:100%}
 .md blockquote{margin:8px 0;padding:6px 14px;border-left:3px solid var(--rule);color:var(--ink-2)}
 .md .tbl{overflow-x:auto}.md table{border-collapse:collapse;font-size:14px;margin:8px 0}
 .md th,.md td{border-bottom:1px solid var(--rule);padding:6px 10px;text-align:left}
-.acts{display:flex;gap:2px;margin-top:6px;color:var(--ink-3)}
+.acts{display:flex;align-items:center;gap:2px;margin-top:6px;color:var(--ink-3)}
+.acts .ib,.uacts .ib{display:inline-grid;place-items:center;width:30px;height:30px;padding:0;border:0;background:none;color:inherit;border-radius:7px;cursor:pointer}
+.acts .ib:hover,.uacts .ib:hover{background:var(--hover);color:var(--ink)}
+.acts .ib.ok,.uacts .ib.ok{color:var(--ok,#2f7a4f)}
 .acts button{border:0;background:none;color:inherit;cursor:pointer;padding:5px 8px;border-radius:6px;font-size:12.5px}
 .acts button:hover{background:var(--hover);color:var(--ink)}
 .acts .done{font-size:12.5px;padding:5px 8px}
@@ -298,7 +309,7 @@ a.missing{color:var(--ink-3);text-decoration:underline dotted}
   .lib.reading .tree{display:none}
   .doc{padding:18px 16px 60px}.docbar{padding:8px 16px}
   .prov{grid-template-columns:24px 1fr 1fr}
-  .m-user{max-width:88%}
+  .m-uwrap{max-width:88%}
 }
 
 /* ---------- 今天 / 板块：纯列表，少框少色 ---------- */
