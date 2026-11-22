@@ -27,7 +27,7 @@ DASHBOARD = ROOT / "00_Crown" / "Dashboard.md"
 
 # 常用服务商。模型名可以在设置页改；大多数家都兼容 OpenAI 的接口格式。
 PRESETS = [
-    {"name": "DeepSeek", "kind": "openai", "base_url": "https://api.deepseek.com", "model": "deepseek-chat"},
+    {"name": "DeepSeek", "kind": "openai", "base_url": "https://api.deepseek.com", "model": "deepseek-flash"},
     {"name": "Kimi（月之暗面）", "kind": "openai", "base_url": "https://api.moonshot.cn/v1", "model": "kimi-latest"},
     {"name": "通义千问", "kind": "openai", "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1", "model": "qwen-plus"},
     {"name": "智谱 GLM", "kind": "openai", "base_url": "https://open.bigmodel.cn/api/paas/v4", "model": "glm-4-plus"},
@@ -160,9 +160,42 @@ def _post(url, headers, payload, timeout=180):
             return json.loads(r.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
         detail = e.read().decode("utf-8", "replace")[:300]
-        raise RuntimeError(f"AI 服务返回错误 {e.code}：{detail}") from None
+        raise RuntimeError(_http_error(e.code, detail, payload.get("model", ""), url)) from None
     except urllib.error.URLError as e:
         raise RuntimeError(f"连不上 AI 服务：{e.reason}。检查网络或服务地址。") from None
+
+
+def _http_error(code, detail, model, url):
+    """把服务商的报错翻成人话：模型名不对、key 不对、没余额最常见。"""
+    low = detail.lower()
+    if code in (400, 404, 422) and "model" in low and ("exist" in low or "not found" in low or "invalid" in low):
+        hint = "DeepSeek 现在可用的是 deepseek-flash（快、便宜）和 deepseek-v4-pro（更强）" if "deepseek.com" in url else "模型名以服务商官网为准"
+        return f"模型名“{model}”这家服务商不认识。到“设置 → AI”改一下模型名：{hint}。"
+    if code == 401:
+        return "API key 不对或已失效。到“设置 → AI”重新填一下。"
+    if code == 402:
+        return "这家服务商的账户余额不足，充值后再试。"
+    return f"AI 服务返回错误 {code}：{detail}"
+
+
+def _openai_payload(p, system, messages, max_tokens, **extra):
+    """OpenAI 兼容格式的请求。DeepSeek：旧模型名 deepseek-chat / deepseek-reasoner 已停用，自动换成 deepseek-flash；
+    新模型默认先“思考”再回答，思考的内容网页不显示，看起来像不回话，还可能把字数用光，所以关掉思考（和以前的 deepseek-chat 一样快）。"""
+    model = p["model"]
+    payload = {"model": model, "temperature": 0.3, "max_tokens": max_tokens,
+               "messages": [{"role": "system", "content": system}] + messages, **extra}
+    if "api.deepseek.com" in (p.get("base_url") or ""):
+        if model in ("deepseek-chat", "deepseek-reasoner"):
+            payload["model"] = "deepseek-flash"
+        payload["thinking"] = {"type": "disabled"}
+    return payload
+
+
+def _no_answer(finish, thought):
+    if thought:
+        return ("AI 只在“思考”，没给出回答（可能把字数用完了）。换一个不带思考的模型再试；"
+                "DeepSeek 用 deepseek-flash 或 deepseek-v4-pro。")
+    return f"AI 没有给出回答（结束原因：{finish or '未知'}）。点“重新回答”再试一次，或换个模型。"
 
 
 LANG = threading.local()  # 界面语言，每个请求由 twin_web 设置
@@ -182,10 +215,12 @@ def call_model(system, messages, provider=None, max_tokens=4000):
                      {"model": p["model"], "max_tokens": max_tokens, "system": system, "messages": messages})
         return "".join(b.get("text", "") for b in data.get("content", []))
     headers = {"Authorization": f"Bearer {p['api_key']}"} if p.get("api_key") else {}
-    data = _post(p["base_url"] + "/chat/completions", headers,
-                 {"model": p["model"], "temperature": 0.3, "max_tokens": max_tokens,
-                  "messages": [{"role": "system", "content": system}] + messages})
-    return data["choices"][0]["message"]["content"]
+    data = _post(p["base_url"] + "/chat/completions", headers, _openai_payload(p, system, messages, max_tokens))
+    ch = (data.get("choices") or [{}])[0]
+    msg = ch.get("message") or {}
+    if not msg.get("content"):
+        raise RuntimeError(_no_answer(ch.get("finish_reason"), msg.get("reasoning_content")))
+    return msg["content"]
 
 
 def call_model_stream(system, messages, provider=None, max_tokens=4000):
@@ -197,8 +232,7 @@ def call_model_stream(system, messages, provider=None, max_tokens=4000):
     else:
         url = p["base_url"] + "/chat/completions"
         headers = {"Authorization": f"Bearer {p['api_key']}"} if p.get("api_key") else {}
-        payload = {"model": p["model"], "temperature": 0.3, "max_tokens": max_tokens, "stream": True,
-                   "messages": [{"role": "system", "content": system}] + messages}
+        payload = _openai_payload(p, system, messages, max_tokens, stream=True)
     req = urllib.request.Request(url, data=json.dumps(payload).encode(), method="POST",
                                  headers={"Content-Type": "application/json", "Accept": "text/event-stream", **headers})
     try:
@@ -208,14 +242,21 @@ def call_model_stream(system, messages, provider=None, max_tokens=4000):
             yield call_model(system, messages, p, max_tokens)
             return
         detail = e.read().decode("utf-8", "replace")[:300]
-        raise RuntimeError(f"AI 服务返回错误 {e.code}：{detail}") from None
+        raise RuntimeError(_http_error(e.code, detail, payload.get("model", ""), url)) from None
     except urllib.error.URLError as e:
         raise RuntimeError(f"连不上 AI 服务：{e.reason}。检查网络或服务地址。") from None
+    got, thought, finish = False, False, None
     with r:
         if "event-stream" not in (r.headers.get("Content-Type") or ""):
             data = json.loads(r.read().decode("utf-8"))  # 服务没理会 stream，直接给了整段
-            yield ("".join(b.get("text", "") for b in data.get("content", [])) if p["kind"] == "anthropic"
-                   else data["choices"][0]["message"]["content"])
+            if p["kind"] == "anthropic":
+                yield "".join(b.get("text", "") for b in data.get("content", []))
+                return
+            ch = (data.get("choices") or [{}])[0]
+            msg = ch.get("message") or {}
+            if not msg.get("content"):
+                raise RuntimeError(_no_answer(ch.get("finish_reason"), msg.get("reasoning_content")))
+            yield msg["content"]
             return
         for raw in r:
             line = raw.decode("utf-8", "replace").strip()
@@ -230,14 +271,23 @@ def call_model_stream(system, messages, provider=None, max_tokens=4000):
                 continue
             if p["kind"] == "anthropic":
                 if ev.get("type") == "content_block_delta":
+                    got = True
                     yield ev.get("delta", {}).get("text", "")
                 elif ev.get("type") == "error":
                     raise RuntimeError(f"AI 服务出错：{ev.get('error', {}).get('message', '')}")
             else:
+                if ev.get("error"):
+                    raise RuntimeError(f"AI 服务出错：{(ev['error'] or {}).get('message', '') if isinstance(ev['error'], dict) else ev['error']}")
                 for ch in ev.get("choices", []):
-                    t = (ch.get("delta") or {}).get("content")
+                    d = ch.get("delta") or {}
+                    thought = thought or bool(d.get("reasoning_content"))
+                    finish = ch.get("finish_reason") or finish
+                    t = d.get("content")
                     if t:
+                        got = True
                         yield t
+    if not got:
+        raise RuntimeError(_no_answer(finish, thought))
 
 
 # ---------- 上下文 ----------

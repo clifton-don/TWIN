@@ -297,7 +297,7 @@ function drawSettings() { const tab = STABS.some(t => t[0] === pref('setTab', ''
           <label class="fld"><span>名称</span><input data-f="name" value="${esc(p.name)}"></label>
           <label class="fld"><span>接口类型</span><select data-f="kind"><option value="openai" ${p.kind === 'openai' ? 'selected' : ''}>OpenAI 兼容</option><option value="anthropic" ${p.kind === 'anthropic' ? 'selected' : ''}>Anthropic</option></select></label>
           <label class="fld wide"><span>接口地址</span><input data-f="base_url" value="${esc(p.base_url)}"></label>
-          <label class="fld"><span>模型</span><input data-f="model" value="${esc(p.model)}" placeholder="例如 deepseek-chat"></label>
+          <label class="fld"><span>模型</span><input data-f="model" value="${esc(p.model)}" placeholder="例如 deepseek-flash"></label>
           <label class="fld"><span>API key</span><input data-f="api_key" type="password" value="${esc(p.api_key)}" placeholder="sk-…" autocomplete="off"></label>
           <div class="pfoot"><button type="button" class="btn sm danger" data-d="${i}">删除这家</button></div></div>` : ''}</div>`).join('') || '<p class="note">还没有。从下面选一家添加。</p>'}</div>
       <div class="padd"><select id="preset">${aiCfg.presets.map((p, i) => `<option value="${i}">${esc(p.name)}</option>`).join('')}</select>

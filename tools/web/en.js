@@ -188,7 +188,7 @@ window.I18N_EN = {
   '可以现在去设置里接，也可以以后再说。': 'Set it up in Settings now, or later.', '以后再说': 'Later', '依据': 'Sources', '开机自动启动': 'Start on login', '已关掉开机自动启动': 'Start on login turned off', '项目时间线': 'Project timeline', '从文件和 git 记录自动整理 · 只在本机': 'Built from files and git history · on this computer only', '重新整理': 'Rebuild', '整理中…': 'Building…', 'TWIN 说明': 'TWIN docs', '程序自带': 'built in', '去设置': 'Go to settings',
   '默认用这家': 'Use as default', '设为默认': 'Set as default', '删除这家': 'Remove provider', '接口类型': 'API type', '接口地址': 'API URL',
   '模型': 'Model', '没填模型': 'No model', '还没填 key': 'No key yet', 'key 已填': 'Key set', '展开修改': 'Edit', 'OpenAI 兼容': 'OpenAI compatible',
-  '例如 deepseek-chat': 'e.g. deepseek-chat', '连通了：': 'Connected: ', 'API key 存在哪': 'Where the API key is stored',
+  '例如 deepseek-flash': 'e.g. deepseek-flash', '连通了：': 'Connected: ', 'API key 存在哪': 'Where the API key is stored',
   '还没有。从下面选一家添加。': 'None yet. Add one below.', '还没接 AI。': 'No AI connected.',
   '到设置里选一家、填 API key 就能对话。没有 key 也可以用“复制给其他 AI”。': 'Pick a provider in Settings and add an API key to chat. Without a key you can still use "Copy for another AI".',
   '可以接多家，圆点是默认，对话框左下角能随时换。大多数服务商兼容 OpenAI 格式；Claude 选 Anthropic。': 'You can add several. The dot marks the default; switch anytime at the bottom of the chat box. Most providers are OpenAI-compatible; choose Anthropic for Claude.',
