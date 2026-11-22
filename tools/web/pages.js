@@ -299,6 +299,7 @@ function drawSettings() { const tab = STABS.some(t => t[0] === pref('setTab', ''
           <label class="fld wide"><span>接口地址</span><input data-f="base_url" value="${esc(p.base_url)}"></label>
           <label class="fld"><span>模型</span><input data-f="model" value="${esc(p.model)}" placeholder="例如 deepseek-flash"></label>
           <label class="fld"><span>API key</span><input data-f="api_key" type="password" value="${esc(p.api_key)}" placeholder="sk-…" autocomplete="off"></label>
+          <label class="pthink wide"><input type="checkbox" data-think ${p.think ? 'checked' : ''}><span>显示思考过程<small>对话时让 AI 先想再答，想的过程在回答上面，可以展开看。会慢一些、多花一点钱；模型不会思考的话开了也没变化。</small></span></label>
           <div class="pfoot"><button type="button" class="btn sm danger" data-d="${i}">删除这家</button></div></div>` : ''}</div>`).join('') || '<p class="note">还没有。从下面选一家添加。</p>'}</div>
       <div class="padd"><select id="preset">${aiCfg.presets.map((p, i) => `<option value="${i}">${esc(p.name)}</option>`).join('')}</select>
         <button class="btn" id="addProv">${lu('plus', 15)}添加</button><span style="flex:1"></span><button class="btn primary" id="saveProv">保存</button></div></div>`,
@@ -321,6 +322,7 @@ function drawSettings() { const tab = STABS.some(t => t[0] === pref('setTab', ''
   if (tab === 'plug') { plugInst($('#view')); drawPlugins(); }
   if (tab === 'sugg') drawSugg();
   document.querySelectorAll('.prov[data-i] [data-f]').forEach(el => el.oninput = () => { draftProv[+el.closest('.prov').dataset.i][el.dataset.f] = el.value; });
+  document.querySelectorAll('.prov[data-i] [data-think]').forEach(el => el.onchange = () => { draftProv[+el.closest('.prov').dataset.i].think = el.checked; });
   document.querySelectorAll('[data-d]').forEach(b => b.onclick = () => { const i = +b.dataset.d; draftProv.splice(i, 1); if (draftAct >= i && draftAct) draftAct--; provOpen = -1; drawSettings(); toast('删掉了，点“保存”才生效'); });
   document.querySelectorAll('[data-o]').forEach(b => b.onclick = () => { provOpen = provOpen === +b.dataset.o ? -1 : +b.dataset.o; drawSettings(); });
   document.querySelectorAll('[data-def]').forEach(b => b.onclick = () => { draftAct = +b.dataset.def; drawSettings(); });

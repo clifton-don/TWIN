@@ -141,13 +141,16 @@ function srcName(p) { const parts = p.replace(/\.md$/, '').split('/'), last = pa
   return last === 'board' || last === 'index' ? `${parts.at(-2)} · ${last === 'board' ? '任务' : '说明'}` : last; }
 function srcHtml(list) { if (!list || !list.length) return '';
   return `<div class="srcs"><span class="lbl">依据</span>${list.map(p => `<a href="${p.endsWith('/board.md') ? bLink(p) : libLink(p)}" title="${esc(p)}">${esc(srcName(p))}</a>`).join('')}</div>`; }
+// 思考过程：在回答上面，灰色、可折叠。正在想的时候展开，开始回答后收起，点一下能再展开
+function thinkHtml(m) { if (!m.think) return ''; const now = m.streaming && !m.content;
+  return `<details class="think"${now ? ' open' : ''}><summary>${now ? '正在思考…' : '思考过程'}</summary><div class="tk" translate="no">${esc(m.think)}</div></details>`; }
 function drawMsgs() {
   const box = $('#mlist'); if (!box) return;
   const cw = $('.chatwrap'); if (cw) cw.classList.toggle('has-msgs', chat.messages.length > 0);
   if (!chat.messages.length) return drawHello();
   box.innerHTML = chat.messages.map((m, i) => m.role === 'user' ? `<div class="m-user">${userHtml(m.content)}</div>` : `
     <div class="m-ai ${m.streaming ? 'live' : ''}"><div class="body"><div class="who">${esc(m.who || 'AI')}</div>
-      ${m.pending ? '<div class="thinking"><i></i><i></i><i></i></div>' : m.streaming ? `<div class="md">${render(m.content, true)}<span class="caretblink"></span></div>` : `<div class="md">${render(m.content, true)}</div>
+      ${m.pending ? '<div class="thinking"><i></i><i></i><i></i></div>' : m.streaming ? `${thinkHtml(m)}<div class="md">${m.content || !m.think ? render(m.content, true) + '<span class="caretblink"></span>' : ''}</div>` : `${thinkHtml(m)}<div class="md">${render(m.content, true)}</div>
       ${srcHtml(m.sources)}
       ${(m.actions || []).length ? `<div class="cards">${previewHtml(m, i)}${m.actions.map((a, j) => FORM_ACTIONS.has(a.type) ? actionCard(a, i, j) : '').join('')}</div>` : ''}
       <div class="acts"><button type="button" data-copy="${i}">复制</button>
@@ -211,11 +214,16 @@ async function ask(pid, who, restore) {
     const r = await fetch('/api/ask/stream', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Twin': '1' }, body: JSON.stringify({ messages: msgs, provider_id: pid, project: chat.project || '' }) });
     if (r.status === 401) { location.reload(); return; }
     if (!r.ok || !r.body) throw new Error((await r.json().catch(() => ({}))).error || '出错了');
-    const reader = r.body.getReader(), dec = new TextDecoder(); let buf = '', text = '', fin = null, t = 0;
+    const reader = r.body.getReader(), dec = new TextDecoder(); let buf = '', text = '', think = '', fin = null, t = 0;
     // 第一次画整条消息，之后只换正在写的那一段，不重画整个列表（整列表重画会闪，滚动也会一顿一顿）
-    const paint = () => { const m = chat.messages[last]; m.content = text.split('```twin-actions')[0]; m.who = who;
-      const md = !m.pending && $('#mlist > .m-ai.live:last-child .md');
-      if (md) { md.innerHTML = render(m.content, true) + '<span class="caretblink"></span>'; toBottom(); } else { m.pending = false; m.streaming = true; drawMsgs(); } };
+    // 想→答换阶段时整条重画一次（收起思考框），同一阶段里只换字
+    const paint = () => { const m = chat.messages[last], was = m.content; m.content = text.split('```twin-actions')[0]; m.who = who; if (think) m.think = think;
+      const live = !m.pending && $('#mlist > .m-ai.live:last-child'), md = live && live.querySelector('.md'), tk = live && live.querySelector('.think .tk');
+      if (md && (!think || tk) && !!was === !!m.content) {
+        if (m.content) md.innerHTML = render(m.content, true) + '<span class="caretblink"></span>';
+        if (tk && !m.content) { tk.textContent = think; tk.scrollTop = tk.scrollHeight; }
+        toBottom();
+      } else { m.pending = false; m.streaming = true; drawMsgs(); } };
     for (;;) {
       const { value, done } = await reader.read(); if (done) break;
       buf += dec.decode(value, { stream: true });
@@ -225,11 +233,12 @@ async function ask(pid, who, restore) {
         if (ev.error) throw new Error(ev.error);
         if ('project' in ev && !ev.delta && !ev.done) { if (!chat.project && ev.project !== (chat.auto || '')) { chat.auto = ev.project; drawProj(); } }
         if (ev.delta) { text += ev.delta; if (Date.now() - t > 80) { t = Date.now(); paint(); } }
+        if (ev.think) { think += ev.think; if (Date.now() - t > 80) { t = Date.now(); paint(); } }
         if (ev.done) fin = ev;
       }
     }
     if (!fin) throw new Error('AI 的回答中断了，点“重新回答”再试一次');
-    chat.messages[last] = { role: 'assistant', content: fin.answer, actions: fin.actions || [], who, ...(fin.sources && fin.sources.length ? { sources: fin.sources } : {}) };
+    chat.messages[last] = { role: 'assistant', content: fin.answer, actions: fin.actions || [], who, ...(think ? { think } : {}), ...(fin.sources && fin.sources.length ? { sources: fin.sources } : {}) };
     await saveChat();
   } catch (e) {
     chat.messages.splice(-2, 2); toast(e.message, 8000);

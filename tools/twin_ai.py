@@ -136,7 +136,7 @@ def update_config(body):
             key = old[pid].get("api_key", "")  # 网页上显示的是打码值，没改就保留原 key
         providers.append({"id": pid, "name": p.get("name", ""), "kind": p.get("kind", "openai"),
                           "base_url": p.get("base_url", "").rstrip("/"), "model": p.get("model", ""),
-                          "api_key": key})
+                          "api_key": key, "think": bool(p.get("think"))})
     cfg = {"providers": providers, "active": body.get("active") or (providers[0]["id"] if providers else "")}
     save_config(cfg)
     return public_config()
@@ -178,23 +178,26 @@ def _http_error(code, detail, model, url):
     return f"AI 服务返回错误 {code}：{detail}"
 
 
-def _openai_payload(p, system, messages, max_tokens, **extra):
+THINK_TOKENS = 16000  # 打开“显示思考过程”时的字数上限：思考也算字数，太少会想到一半就没了
+
+
+def _openai_payload(p, system, messages, max_tokens, think=False, **extra):
     """OpenAI 兼容格式的请求。DeepSeek：旧模型名 deepseek-chat / deepseek-reasoner 已停用，自动换成 deepseek-flash；
-    新模型默认先“思考”再回答，思考的内容网页不显示，看起来像不回话，还可能把字数用光，所以关掉思考（和以前的 deepseek-chat 一样快）。"""
+    新模型默认先“思考”再回答。没开“显示思考过程”就关掉思考（和以前的 deepseek-chat 一样快）；开了就让它想，想的内容推给网页看。"""
     model = p["model"]
     payload = {"model": model, "temperature": 0.3, "max_tokens": max_tokens,
                "messages": [{"role": "system", "content": system}] + messages, **extra}
     if "api.deepseek.com" in (p.get("base_url") or ""):
         if model in ("deepseek-chat", "deepseek-reasoner"):
             payload["model"] = "deepseek-flash"
-        payload["thinking"] = {"type": "disabled"}
+        payload["thinking"] = {"type": "enabled" if think else "disabled"}
     return payload
 
 
 def _no_answer(finish, thought):
     if thought:
-        return ("AI 只在“思考”，没给出回答（可能把字数用完了）。换一个不带思考的模型再试；"
-                "DeepSeek 用 deepseek-flash 或 deepseek-v4-pro。")
+        return ("AI 只在“思考”，没给出回答（可能想太久把字数用完了）。点“重新回答”再试；"
+                "总是这样就到“设置 → AI”关掉“显示思考过程”。")
     return f"AI 没有给出回答（结束原因：{finish or '未知'}）。点“重新回答”再试一次，或换个模型。"
 
 
@@ -223,22 +226,27 @@ def call_model(system, messages, provider=None, max_tokens=4000):
     return msg["content"]
 
 
-def call_model_stream(system, messages, provider=None, max_tokens=4000):
-    """边生成边返回（逐字显示用）。服务商不支持流式时退回一次性返回。"""
+def call_model_stream(system, messages, provider=None, max_tokens=4000, think=False):
+    """边生成边返回（逐字显示用）。服务商不支持流式时退回一次性返回。
+    回答的字是 str；think=True 时，模型的思考过程以 {"think": 一段字} 给出（网页单独放在可折叠的框里）。"""
     p, system = provider or active_provider(), _lang(system)
+    if think:
+        max_tokens = max(max_tokens, THINK_TOKENS)
     if p["kind"] == "anthropic":
         url, headers = p["base_url"] + "/v1/messages", {"x-api-key": p["api_key"], "anthropic-version": "2023-06-01"}
         payload = {"model": p["model"], "max_tokens": max_tokens, "system": system, "messages": messages, "stream": True}
+        if think:
+            payload["thinking"] = {"type": "enabled", "budget_tokens": max_tokens // 2}
     else:
         url = p["base_url"] + "/chat/completions"
         headers = {"Authorization": f"Bearer {p['api_key']}"} if p.get("api_key") else {}
-        payload = _openai_payload(p, system, messages, max_tokens, stream=True)
+        payload = _openai_payload(p, system, messages, max_tokens, think, stream=True)
     req = urllib.request.Request(url, data=json.dumps(payload).encode(), method="POST",
                                  headers={"Content-Type": "application/json", "Accept": "text/event-stream", **headers})
     try:
         r = urllib.request.urlopen(req, timeout=180)
     except urllib.error.HTTPError as e:
-        if e.code in (400, 404, 405, 422):  # 不支持 stream 参数的服务
+        if e.code in (400, 404, 405, 422):  # 不支持 stream（或思考）参数的服务：不流式、不思考再来一次
             yield call_model(system, messages, p, max_tokens)
             return
         detail = e.read().decode("utf-8", "replace")[:300]
@@ -271,8 +279,14 @@ def call_model_stream(system, messages, provider=None, max_tokens=4000):
                 continue
             if p["kind"] == "anthropic":
                 if ev.get("type") == "content_block_delta":
-                    got = True
-                    yield ev.get("delta", {}).get("text", "")
+                    d = ev.get("delta") or {}
+                    if d.get("type") == "thinking_delta":
+                        thought = True
+                        if think and d.get("thinking"):
+                            yield {"think": d["thinking"]}
+                    elif d.get("text"):
+                        got = True
+                        yield d["text"]
                 elif ev.get("type") == "error":
                     raise RuntimeError(f"AI 服务出错：{ev.get('error', {}).get('message', '')}")
             else:
@@ -280,7 +294,10 @@ def call_model_stream(system, messages, provider=None, max_tokens=4000):
                     raise RuntimeError(f"AI 服务出错：{(ev['error'] or {}).get('message', '') if isinstance(ev['error'], dict) else ev['error']}")
                 for ch in ev.get("choices", []):
                     d = ch.get("delta") or {}
-                    thought = thought or bool(d.get("reasoning_content"))
+                    if d.get("reasoning_content"):
+                        thought = True
+                        if think:
+                            yield {"think": d["reasoning_content"]}
                     finish = ch.get("finish_reason") or finish
                     t = d.get("content")
                     if t:
@@ -634,7 +651,11 @@ def ask_stream(messages, provider_id=None, project=""):
     sources = []
     sys_, msgs = _prepare(messages, rel, auto, sources)
     full = ""
-    for piece in call_model_stream(sys_, msgs, active_provider(provider_id)):
+    p = active_provider(provider_id)
+    for piece in call_model_stream(sys_, msgs, p, think=bool(p.get("think"))):
+        if isinstance(piece, dict):
+            yield piece
+            continue
         full += piece
         yield {"delta": piece}
     answer, actions = split_actions(full)

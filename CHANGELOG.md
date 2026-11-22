@@ -14,6 +14,7 @@ privacy: internal
 
 ## 未发布
 
+- 新增“显示思考过程”（设置 → AI，每家服务商单独开关）：开了以后对话时 AI 先想再答，想的过程显示在回答上面，想的时候展开、开始回答后自动收起，点一下能再看；会慢一些、多花一点钱。DeepSeek、Claude 等会思考的模型都能用。思考过程只存在本机对话记录里，不会再发给 AI。
 - 修复：DeepSeek 换成新模型（比如 deepseek-v4-pro）后对话不回话。新模型默认先“思考”再回答，网页不显示思考，看起来像卡住，还可能把字数用光、回答是空的；现在 TWIN 用 DeepSeek 时关掉思考，回答和以前一样快。旧模型名 deepseek-chat / deepseek-reasoner 官方已停用，自动换成 deepseek-flash；新加 DeepSeek 默认填 deepseek-flash。
 - AI 出错时说人话：模型名填错会告诉你可以填什么（DeepSeek：deepseek-flash 或 deepseek-v4-pro），key 不对、余额不足也直接说；AI 只思考没回答时提示换模型，不再一声不响。
 - 修复：侧栏、浏览器标签有时还是旧的黑底 T。原因是之前没退干净的 TWIN 还在后台占着同一个端口，网页时不时连到旧的那个。现在打开 TWIN 时会先停掉这些剩下的旧进程，而且一个端口只允许一个 TWIN。

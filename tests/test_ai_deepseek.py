@@ -62,3 +62,18 @@ def test_unknown_model_name_explained(sent):
     sent["reply"] = urllib.error.HTTPError("https://api.deepseek.com/chat/completions", 400, "Bad Request", {}, body)  # type: ignore[arg-type]
     with pytest.raises(RuntimeError, match="deepseek-flash"):
         twin_ai.call_model("s", [], {**DS, "model": "deepseek-pro"})
+
+
+def test_think_on_streams_thinking_separately(sent):
+    """开了“显示思考过程”：DeepSeek 打开思考，字数放宽，思考以 {"think": …} 单独给出，不混进回答。"""
+    sent["reply"] = Resp(sse({"choices": [{"delta": {"reasoning_content": "想一想"}}]},
+                             {"choices": [{"delta": {"content": "答案"}, "finish_reason": "stop"}]}))
+    out = list(twin_ai.call_model_stream("s", [], DS, think=True))
+    assert out == [{"think": "想一想"}, "答案"]
+    assert sent["payload"]["thinking"] == {"type": "enabled"} and sent["payload"]["max_tokens"] >= 16000
+
+
+def test_think_setting_saved(monkeypatch, tmp_path):
+    monkeypatch.setattr(twin_ai, "CONFIG_FILE", tmp_path / "ai.json")
+    cfg = twin_ai.update_config({"providers": [{**DS, "id": "", "think": True}]})
+    assert cfg["providers"][0]["think"] is True
