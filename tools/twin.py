@@ -21,8 +21,8 @@ SKIP_SUBDIRS = {"diy_mk"}  # 项目库：内部文件不按 privacy 规则检查
 # 项目库的索引本身就是该树枝的总结，打包时一并带上
 PROJECT_INDEXES = ["03_Projects/diy_mk/INDEX.md"]
 # 程序自带的说明（跟着程序升级，不是你的资料）：体检不查，资料库里收进“TWIN 说明”
-PROGRAM_DOCS = {"README.md", "CHANGELOG.md", "Guide.md", "CLAUDE.md", "AGENTS.md"}
-SKIP_FILES = {"CLAUDE.md", "AGENTS.md", "README.md", "context_pack.md"}  # 仓库首页和给 AI 工具的说明，不按 privacy 规则查
+PROGRAM_DOCS = {"README.md", "README.zh-CN.md", "CHANGELOG.md", "Guide.md", "CLAUDE.md", "AGENTS.md"}
+SKIP_FILES = {"CLAUDE.md", "AGENTS.md", "README.md", "README.zh-CN.md", "context_pack.md"}  # 仓库首页和给 AI 工具的说明，不按 privacy 规则查
 LEVELS = ("public", "internal", "private", "secret")
 
 # 忘了写结束标记时，一直到文件末尾都算私密（和网页的显示一致），宁可少发也不能漏发
@@ -254,7 +254,7 @@ def pack():
 
 # 空白版：程序、说明、通用规则和模板，加上空的树枝文件夹；资料、对话、密码、缓存一概不带。
 # 别人解压后双击 Open_Web.bat，第一次打开会设密码、走设置向导，规则文件按默认值自动生成
-BLANK_FILES = ["README.md", "LICENSE", "Guide.md", "CHANGELOG.md", "CLAUDE.md", "AGENTS.md", "Open_Web.bat", "Open_Web.command", ".gitignore", ".gitattributes",
+BLANK_FILES = ["README.md", "README.zh-CN.md", "LICENSE", "Guide.md", "CHANGELOG.md", "CLAUDE.md", "AGENTS.md", "Open_Web.bat", "Open_Web.command", ".gitignore", ".gitattributes",
                "_RULES/AI_ACCESS_RULES.md", "_RULES/FIELD_SPEC.md"]
 BLANK_TREES = ["tools", "_TEMPLATES"]  # docs/ 里是 GitHub 首页的图，空白版不带，省体积
 BLANK_SKIP = {"__pycache__", ".cache", ".auth.json", "health_ignore.json", "rename_v3.py", "runtime"}  # runtime：盘上自带的 Python、KeePassXC

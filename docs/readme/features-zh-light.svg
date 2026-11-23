@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="498" viewBox="0 0 720 498" role="img" aria-label="功能：对话、待办和项目、体检、复盘、暂存箱、插件" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', 'Noto Sans SC', 'Noto Sans', Helvetica, Arial, sans-serif">
+<title>功能：对话、待办和项目、体检、复盘、暂存箱、插件</title>
+<g transform="translate(0 0)">
+<rect x="1" y="1" width="346" height="148" rx="16" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+<rect x="22" y="22" width="48" height="48" rx="12" fill="#efedfc"/>
+<g transform="translate(32 32) scale(1)"><path d="M4 6h20a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H12l-6 5v-5H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13.5h10" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="86" y="54" font-size="22" font-weight="700" fill="#1f2328" text-anchor="start">对话</text>
+<text x="24" y="102" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">说一句发生了什么，</text>
+<text x="24" y="128" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">AI 先给预览，你确认。</text>
+</g>
+<g transform="translate(372 0)">
+<rect x="1" y="1" width="346" height="148" rx="16" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+<rect x="22" y="22" width="48" height="48" rx="12" fill="#e3f5f3"/>
+<g transform="translate(32 32) scale(1)"><rect x="3" y="4" width="8" height="8" rx="2" fill="none" stroke="#55c2b8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 8l2 2 3-4" fill="none" stroke="#55c2b8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 8h10M15 20h10" fill="none" stroke="#55c2b8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="16" width="8" height="8" rx="2" fill="none" stroke="#55c2b8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="86" y="54" font-size="22" font-weight="700" fill="#1f2328" text-anchor="start">待办和项目</text>
+<text x="24" y="102" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">每个项目一张任务表，</text>
+<text x="24" y="128" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">“今天”列出到期和过期。</text>
+</g>
+<g transform="translate(0 174)">
+<rect x="1" y="1" width="346" height="148" rx="16" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+<rect x="22" y="22" width="48" height="48" rx="12" fill="#efedfc"/>
+<g transform="translate(32 32) scale(1)"><path d="M2 15h6l3-8 5 15 3-7h7" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="86" y="54" font-size="22" font-weight="700" fill="#1f2328" text-anchor="start">体检</text>
+<text x="24" y="102" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">过期任务、断掉的链接、</text>
+<text x="24" y="128" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">漏出的敏感值，不用联网。</text>
+</g>
+<g transform="translate(372 174)">
+<rect x="1" y="1" width="346" height="148" rx="16" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+<rect x="22" y="22" width="48" height="48" rx="12" fill="#efedfc"/>
+<g transform="translate(32 32) scale(1)"><path d="M4 24h20" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="6" y="14" width="4" height="10" rx="1" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="12" y="8" width="4" height="16" rx="1" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="18" y="4" width="4" height="20" rx="1" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="86" y="54" font-size="22" font-weight="700" fill="#1f2328" text-anchor="start">复盘</text>
+<text x="24" y="102" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">周报和每日简报，</text>
+<text x="24" y="128" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">用你自己的数据算出来。</text>
+</g>
+<g transform="translate(0 348)">
+<rect x="1" y="1" width="346" height="148" rx="16" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+<rect x="22" y="22" width="48" height="48" rx="12" fill="#e3f5f3"/>
+<g transform="translate(32 32) scale(1)"><path d="M3 16l4-11h14l4 11v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" fill="none" stroke="#55c2b8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 16h6l2 3h6l2-3h6" fill="none" stroke="#55c2b8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="86" y="54" font-size="22" font-weight="700" fill="#1f2328" text-anchor="start">暂存箱</text>
+<text x="24" y="102" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">文件丢进来，</text>
+<text x="24" y="128" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">它建议放哪、叫什么。</text>
+</g>
+<g transform="translate(372 348)">
+<rect x="1" y="1" width="346" height="148" rx="16" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+<rect x="22" y="22" width="48" height="48" rx="12" fill="#efedfc"/>
+<g transform="translate(32 32) scale(1)"><rect x="3" y="3" width="9" height="9" rx="2" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="16" y="3" width="9" height="9" rx="2" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="16" width="9" height="9" rx="2" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.5 16v9M16 20.5h9" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="86" y="54" font-size="22" font-weight="700" fill="#1f2328" text-anchor="start">插件</text>
+<text x="24" y="102" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">自带雅思小练习，</text>
+<text x="24" y="128" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">自己写一个也不难。</text>
+</g>
+</svg>

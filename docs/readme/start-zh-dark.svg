@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="312" viewBox="0 0 720 312" role="img" aria-label="上手：装 Python，下载空白版 zip，双击 Open_Web.bat" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', 'Noto Sans SC', 'Noto Sans', Helvetica, Arial, sans-serif">
+<title>上手：装 Python，下载空白版 zip，双击 Open_Web.bat</title>
+<rect x="1" y="1" width="718" height="310" rx="18" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+<path d="M52 82.0V134.0" stroke="#30363d" stroke-width="2.4" stroke-dasharray="2 6" stroke-linecap="round"/>
+<circle cx="52" cy="60.0" r="20" fill="#7f6fe0"/>
+<text x="52" y="67.0" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+<text x="92" y="54.0" font-size="20" font-weight="700" fill="#e6edf3" text-anchor="start">装 Python 3.9 以上</text>
+<text x="92" y="80.0" font-size="15" font-weight="400" fill="#9198a1" text-anchor="start">python.org 上那个黄色大按钮；Windows 上记得勾 “Add to PATH”。</text>
+<path d="M52 178.0V230.0" stroke="#30363d" stroke-width="2.4" stroke-dasharray="2 6" stroke-linecap="round"/>
+<circle cx="52" cy="156.0" r="20" fill="#55c2b8"/>
+<text x="52" y="163.0" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+<text x="92" y="150.0" font-size="20" font-weight="700" fill="#e6edf3" text-anchor="start">下载空白版 zip</text>
+<text x="92" y="176.0" font-size="15" font-weight="400" fill="#9198a1" text-anchor="start">在 Releases 里下载，解压到你想放资料的地方。</text>
+<circle cx="52" cy="252.0" r="20" fill="#7f6fe0"/>
+<text x="52" y="259.0" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+<text x="92" y="246.0" font-size="20" font-weight="700" fill="#e6edf3" text-anchor="start">双击 Open_Web.bat</text>
+<text x="92" y="272.0" font-size="15" font-weight="400" fill="#9198a1" text-anchor="start">或者运行 python3 tools/twin_web.py；设个密码，填上 AI key。</text>
+</svg>
