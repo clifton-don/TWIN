@@ -294,15 +294,15 @@ function drawSettings() { const tab = STABS.some(t => t[0] === pref('setTab', ''
           <button type="button" class="btn sm" data-t="${i}">测试</button>
           <button type="button" class="ib pchev" data-o="${i}" aria-label="${provOpen === i ? '收起' : '展开修改'}">${lu('chevron-down', 16)}</button></div>
         ${provOpen === i ? `<div class="pedit">
-          <label class="fld"><span>名称</span><input data-f="name" value="${esc(p.name)}"></label>
-          <label class="fld"><span>接口类型</span><select data-f="kind"><option value="openai" ${p.kind === 'openai' ? 'selected' : ''}>OpenAI 兼容</option><option value="anthropic" ${p.kind === 'anthropic' ? 'selected' : ''}>Anthropic</option></select></label>
-          <label class="fld wide"><span>接口地址</span><input data-f="base_url" value="${esc(p.base_url)}"></label>
-          <label class="fld"><span>模型</span><input data-f="model" value="${esc(p.model)}" placeholder="例如 deepseek-flash"></label>
-          <label class="fld"><span>API key</span><input data-f="api_key" type="password" value="${esc(p.api_key)}" placeholder="sk-…" autocomplete="off"></label>
-          <label class="pthink wide"><input type="checkbox" data-think ${p.think ? 'checked' : ''}><span>显示思考过程<small>对话时让 AI 先想再答，想的过程在回答上面，可以展开看。会慢一些、多花一点钱；模型不会思考的话开了也没变化。</small></span></label>
-          <div class="pfoot"><button type="button" class="btn sm danger" data-d="${i}">删除这家</button></div></div>` : ''}</div>`).join('') || '<p class="note">还没有。从下面选一家添加。</p>'}</div>
-      <div class="padd"><select id="preset">${aiCfg.presets.map((p, i) => `<option value="${i}">${esc(p.name)}</option>`).join('')}</select>
-        <button class="btn" id="addProv">${lu('plus', 15)}添加</button><span style="flex:1"></span><button class="btn primary" id="saveProv">保存</button></div></div>`,
+          ${srow('名称', '对话框左下角显示的名字', `<input class="sin" data-f="name" value="${esc(p.name)}" aria-label="名称">`)}
+          ${srow('接口类型', '大多数是 OpenAI 兼容，Claude 选 Anthropic', `<select class="sin" data-f="kind" aria-label="接口类型"><option value="openai" ${p.kind === 'openai' ? 'selected' : ''}>OpenAI 兼容</option><option value="anthropic" ${p.kind === 'anthropic' ? 'selected' : ''}>Anthropic</option></select>`)}
+          ${srow('接口地址', '', `<input class="sin" data-f="base_url" value="${esc(p.base_url)}" aria-label="接口地址">`)}
+          ${srow('模型', '模型名以服务商官网为准', `<input class="sin" data-f="model" value="${esc(p.model)}" placeholder="例如 deepseek-flash" aria-label="模型">`)}
+          ${srow('API key', '', `<input class="sin" data-f="api_key" type="password" value="${esc(p.api_key)}" placeholder="sk-…" autocomplete="off" aria-label="API key">`)}
+          ${srow('显示思考过程', '对话时让 AI 先想再答，想的过程在回答上面，可以展开看。会慢一些、多花一点钱；模型不会思考的话开了也没变化。', `<button type="button" class="plsw" role="switch" aria-checked="${!!p.think}" data-think aria-label="显示思考过程"><i></i></button>`)}
+          ${srow('删除这家', '从列表里去掉，点“保存”才生效', `<button type="button" class="btn sm danger" data-d="${i}">删除</button>`)}</div>` : ''}</div>`).join('') || '<p class="note">还没有。从下面选一家添加。</p>'}</div>
+      <div class="plfl padd"><select id="preset" aria-label="选服务商">${aiCfg.presets.map((p, i) => `<option value="${i}">${esc(p.name)}</option>`).join('')}</select>
+        <button class="btn sm" id="addProv">${lu('plus', 14)}添加</button><span class="psave"><span class="pdirty" id="provDirty" hidden>有改动，还没保存</span><button class="btn sm primary" id="saveProv">保存</button></span></div></div>`,
     plug: `<p class="sdesc">关着的插件和没装一样。开着的插件可能会在首页放一个小组件，右键能移走，“添加 → 小组件”里能加回来。</p>
       <div id="plugList"><p class="note">读取中…</p></div>
       <div class="plfl"><button class="btn sm" id="plInst">${lu('plus', 14)}安装插件</button><input type="file" id="plFile" accept=".zip" hidden>${tip('上传插件的 zip，装好默认关着。插件就是 <code>tools/plugins/</code> 里的一个文件夹，也可以直接拷进去或删掉，重启 TWIN 生效。怎么写插件见 <code>tools/plugins/README.md</code>。')}</div>`,
@@ -321,8 +321,13 @@ function drawSettings() { const tab = STABS.some(t => t[0] === pref('setTab', ''
   const on = id => $(id) || { set onclick(f) {}, set onchange(f) {} };  // 不在当前分类的控件：绑定时跳过
   if (tab === 'plug') { plugInst($('#view')); drawPlugins(); }
   if (tab === 'sugg') drawSugg();
-  document.querySelectorAll('.prov[data-i] [data-f]').forEach(el => el.oninput = () => { draftProv[+el.closest('.prov').dataset.i][el.dataset.f] = el.value; });
-  document.querySelectorAll('.prov[data-i] [data-think]').forEach(el => el.onchange = () => { draftProv[+el.closest('.prov').dataset.i].think = el.checked; });
+  // 改了没保存：保存按钮才能点，旁边提示一句
+  const dirty = () => { const sv = $('#saveProv'); if (!sv) return; const nm = xs => JSON.stringify(xs.map(p => ({ ...p, think: !!p.think }))), d = nm(draftProv) !== nm(aiCfg.providers) || (aiCfg.providers[draftAct] || {}).id !== aiCfg.active;
+    sv.disabled = !d; $('#provDirty').hidden = !d; };
+  document.querySelectorAll('.prov[data-i] [data-f]').forEach(el => el.oninput = el.onchange = () => { draftProv[+el.closest('.prov').dataset.i][el.dataset.f] = el.value; dirty(); });
+  document.querySelectorAll('.prov[data-i] select[data-f], #preset').forEach(fancy);
+  document.querySelectorAll('.prov[data-i] [data-think]').forEach(el => el.onclick = () => { const v = el.getAttribute('aria-checked') !== 'true'; el.setAttribute('aria-checked', v); draftProv[+el.closest('.prov').dataset.i].think = v; dirty(); });
+  dirty();
   document.querySelectorAll('[data-d]').forEach(b => b.onclick = () => { const i = +b.dataset.d; draftProv.splice(i, 1); if (draftAct >= i && draftAct) draftAct--; provOpen = -1; drawSettings(); toast('删掉了，点“保存”才生效'); });
   document.querySelectorAll('[data-o]').forEach(b => b.onclick = () => { provOpen = provOpen === +b.dataset.o ? -1 : +b.dataset.o; drawSettings(); });
   document.querySelectorAll('[data-def]').forEach(b => b.onclick = () => { draftAct = +b.dataset.def; drawSettings(); });

@@ -308,7 +308,6 @@ a.missing{color:var(--ink-3);text-decoration:underline dotted}
   .lib{flex-direction:column}.tree{width:auto;border-right:0;border-bottom:1px solid var(--rule);max-height:45%}
   .lib.reading .tree{display:none}
   .doc{padding:18px 16px 60px}.docbar{padding:8px 16px}
-  .prov{grid-template-columns:24px 1fr 1fr}
   .m-uwrap{max-width:88%}
 }
 
@@ -403,9 +402,6 @@ main{position:relative}
 @media (hover:none){.duebtn .due.nodue{opacity:1}}
 
 /* 设置：每家 AI 一张卡，标签贴着输入框 */
-.fld{display:grid;gap:4px;min-width:0}
-.fld span{font-size:12px;color:var(--ink-3)}
-.fld.wide{grid-column:1/-1}
 
 
 .pribtn{border:0;background:none;padding:2px 4px;margin:-2px -4px;border-radius:5px;cursor:pointer;font:inherit;line-height:1}
@@ -1193,22 +1189,25 @@ body[data-v=""] #sideOpen:hover,body[data-v="home"] #sideOpen:hover{background:v
 .side-foot .sfb.ib{flex:none;width:36px;height:36px;padding:0;display:grid;place-items:center}
 
 /* 设置：AI 服务商一家一行，点开改 */
-.provs{border:1px solid var(--rule);border-radius:12px;margin-top:10px;overflow:hidden}
-.prov+.prov{border-top:1px solid var(--rule)}
-.prow{display:flex;align-items:center;gap:10px;padding:10px 12px}
-.prov.open .prow,.prow:hover{background:var(--hover)}
+/* AI 服务商：一家一张卡片（和插件卡片一样），展开后每项一行（和别的设置一样：左边名字说明，右边控件） */
+.provs{display:grid;gap:10px;margin-top:10px}
+.prov{border:1px solid var(--rule);border-radius:12px;overflow:hidden}.prov.open{border-color:var(--ink-3)}
+.prow{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.prow:hover{background:var(--hover)}
 .pdot{flex:none;width:16px;height:16px;border-radius:50%;border:1.5px solid var(--ink-3);background:none;cursor:pointer;padding:0}
 .pdot.on{border-color:var(--accent);box-shadow:inset 0 0 0 3px var(--paper),inset 0 0 0 8px var(--accent)}
 .pmain{flex:1;min-width:0;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:2px 8px;border:0;background:none;padding:0;text-align:left;cursor:pointer;color:var(--ink);font:inherit}
 .pmain b{font-weight:600;font-size:14px}.pmain small{grid-column:1/-1;color:var(--ink-3);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pmain small em{font-style:normal;color:var(--p0)}
 .ptag{justify-self:start;font-size:11px;padding:1px 7px;border-radius:99px;background:var(--accent);color:var(--on-accent)}
 .pchev svg{transition:transform .15s}.prov.open .pchev svg{transform:rotate(180deg)}
-.pedit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 12px;padding:12px 14px 14px 38px;border-top:1px solid var(--rule)}
-.pedit input,.pedit select{min-width:0;padding:7px 9px;border:1px solid var(--rule);border-radius:7px;background:var(--ground);font-size:13px;width:100%}
-.pfoot{grid-column:1/-1;display:flex;justify-content:flex-end}
-.padd{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center}.padd select{padding:7px 8px;border:1px solid var(--rule);border-radius:8px;background:var(--paper)}
-.padd #addProv{display:inline-flex;align-items:center;gap:5px}
-@media (max-width:860px){.pedit{grid-template-columns:minmax(0,1fr);padding-left:14px}}
+.pedit{padding:0 14px 0 40px;border-top:1px solid var(--rule)}
+.smain .pedit .srow{padding:12px 0}.smain .pedit .srow:first-child{border-top:0}
+.srow .sin{flex:0 1 340px;width:auto;min-width:0;height:32px;margin:0;padding:0 10px;border:1px solid var(--rule);border-radius:8px;background:var(--ground);color:var(--ink);font:inherit;font-size:13.5px}
+.srow .sin:focus{outline:0;border-color:var(--ink-3)}
+.srow .fsel.sin{height:32px;max-width:none;justify-content:space-between}
+.padd{flex-wrap:wrap}.padd .fsel.boxed{height:28px;padding:0 10px;font-size:12.5px;max-width:200px}
+.psave{margin-left:auto;display:flex;align-items:center;gap:8px}.pdirty{font-size:12.5px;color:var(--ink-3)}
+@media (max-width:760px){.pedit{padding-left:14px}.srow .sin{flex-basis:100%}.prow{padding:12px}}
 .hdf [data-back]{display:inline-flex;align-items:center;gap:4px}.hdf [data-back][hidden]{display:none}
 /* 要闻：每日 / 收藏，选日期；卡片右上角的星 */
 .nbar{display:flex;align-items:center;gap:10px;margin:-4px 0 14px;flex-wrap:wrap}.nmode{display:inline-grid;padding:2px;border-radius:9px}.nmode button{height:28px;padding:0 14px;font-size:13px;border-radius:7px}
@@ -1228,7 +1227,6 @@ body[data-v=""] #sideOpen:hover,body[data-v="home"] #sideOpen:hover{background:v
 .btn{min-height:36px;padding-top:0;padding-bottom:0;justify-content:center}
 .btn.sm{min-height:28px;padding:0 10px}
 .btn.sq{width:36px;height:36px;min-height:36px;border-radius:8px}
-.padd .fsel.boxed{height:36px;padding:0 10px}
 .nbar .fsel.boxed{height:28px;padding:0 10px;font-size:13px}
 .factions{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 0}
 .row .btn.sm{flex:none}
@@ -1311,9 +1309,6 @@ body[data-v=""] #sideOpen:hover,body[data-v="home"] #sideOpen:hover{background:v
 .csum .tk{text-align:left;white-space:pre-wrap;word-break:break-word;margin:8px 0 0;padding:10px 12px;background:var(--paper);border:1px solid var(--rule);border-radius:10px;line-height:1.65;color:var(--ink-2);max-height:320px;overflow:auto}
 .thinking .note{font-size:12.5px;color:var(--ink-3);margin-left:8px;align-self:center}
 .thinking:has(.note) i{align-self:center}
-.pthink{grid-column:1/-1;display:flex;gap:8px;align-items:flex-start;font-size:13px;cursor:pointer}
-.pedit .pthink input{width:auto;margin:3px 0 0;flex:none}
-.pthink small{display:block;color:var(--ink-3);font-size:12px;line-height:1.5;margin-top:2px}
 
 /* 项目时间线 */
 .tline{margin:22px 0 6px;border-top:1px solid var(--rule);padding-top:10px}
