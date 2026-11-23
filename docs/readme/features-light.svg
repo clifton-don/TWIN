@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="498" viewBox="0 0 720 498" role="img" aria-label="Features: chat, tasks and projects, health check, reviews, inbox, plugins" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif">
+<title>Features: chat, tasks and projects, health check, reviews, inbox, plugins</title>
+<g transform="translate(0 0)">
+<rect x="1" y="1" width="346" height="148" rx="16" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+<rect x="22" y="22" width="48" height="48" rx="12" fill="#efedfc"/>
+<g transform="translate(32 32) scale(1)"><path d="M4 6h20a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H12l-6 5v-5H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13.5h10" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="86" y="54" font-size="22" font-weight="700" fill="#1f2328" text-anchor="start">Chat</text>
+<text x="24" y="102" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">Say what happened. The AI shows</text>
+<text x="24" y="128" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">the change first; you confirm.</text>
+</g>
+<g transform="translate(372 0)">
+<rect x="1" y="1" width="346" height="148" rx="16" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+<rect x="22" y="22" width="48" height="48" rx="12" fill="#e3f5f3"/>
+<g transform="translate(32 32) scale(1)"><rect x="3" y="4" width="8" height="8" rx="2" fill="none" stroke="#55c2b8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 8l2 2 3-4" fill="none" stroke="#55c2b8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 8h10M15 20h10" fill="none" stroke="#55c2b8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="16" width="8" height="8" rx="2" fill="none" stroke="#55c2b8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="86" y="54" font-size="22" font-weight="700" fill="#1f2328" text-anchor="start">Tasks and projects</text>
+<text x="24" y="102" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">One board per project. Today</text>
+<text x="24" y="128" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">shows what is due or overdue.</text>
+</g>
+<g transform="translate(0 174)">
+<rect x="1" y="1" width="346" height="148" rx="16" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+<rect x="22" y="22" width="48" height="48" rx="12" fill="#efedfc"/>
+<g transform="translate(32 32) scale(1)"><path d="M2 15h6l3-8 5 15 3-7h7" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="86" y="54" font-size="22" font-weight="700" fill="#1f2328" text-anchor="start">Health check</text>
+<text x="24" y="102" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">Overdue tasks, broken links,</text>
+<text x="24" y="128" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">stray secrets. Runs offline.</text>
+</g>
+<g transform="translate(372 174)">
+<rect x="1" y="1" width="346" height="148" rx="16" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+<rect x="22" y="22" width="48" height="48" rx="12" fill="#efedfc"/>
+<g transform="translate(32 32) scale(1)"><path d="M4 24h20" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="6" y="14" width="4" height="10" rx="1" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="12" y="8" width="4" height="16" rx="1" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="18" y="4" width="4" height="20" rx="1" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="86" y="54" font-size="22" font-weight="700" fill="#1f2328" text-anchor="start">Reviews</text>
+<text x="24" y="102" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">Weekly report and daily brief,</text>
+<text x="24" y="128" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">built from your own numbers.</text>
+</g>
+<g transform="translate(0 348)">
+<rect x="1" y="1" width="346" height="148" rx="16" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+<rect x="22" y="22" width="48" height="48" rx="12" fill="#e3f5f3"/>
+<g transform="translate(32 32) scale(1)"><path d="M3 16l4-11h14l4 11v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" fill="none" stroke="#55c2b8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 16h6l2 3h6l2-3h6" fill="none" stroke="#55c2b8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="86" y="54" font-size="22" font-weight="700" fill="#1f2328" text-anchor="start">Inbox</text>
+<text x="24" y="102" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">Drop a file in. It suggests</text>
+<text x="24" y="128" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">where it belongs and a name.</text>
+</g>
+<g transform="translate(372 348)">
+<rect x="1" y="1" width="346" height="148" rx="16" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+<rect x="22" y="22" width="48" height="48" rx="12" fill="#efedfc"/>
+<g transform="translate(32 32) scale(1)"><rect x="3" y="3" width="9" height="9" rx="2" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="16" y="3" width="9" height="9" rx="2" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="16" width="9" height="9" rx="2" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.5 16v9M16 20.5h9" fill="none" stroke="#7f6fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="86" y="54" font-size="22" font-weight="700" fill="#1f2328" text-anchor="start">Plugins</text>
+<text x="24" y="102" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">Ships with an IELTS trainer.</text>
+<text x="24" y="128" font-size="18" font-weight="400" fill="#59636e" text-anchor="start">Writing your own is short.</text>
+</g>
+</svg>

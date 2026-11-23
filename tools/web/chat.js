@@ -310,7 +310,7 @@ function rate(i, useful) {
   const q = (chat.messages.slice(0, i).reverse().find(m => m.role === 'user') || {}).content || '';
   const done = async note => { await api('/api/feedback', { useful, question: q, note }); chat.messages[i].rated = useful ? '有用' : '没用'; await saveChat(); drawMsgs(); };
   if (useful) return done('');
-  const m = modal(`<h3>哪里没用？</h3><p class="note">一句话就行，比如“没考虑我在准备申博”。每周复盘升级时会用到。</p><input id="fbn" placeholder="可以不写"><div class="row"><button class="btn" id="mx">取消</button><button class="btn primary" id="mok">提交</button></div>`);
+  const m = modal(`<h3>哪里没用？</h3><p class="note">一句话就行，比如“没考虑我这周在出差”。每周复盘升级时会用到。</p><input id="fbn" placeholder="可以不写"><div class="row"><button class="btn" id="mx">取消</button><button class="btn primary" id="mok">提交</button></div>`);
   m.querySelector('#mx').onclick = closeModal; m.querySelector('#mok').onclick = async () => { const v = m.querySelector('#fbn').value; closeModal(); done(v); };
   m.querySelector('#fbn').focus();
 }

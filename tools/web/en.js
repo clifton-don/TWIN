@@ -73,7 +73,7 @@ window.I18N_EN = {
   'AI 看得到摘要、项目任务和相关文档，私密内容和敏感值不发；要改文件都会先给你确认。': 'The AI sees summaries, project tasks and related documents. Private content and sensitive values are never sent, and every file change asks you first.',
   'Enter 发送，Shift+Enter 换行。': 'Enter to send, Shift+Enter for a new line.', '发送': 'Send',
   '重新回答': 'Regenerate', '已记录：': 'Recorded: ', '哪里没用？': "What wasn't helpful?",
-  '一句话就行，比如“没考虑我在准备申博”。每周复盘升级时会用到。': 'One sentence is enough, e.g. "it ignored that I\'m applying for a PhD". Used in the weekly review upgrade.',
+  '一句话就行，比如“没考虑我这周在出差”。每周复盘升级时会用到。': 'One sentence is enough, e.g. "it ignored that I\'m travelling this week". Used in the weekly review upgrade.',
   'AI 的回答中断了，点“重新回答”再试一次': 'The answer was cut off. Click "Regenerate" to try again',
   '先到设置里接一家 AI，或者点“复制给其他 AI”': 'Connect an AI in Settings first, or use "Copy for another AI"',
   '帮我整理一下这些附件': 'Please sort these attachments', '帮我想想这个决定：': 'Help me think through this decision: ',
