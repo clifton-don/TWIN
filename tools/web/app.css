@@ -1176,10 +1176,13 @@ body[data-v=""] #sideOpen:hover,body[data-v="home"] #sideOpen:hover{background:v
 .side-foot{position:relative}
 .side-foot .sfb{display:flex;align-items:center;gap:10px;flex:1;text-align:left;padding:9px 10px;font-size:13.5px}
 .side-foot .sfb span{flex:1}.side-foot .sfb>svg:last-child{transition:transform .15s}.side-foot .sfb.open>svg:last-child{transform:rotate(180deg)}
-.sdrw{position:absolute;left:0;right:0;bottom:calc(100% + 6px);background:var(--bark);border:1px solid var(--bark-line);border-radius:12px;box-shadow:var(--shadow);padding:6px;display:grid;gap:1px;z-index:30;animation:sdrw .14s ease-out}
-.sdrw a,.sdrw button{display:flex;align-items:center;gap:10px;padding:8px 10px;border:0;background:none;border-radius:8px;color:var(--bark-dim);font:inherit;font-size:13.5px;text-align:left;cursor:pointer;text-decoration:none}
-.sdrw a:hover,.sdrw button:hover,.sdrw a.on{background:var(--bark-2);color:var(--bark-ink)}
-.sdrw hr{border:0;border-top:1px solid var(--bark-line);margin:4px 2px}
+/* 抽屉浮在侧栏上面：用卡片底色（比侧栏亮一层）、实线边框和更深的阴影，和侧栏分开 */
+.sdrw{position:absolute;left:0;right:0;bottom:calc(100% + 10px);background:var(--paper);border:1px solid var(--rule);border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,.06),0 12px 32px rgba(0,0,0,.14);padding:6px;display:grid;gap:1px;z-index:30;animation:sdrw .14s ease-out}
+:root[data-mode=dark] .sdrw{border-color:#3a3d42;box-shadow:0 2px 6px rgba(0,0,0,.35),0 14px 36px rgba(0,0,0,.55)}
+@media (prefers-color-scheme:dark){:root:not([data-mode=light]) .sdrw{border-color:#3a3d42;box-shadow:0 2px 6px rgba(0,0,0,.35),0 14px 36px rgba(0,0,0,.55)}}
+.sdrw a,.sdrw button{display:flex;align-items:center;gap:10px;padding:8px 10px;border:0;background:none;border-radius:8px;color:var(--ink-2);font:inherit;font-size:13.5px;text-align:left;cursor:pointer;text-decoration:none}
+.sdrw a:hover,.sdrw button:hover,.sdrw a.on{background:var(--hover);color:var(--ink)}
+.sdrw hr{border:0;border-top:1px solid var(--rule);margin:4px 2px}
 @keyframes sdrw{from{opacity:0;transform:translateY(4px)}}
 .sugempty{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:6px 0 2px}.sugempty .note{flex:1;min-width:200px;margin:0}
 .hdf #plInst{display:inline-flex;align-items:center;gap:6px}
