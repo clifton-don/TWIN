@@ -154,7 +154,7 @@ async function viewHome() {
       else if (t.k === 'l') { const x = ls[t.ix[0]]; el = document.createElement('a'); el.className = 'hl'; el.href = x.url; el.target = '_blank'; el.rel = 'noopener'; el.title = x.url;
         el.innerHTML = `${icon(x)}<span class="hln">${esc(x.name)}</span>`; el.oncontextmenu = e => ctxMenu(e, t); }
       else { el = document.createElement('button'); el.type = 'button'; el.className = 'hl hfold'; el.title = `${t.name}（${t.ix.length} 个）`;
-        el.innerHTML = `<span class="hli hfi">${t.ix.slice(0, 4).map(k => icon(ls[k])).join('')}</span><span class="hln">${esc(t.name)}</span>`;
+        el.innerHTML = `<span class="hli hfi">${t.ix.slice(0, 4).map(k => icon(ls[k])).join('')}<i class="hfn">${t.ix.length}</i></span><span class="hln">${esc(t.name)}</span>`;
         el.onclick = () => openFolder(t.name); el.oncontextmenu = e => ctxMenu(e, t); }
       el.draggable = !locked();
       el.ondragstart = e => { drag = { ix: t.ix, k: t.k }; e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', ''); setTimeout(() => el.classList.add('drag')); };
@@ -251,7 +251,8 @@ async function viewHome() {
     m.querySelector('#icSave').onclick = e => { const v = m.querySelector('#icS').value.trim(); if (!v) return toast('先粘贴 SVG 代码'); call({ action: 'paste', svg: v }, e.target, '保存…'); };
     m.querySelector('#icReset').onclick = e => call({ action: 'reset' }, e.target, '恢复…'); };
   // 图标大小：图标、格子、间距一起缩放，文字不缩；记在这台电脑的浏览器里
-  const applyScale = () => home.style.setProperty('--hs', pref('homeScale', '0.7'));
+  // 图标调小以后文件夹里 2×2 的小图标看不清：小于 65% 时文件夹只放第一个图标，右下角标个数
+  const applyScale = () => { const s = +pref('homeScale', '0.7') || 0.7; home.style.setProperty('--hs', s); home.classList.toggle('hsm', s < 0.65); };
   applyScale();
   const sizeDlg = () => { const m = dlg('图标大小', '图标、小组件和间距一起缩放，文字大小不变。拖动时首页马上变，只记在这台电脑上。',
       `<div class="hasz"><small>小</small><input type="range" id="szR" min="0.5" max="1.2" step="0.05" value="${pref('homeScale', '0.7')}" aria-label="图标大小"><small>大</small><b id="szV"></b></div>`,
